@@ -26,7 +26,7 @@
 					<table class=" table table-striped table-dark">
 						<thead class="thead-inverse">
 							<tr>
-								<th>الكمية</th>
+								<th>العدد</th>
 								<th>الصنف</th>
 								<th>السعر تجاري</th>
 								<th>سعر القطعة</th>
