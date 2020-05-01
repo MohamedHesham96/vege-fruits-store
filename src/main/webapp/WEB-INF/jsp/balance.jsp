@@ -26,7 +26,7 @@
 
 	<div style="text-align: right;" class="container">
 
-		<form:form metho="GET" action="add-balance" modelAttribute="balance">
+		<form:form metho="POST" action="add-balance" modelAttribute="balance">
 			<div class="row  my-4">
 				<div dir='rtl' class="col-lg-12 col-md-8">
 					<div class="table-responsive">
@@ -39,6 +39,7 @@
 									<th>سعر الكيلو</th>
 									<th>نقدي</th>
 									<th>آجل</th>
+									<th>اسم العميل</th>
 									<th>اسم البائع</th>
 								</tr>
 							</thead>
@@ -46,37 +47,41 @@
 							<tbody>
 
 								<tr>
-									<td><form:input type="text" path="counter"
-											class="text-center form-control mb-2 col-xs-3"
+									<td style="width: 125px"><form:input type="text"
+											path="counter" class="text-center form-control mb-2 col-xs-3"
 											placeholder="ادخل العدد"></form:input></td>
 
-									<td style="width:"><form:input type="text" path="itemName"
+									<td><form:input type="text" path="itemName"
 											class="text-center form-control mb-2 col-xs-3"
 											placeholder="ادخل اسم الصنف"></form:input></td>
 
 
-									<td><form:input type="text" path="weight"
-											class="text-center form-control mb-2 col-xs-3"
+									<td style="width: 125px"><form:input type="text"
+											path="weight" class="text-center form-control mb-2 col-xs-3"
 											placeholder="ادخل الوزن"></form:input></td>
 
-									<td style="width:"><form:input type="text"
+									<td style="width: 125px"><form:input type="text"
 											path="kiloPrice"
 											class="text-center form-control mb-2 col-xs-3"
 											placeholder="ادخل سعر الكيلو"></form:input></td>
 
 
-									<td><form:input type="text" path="cash"
-											class="text-center form-control mb-2 col-xs-3"
+									<td style="width: 125px"><form:input type="text"
+											path="cash" class="text-center form-control mb-2 col-xs-3"
 											placeholder="ادخل النقدي"></form:input></td>
 
-									<td style="width:"><form:input type="text" path="later"
+									<td style="width: 125px" style="width:"><form:input
+											type="text" path="later"
 											class="text-center form-control mb-2 col-xs-3"
 											placeholder="ادخل الآجل"></form:input></td>
+
+									<td><form:input type="text" path="clientName"
+											class="text-center form-control mb-2 col-xs-3"
+											placeholder="ادخل اسم العميل"></form:input></td>
 
 									<td><form:input type="text" path="sellerName"
 											class="text-center form-control mb-2 col-xs-3"
 											placeholder="ادخل اسم البائع"></form:input></td>
-
 
 								</tr>
 
@@ -116,7 +121,7 @@
 
 								<tr class="badge-success">
 
-									<td colspan="10">[ اسم العميل : ${headerTemp.sellerName} ]
+									<td colspan="10">[ اسم العميل : ${headerTemp.clientName} ]
 										- [ الصنف : ${headerTemp.itemName} ] - [ اجمالي العدد :
 										${headerTemp.totalCount} ]</td>
 
@@ -132,14 +137,14 @@
 									<th>نقدي</th>
 									<th>آجل</th>
 									<th>اجمالي المبلغ</th>
-									<!-- 									<th>اسم البائع</th> -->
+									<th>اسم البائع</th>
 									<th>التاريخ</th>
 								</tr>
 							</thead>
 							<tbody>
 								<c:forEach var="tempItem" items="${balanceList}">
 									<c:if
-										test="${tempItem.sellerName == headerTemp.sellerName && tempItem.itemName == headerTemp.itemName }">
+										test="${tempItem.clientName == headerTemp.clientName && tempItem.itemName == headerTemp.itemName }">
 
 										<tr>
 											<%-- 											<td>${tempItem.itemName}</td> --%>
@@ -149,7 +154,7 @@
 											<td>${tempItem.cash}</td>
 											<td>${tempItem.later}</td>
 											<td>${tempItem.totalAmount}</td>
-											<%-- 											<td>${tempItem.sellerName}</td> --%>
+											<td>${tempItem.sellerName}</td>
 											<td>${tempItem.date}</td>
 
 											<td style="width: 160px"><a
@@ -160,10 +165,27 @@
 												href="delete-balance?id=${tempItem.id}">حذف</a></td>
 										</tr>
 
+
 									</c:if>
 
 								</c:forEach>
+
 							</tbody>
+
+
+							<tr class="bg-primary">
+
+								<td>${headerTemp.totalCount}</td>
+								<td>${headerTemp.totalWeight}</td>
+								<td></td>
+								<td>${headerTemp.totalCash}</td>
+								<td>${headerTemp.totalLater}</td>
+								<td>${headerTemp.totalAmount}</td>
+								<td colspan="6"></td>
+
+							</tr>
+
+
 						</table>
 
 					</div>

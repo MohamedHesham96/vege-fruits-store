@@ -19,7 +19,7 @@
 	<div style="width: 100%; height: 100%; margin-top: 200px"
 		align="center" class="alert alert-primary" role="alert">
 
-		<h2>!! من فضلك تأكد من ادخال البيانات بشكل صحيح</h2>
+		<h2>!! هذا المسار غير موجود </h2>
 		<br> <a><button style="font-size: 25px;"
 				class="btn btn-success w-25 p-3" onclick="history.back()">العودة</button></a>
 

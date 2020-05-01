@@ -52,8 +52,6 @@ public class Balances {
 	@RequestMapping("/delete-balance")
 	public String getAllBalance(@RequestParam(name = "id") int id) {
 
-		List<Balance> balanceList = userService.getAllBalance();
-
 		userService.deleteBalance(id);
 
 		return "redirect:/balance";

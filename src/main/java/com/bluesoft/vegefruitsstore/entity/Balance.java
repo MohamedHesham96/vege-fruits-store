@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "balance")
@@ -16,6 +18,7 @@ public class Balance {
 	int id;
 
 	@Column(name = "item_name")
+	@Pattern(regexp = "[ ء-ي]+", message = "ادخل الاسم بشكل صحيح")
 	String itemName;
 
 	@Column(name = "count")
@@ -36,7 +39,12 @@ public class Balance {
 	@Column(name = "total_amount")
 	float totalAmount;
 
+	@Column(name = "client_name")
+	@Pattern(regexp = "[ ء-ي]+", message = "ادخل الاسم بشكل صحيح")
+	String clientName;
+
 	@Column(name = "seller_name")
+	@Pattern(regexp = "[ ء-ي]+", message = "ادخل الاسم بشكل صحيح")
 	String sellerName;
 
 	@Column(name = "date")
@@ -104,6 +112,14 @@ public class Balance {
 
 	public void setTotalAmount(float totalAmount) {
 		this.totalAmount = totalAmount;
+	}
+
+	public String getClientName() {
+		return clientName;
+	}
+
+	public void setClientName(String clientName) {
+		this.clientName = clientName;
 	}
 
 	public String getSellerName() {

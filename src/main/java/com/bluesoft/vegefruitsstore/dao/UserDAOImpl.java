@@ -8,6 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.transform.AliasToBeanResultTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.bluesoft.vegefruitsstore.entity.Balance;
 import com.bluesoft.vegefruitsstore.entity.HeaderResult;
@@ -41,20 +42,24 @@ public class UserDAOImpl implements UserDAO {
 
 		Session session = entityManager.unwrap(Session.class);
 
-		List<HeaderResult> theHeaderResult = session.createQuery(
-				"select sum(B.counter) as totalCount, B.itemName as itemName, B.sellerName as sellerName FROM Balance B GROUP BY sellerName, itemName order by sellerName, itemName")
+		List<HeaderResult> theHeaderResult = session
+				.createQuery("select sum(B.counter) as totalCount, sum(B.weight) as totalWeight, "
+						+ "sum(B.cash) as totalCash," + "sum(B.later) as totalLater, "
+						+ "sum(B.totalAmount) as totalAmount, "
+						+ "B.itemName as itemName, B.clientName as clientName FROM Balance B GROUP BY clientName, itemName order by clientName, itemName")
 				.setResultTransformer(new AliasToBeanResultTransformer(HeaderResult.class)).getResultList();
 
-		for (HeaderResult headerResult : theHeaderResult) {
-
-		}
 		return theHeaderResult;
 
 	}
 
 	@Override
+	@Transactional
 	public void deleteBalance(int id) {
-		
+
+		Session session = entityManager.unwrap(Session.class);
+		Balance theBalance = session.get(Balance.class, id);
+		session.delete(theBalance);
 	}
 
 }
