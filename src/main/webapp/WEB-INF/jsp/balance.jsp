@@ -26,7 +26,7 @@
 
 	<div style="text-align: right;" class="container">
 
-		<form:form metho="POST" action="add-balance" modelAttribute="balance">
+		<form:form metho="GET" action="add-balance" modelAttribute="balance">
 			<div class="row  my-4">
 				<div dir='rtl' class="col-lg-12 col-md-8">
 					<div class="table-responsive">
@@ -46,7 +46,7 @@
 							<tbody>
 
 								<tr>
-									<td><form:input type="text" path="count"
+									<td><form:input type="text" path="counter"
 											class="text-center form-control mb-2 col-xs-3"
 											placeholder="ادخل العدد"></form:input></td>
 
@@ -100,54 +100,82 @@
 		</form:form>
 
 
-
 		<!-- TABLE			TABLE			TABLE			TABLE -->
 
 		<div class="row  my-4">
 			<div dir='rtl' class=" col-lg-12 col-md-8">
-				<div class="table-responsive">
-					<table class="table table-bordered table-striped table-sm table-dark">
-						<thead class="thead-inverse">
-							<tr>
-								<th>الصنف</th>
-								<th>العدد</th>
-								<th>الوزن</th>
-								<th>سعر الكيلو</th>
-								<th>نقدي</th>
-								<th>آجل</th>
-								<th>اجمالي المبلغ</th>
-								<th>اسم البائع</th>
-								<th>التاريخ</th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach var="tempItem" items="${balanceList}">
+
+				<c:forEach var="headerTemp" items="${headerResult}">
+
+					<div class="table-responsive">
+
+						<table
+							class="table table-bordered table-striped table-sm table-dark">
+							<thead class="thead-inverse">
+
+
+								<tr class="badge-success">
+
+									<td colspan="10">[ اسم العميل : ${headerTemp.sellerName} ]
+										- [ الصنف : ${headerTemp.itemName} ] - [ اجمالي العدد :
+										${headerTemp.totalCount} ]</td>
+
+								</tr>
+
+
 
 								<tr>
-									<td>${tempItem.itemName}</td>
-									<td>${tempItem.count}</td>
-									<td>${tempItem.weight}</td>
-									<td>${tempItem.kiloPrice}</td>
-									<td>${tempItem.cash}</td>
-									<td>${tempItem.later}</td>
-									<td>${tempItem.totalAmount}</td>
-									<td>${tempItem.sellerName}</td>
-									<td>${tempItem.date}</td>
-
-									<td style="width: 160px"><a
-										style="height: 30px; font-size: 14px;"
-										class="btn btn-danger text-wight
-										font-weight-bold"
-										onclick="return confirm('هل انت متأكد من حذف هذا الصنف ؟')"
-										href="delete-balance?id=${tempItem.id}">حذف</a></td>
+									<!-- 									<th>الصنف</th> -->
+									<th>العدد</th>
+									<th>الوزن</th>
+									<th>سعر الكيلو</th>
+									<th>نقدي</th>
+									<th>آجل</th>
+									<th>اجمالي المبلغ</th>
+									<!-- 									<th>اسم البائع</th> -->
+									<th>التاريخ</th>
 								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
-				</div>
+							</thead>
+							<tbody>
+								<c:forEach var="tempItem" items="${balanceList}">
+									<c:if
+										test="${tempItem.sellerName == headerTemp.sellerName && tempItem.itemName == headerTemp.itemName }">
+
+										<tr>
+											<%-- 											<td>${tempItem.itemName}</td> --%>
+											<td>${tempItem.counter}</td>
+											<td>${tempItem.weight}</td>
+											<td>${tempItem.kiloPrice}</td>
+											<td>${tempItem.cash}</td>
+											<td>${tempItem.later}</td>
+											<td>${tempItem.totalAmount}</td>
+											<%-- 											<td>${tempItem.sellerName}</td> --%>
+											<td>${tempItem.date}</td>
+
+											<td style="width: 160px"><a
+												style="height: 30px; font-size: 14px;"
+												class="btn btn-danger text-wight
+										font-weight-bold"
+												onclick="return confirm('هل انت متأكد من حذف هذا الصنف ؟')"
+												href="delete-balance?id=${tempItem.id}">حذف</a></td>
+										</tr>
+
+									</c:if>
+
+								</c:forEach>
+							</tbody>
+						</table>
+
+					</div>
+					<br>
+
+
+				</c:forEach>
+
 			</div>
 		</div>
-
 	</div>
+
+
 </body>
 </html>

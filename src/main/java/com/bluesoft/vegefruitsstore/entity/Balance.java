@@ -19,7 +19,7 @@ public class Balance {
 	String itemName;
 
 	@Column(name = "count")
-	int count;
+	int counter;
 
 	@Column(name = "weight")
 	float weight;
@@ -58,12 +58,12 @@ public class Balance {
 		this.itemName = itemName;
 	}
 
-	public int getCount() {
-		return count;
+	public int getCounter() {
+		return counter;
 	}
 
-	public void setCount(int count) {
-		this.count = count;
+	public void setCounter(int counter) {
+		this.counter = counter;
 	}
 
 	public float getWeight() {

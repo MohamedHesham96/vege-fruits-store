@@ -1,5 +1,6 @@
 package com.bluesoft.vegefruitsstore.service;
 
+import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,9 @@ import org.springframework.stereotype.Service;
 
 import com.bluesoft.vegefruitsstore.dao.UserDAO;
 import com.bluesoft.vegefruitsstore.entity.Balance;
+import com.bluesoft.vegefruitsstore.entity.HeaderResult;
+
+import net.bytebuddy.asm.Advice.Local;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -18,6 +22,18 @@ public class UserServiceImpl implements UserService {
 	public List<Balance> getAllBalance() {
 
 		return userDAO.getAllBalance();
+	}
+
+	@Override
+	public void saveBalance(Balance theBalance) {
+
+		userDAO.saveBalance(theBalance);
+	}
+
+	@Override
+	public List<HeaderResult> getBalanceHeader() {
+
+		return userDAO.getBalanceHeader();
 	}
 
 }
