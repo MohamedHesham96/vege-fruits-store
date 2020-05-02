@@ -24,7 +24,7 @@ public class UserDAOImpl implements UserDAO {
 
 		Session session = entityManager.unwrap(Session.class);
 
-		List<Balance> balanceList = session.createQuery("from Balance order by sellerName, itemName").getResultList();
+		List<Balance> balanceList = session.createQuery("from Balance order by date").getResultList();
 
 		return balanceList;
 	}
