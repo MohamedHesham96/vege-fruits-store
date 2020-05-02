@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -37,8 +36,6 @@ public class Balances {
 
 	@RequestMapping("/add-balance")
 	public String getAllBalance(@ModelAttribute(name = "balance") Balance theBalance) {
-
-		List<Balance> balanceList = userService.getAllBalance();
 
 		theBalance.setDate(LocalDate.now().toString());
 
