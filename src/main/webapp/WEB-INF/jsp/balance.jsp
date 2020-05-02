@@ -37,7 +37,6 @@
 									<th>الصنف</th>
 									<th>الوزن</th>
 									<th>سعر الكيلو</th>
-									<th>نقدي</th>
 									<th>آجل</th>
 									<th>اسم العميل</th>
 									<th>اسم البائع</th>
@@ -64,11 +63,6 @@
 											path="kiloPrice"
 											class="text-center form-control mb-2 col-xs-3"
 											placeholder="ادخل سعر الكيلو"></form:input></td>
-
-
-									<td style="width: 125px"><form:input type="text"
-											path="cash" class="text-center form-control mb-2 col-xs-3"
-											placeholder="ادخل النقدي"></form:input></td>
 
 									<td style="width: 125px" style="width:"><form:input
 											type="text" path="later"
@@ -134,10 +128,10 @@
 									<th>العدد</th>
 									<th>الوزن</th>
 									<th>سعر الكيلو</th>
-									<th>نقدي</th>
 									<th>آجل</th>
 									<th>اجمالي المبلغ</th>
 									<th>اسم البائع</th>
+									<th>الكاشير</th>
 									<th>التاريخ</th>
 								</tr>
 							</thead>
@@ -151,10 +145,10 @@
 											<td>${tempItem.counter}</td>
 											<td>${tempItem.weight}</td>
 											<td>${tempItem.kiloPrice}</td>
-											<td>${tempItem.cash}</td>
 											<td>${tempItem.later}</td>
 											<td>${tempItem.totalAmount}</td>
 											<td>${tempItem.sellerName}</td>
+											<td>${tempItem.casherName}</td>
 											<td>${tempItem.date}</td>
 
 											<td style="width: 160px"><a
@@ -178,7 +172,7 @@
 								<td>${headerTemp.totalCount}</td>
 								<td>${headerTemp.totalWeight}</td>
 								<td></td>
-								<td>${headerTemp.totalCash}</td>
+								<%-- 								<td>${headerTemp.totalCash}</td> --%>
 								<td>${headerTemp.totalLater}</td>
 								<td>${headerTemp.totalAmount}</td>
 								<td colspan="6"></td>

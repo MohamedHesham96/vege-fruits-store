@@ -41,12 +41,12 @@
 
 			<li style="margin: 5px;" class=""><a
 				class="btn bg-success text-white font-weight-bold"
-				style="padding: 10px; width: 100px" href="bill"> الترحيل</a></li>
+				style="padding: 10px; width: 100px" href="relay"> الترحيل</a></li>
 
 
 			<li style="margin: 5px;" class=""><a
 				class="btn bg-success text-white font-weight-bold"
-				style="padding: 10px; width: 100px" href="spending">التحصيل</a></li>
+				style="padding: 10px; width: 100px" href="spending">الخزنة</a></li>
 
 
 			<li style="margin: 5px;" class=""><a

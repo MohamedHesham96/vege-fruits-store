@@ -42,6 +42,9 @@ public class Balance {
 	@Pattern(regexp = "[ ء-ي]+", message = "ادخل الاسم بشكل صحيح")
 	String clientName;
 
+	@Column(name = "casher_name")
+	String casherName;
+
 	@Column(name = "seller_name")
 	@Pattern(regexp = "[ ء-ي]+", message = "ادخل الاسم بشكل صحيح")
 	String sellerName;
@@ -121,6 +124,14 @@ public class Balance {
 		this.clientName = clientName;
 	}
 
+	public String getCasherName() {
+		return casherName;
+	}
+
+	public void setCasherName(String casherName) {
+		this.casherName = casherName;
+	}
+	
 	public String getSellerName() {
 		return sellerName;
 	}
