@@ -13,7 +13,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 
-<title>كشف البائعين</title>
+<title>${seller.name}</title>
 
 <link href="webjars/bootstrap/4.4.1/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -38,13 +38,13 @@
 							<tr class="badge-success">
 
 								<td colspan="10" class="font-weight-bold"
-									style="font-size: 22px">[ كشف اسماء البائعين ]</td>
+									style="font-size: 22px">[ اسم البائع : ${seller.name} ] - [ رقم البائع : ${seller.id} ]</td>
 
 							</tr>
 
 							<tr style="font-size: 18px">
-								<th>رقم البائع</th>
-								<th>اسم البائع</th>
+								<th>المبلغ</th>
+								<th>التاريخ</th>
 							</tr>
 
 						</thead>
@@ -54,7 +54,7 @@
 
 								<tr onclick="">
 									<td>${tempItem.id}</td>
-									<td><a href="seller-profile?id=${tempItem.id}">${tempItem.name}</a></td>
+									<td><a href="master?id">${tempItem.name}</a></td>
 								</tr>
 
 							</c:forEach>

@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.bluesoft.vegefruitsstore.entity.Balance;
 import com.bluesoft.vegefruitsstore.entity.HeaderResult;
 import com.bluesoft.vegefruitsstore.entity.Seller;
-import com.sun.org.apache.bcel.internal.generic.Select;
 
 @Repository
 public class UserDAOImpl implements UserDAO {
@@ -141,6 +140,16 @@ public class UserDAOImpl implements UserDAO {
 		List<Seller> sellerList = session.createQuery("from Seller order by id").getResultList();
 
 		return sellerList;
+	}
+
+	@Override
+	public Seller getSellerById(int id) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		Seller seller = session.get(Seller.class, id);
+
+		return seller;
 	}
 
 }

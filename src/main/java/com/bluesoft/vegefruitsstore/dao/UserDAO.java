@@ -27,5 +27,8 @@ public interface UserDAO {
 	public List<HeaderResult> getCasherHeaderByDate(String casherName, String date);
 
 	public List<Seller> getAllSeller();
+	
+	public Seller getSellerById(int id);
+
 
 }

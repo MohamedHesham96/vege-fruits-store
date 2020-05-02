@@ -76,4 +76,10 @@ public class UserServiceImpl implements UserService {
 		return userDAO.getAllSeller();
 	}
 
+	@Override
+	public Seller getSellerById(int id) {
+
+		return userDAO.getSellerById(id);
+	}
+
 }

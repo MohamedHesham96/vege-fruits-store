@@ -22,11 +22,28 @@ public class Masters {
 	public String getAllBalance(Model theModel) {
 
 		List<Seller> sellerList = userService.getAllSeller();
-	
+
 		theModel.addAttribute("sellerList", sellerList);
 
 		return "master";
 	}
+
+	@RequestMapping("/seller-profile")
+	public String showSellerProfile(@RequestParam("id") int id, Model theModel) {
+
+		Seller theSeller = userService.getSellerById(id);
+
+		theModel.addAttribute("seller", theSeller);
+
+		return "seller-profile";
+	}
+	
+	
+	
+	
+	
+	
+	
 
 	@RequestMapping("/add-seller")
 	public String getAllBalance(@ModelAttribute(name = "seller") Seller theSeller) {

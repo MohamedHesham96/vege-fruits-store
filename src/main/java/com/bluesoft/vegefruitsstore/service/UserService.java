@@ -28,5 +28,7 @@ public interface UserService {
 
 	public List<Seller> getAllSeller();
 
+	public Seller getSellerById(int id);
+
 
 }
