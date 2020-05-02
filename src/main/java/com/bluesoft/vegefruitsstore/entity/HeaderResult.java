@@ -11,6 +11,7 @@ public class HeaderResult {
 	String itemName;
 	String clientName;
 	String sellerName;
+	String casherName;
 
 	public Long getTotalCount() {
 		return totalCount;
@@ -42,6 +43,14 @@ public class HeaderResult {
 
 	public void setSellerName(String sellerName) {
 		this.sellerName = sellerName;
+	}
+	
+	public String getCasherName() {
+		return casherName;
+	}
+
+	public void setCasherName(String casherName) {
+		this.casherName = casherName;
 	}
 
 	public Double getTotalWeight() {

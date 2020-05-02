@@ -17,5 +17,9 @@ public interface UserService {
 
 	public List<HeaderResult> getRelayHeader();
 
+	public List<HeaderResult> getCasherHeader(String casherName);
+
+	public List<Balance> getBalanceByCasherName(String casherName);
+
 
 }

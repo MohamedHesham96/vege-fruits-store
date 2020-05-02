@@ -13,7 +13,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 
-<title>الترحيل</title>
+<title>الكاشير</title>
 
 <link href="webjars/bootstrap/4.4.1/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -29,7 +29,7 @@
 		<div class="row  my-4">
 			<div dir='rtl' class=" col-lg-12 col-md-8">
 
-				<a style="font-size: 25px;"
+			<a style="font-size: 25px;"
 					class="btn btn-dark text-wight font-weight-bold"
 					href="casher?casherName=محمد عصام"
 					>محمد عصام</a> 
@@ -54,7 +54,7 @@
 
 								<tr class="badge-success">
 
-									<td colspan="10">[ اسم البائع : ${headerTemp.sellerName} ]</td>
+									<td colspan="10">[ اسم الكاشير : ${headerTemp.casherName} ]</td>
 
 								</tr>
 
@@ -65,14 +65,12 @@
 									<th>سعر الكيلو</th>
 									<th>نقدي</th>
 									<th>اجمالي المبلغ</th>
-									<th>الكاشير</th>
 									<th>التاريخ</th>
 								</tr>
 
 							</thead>
 							<tbody>
-								<c:forEach var="tempItem" items="${relayList}">
-									<c:if test="${tempItem.sellerName == headerTemp.sellerName}">
+								<c:forEach var="tempItem" items="${casherList}">
 
 										<tr>
 											<td>${tempItem.itemName}</td>
@@ -81,12 +79,10 @@
 											<td>${tempItem.kiloPrice}</td>
 											<td>${tempItem.cash}</td>
 											<td>${tempItem.totalAmount}</td>
-											<td>${tempItem.casherName}</td>
 											<td>${tempItem.date}</td>
 
 										</tr>
 
-									</c:if>
 
 								</c:forEach>
 

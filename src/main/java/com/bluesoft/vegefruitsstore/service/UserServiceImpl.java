@@ -45,4 +45,19 @@ public class UserServiceImpl implements UserService {
 		return userDAO.getRelayHeader();
 	}
 
+	@Override
+	public List<HeaderResult> getCasherHeader(String casherName) {
+
+		return userDAO.getCasherHeader(casherName);
+	}
+
+	@Override
+	public List<Balance> getBalanceByCasherName(String casherName) {
+
+		return userDAO.getBalanceByCasherName(casherName);
+	}
+
+
+
+	
 }
