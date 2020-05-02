@@ -26,25 +26,41 @@
 
 	<div style="text-align: right;" class="container">
 
+
+
+		<div class="card bg-secondary text-white"
+			style="width: 18rem; margin-left: 820px;">
+			<div class="card-header text-white font-weight-bold text-center"
+				style="color: #c4c4c4">التاريخ</div>
+			<ul class="list-group list-group-flush">
+
+				<li class="bg-dark list-group-item">
+
+					<form method="GET" action="casher">
+
+						<input type="hidden" name="casherName"
+							value="<%= session.getAttribute("casherName") %>"> <input type="date"
+						
+							name="date" value="${date}"
+							class="w-100 btn badge-info  font-weight-bold text-center">
+
+						<input type="submit" style="margin-top: 10px;"
+							class="w-100 btn badge-light  font-weight-bold text-center"
+							value="اذهب لهذا اليوم" />
+
+					</form>
+				</li>
+
+			</ul>
+		</div>
+
+
+		<br>
 		<div class="row  my-4">
+
 			<div dir='rtl' class=" col-lg-12 col-md-8">
 
-			<a style="font-size: 25px;"
-					class="btn btn-dark text-wight font-weight-bold"
-					href="casher?casherName=محمد عصام"
-					>محمد عصام</a> 
-					
-					<a
-					style="font-size: 25px;"
-					class="btn btn-dark text-wight font-weight-bold"
-					href="casher?casherName=احمد رجب">
-					احمد رجب</a>
-
 				<c:forEach var="headerTemp" items="${headerResult}">
-
-					<br>
-					<br>
-
 
 					<div class="table-responsive">
 
@@ -54,7 +70,9 @@
 
 								<tr class="badge-success">
 
-									<td colspan="10">[ اسم الكاشير : ${headerTemp.casherName} ]</td>
+									<td colspan="10" class="font-weight-bold"
+										style="font-size: 20px">[ اسم الكاشير :
+										${headerTemp.casherName} ]</td>
 
 								</tr>
 
@@ -72,17 +90,16 @@
 							<tbody>
 								<c:forEach var="tempItem" items="${casherList}">
 
-										<tr>
-											<td>${tempItem.itemName}</td>
-											<td>${tempItem.counter}</td>
-											<td>${tempItem.weight}</td>
-											<td>${tempItem.kiloPrice}</td>
-											<td>${tempItem.cash}</td>
-											<td>${tempItem.totalAmount}</td>
-											<td>${tempItem.date}</td>
+									<tr>
+										<td>${tempItem.itemName}</td>
+										<td>${tempItem.counter}</td>
+										<td>${tempItem.weight}</td>
+										<td>${tempItem.kiloPrice}</td>
+										<td>${tempItem.cash}</td>
+										<td>${tempItem.totalAmount}</td>
+										<td>${tempItem.date}</td>
 
-										</tr>
-
+									</tr>
 
 								</c:forEach>
 
@@ -106,11 +123,8 @@
 					<br>
 
 				</c:forEach>
-
 			</div>
 		</div>
 	</div>
-
-
 </body>
 </html>

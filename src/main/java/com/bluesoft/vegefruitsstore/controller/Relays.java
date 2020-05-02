@@ -1,6 +1,9 @@
 package com.bluesoft.vegefruitsstore.controller;
 
+import java.time.LocalDate;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +21,9 @@ public class Relays {
 	@Autowired
 	UserService userService;
 
+	@Autowired
+	private HttpSession httpSession;
+
 	@RequestMapping("/relay")
 	public String getAllBalance(Model theModel) {
 
@@ -33,12 +39,29 @@ public class Relays {
 	}
 
 	@RequestMapping("/casher")
-	public String getAllBalance(@RequestParam(name = "casherName") String casherName, Model theModel) {
+	public String getAllBalance(@RequestParam("casherName") String casherName,
+			@RequestParam(name = "date", required = false) String theDate, Model theModel) {
 
-		List<HeaderResult> theHeaderResult = userService.getCasherHeader(casherName);
+		List<Balance> casherList;
+		List<HeaderResult> theHeaderResult;
 
-		List<Balance> casherList = userService.getBalanceByCasherName(casherName);
+		if (theDate == null) {
 
+			theDate = LocalDate.now().toString();
+			casherList = userService.getBalanceByCasherName(casherName);
+			theHeaderResult = userService.getCasherHeader(casherName);
+			httpSession.setAttribute("casherName", casherName);
+
+		} else {
+
+			casherList = userService.getBalanceByCasherNameAndDate(casherName, theDate);
+			theHeaderResult = userService.getCasherHeaderByDate(casherName, theDate);
+
+			httpSession.setAttribute("casherName", casherName);
+
+		}
+
+		theModel.addAttribute("date", theDate);
 		theModel.addAttribute("headerResult", theHeaderResult);
 		theModel.addAttribute("casherList", casherList);
 

@@ -57,6 +57,18 @@ public class UserServiceImpl implements UserService {
 		return userDAO.getBalanceByCasherName(casherName);
 	}
 
+	@Override
+	public List<Balance> getBalanceByCasherNameAndDate(String casherName, String date) {
+
+		return userDAO.getBalanceByCasherNameAndDate(casherName, date);
+	}
+
+	@Override
+	public List<HeaderResult> getCasherHeaderByDate(String casherName, String date) {
+
+		return userDAO.getCasherHeaderByDate(casherName, date);
+	}
+
 
 
 	

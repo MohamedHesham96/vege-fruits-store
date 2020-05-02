@@ -63,7 +63,6 @@
 									<th>العدد</th>
 									<th>الوزن</th>
 									<th>سعر الكيلو</th>
-									<th>نقدي</th>
 									<th>اجمالي المبلغ</th>
 									<th>الكاشير</th>
 									<th>التاريخ</th>
@@ -79,7 +78,6 @@
 											<td>${tempItem.counter}</td>
 											<td>${tempItem.weight}</td>
 											<td>${tempItem.kiloPrice}</td>
-											<td>${tempItem.cash}</td>
 											<td>${tempItem.totalAmount}</td>
 											<td>${tempItem.casherName}</td>
 											<td>${tempItem.date}</td>
@@ -98,7 +96,6 @@
 								<td>${headerTemp.totalCount}</td>
 								<td>${headerTemp.totalWeight}</td>
 								<td></td>
-								<td>${headerTemp.totalCash}</td>
 								<td>${headerTemp.totalAmount}</td>
 								<td colspan="3"></td>
 

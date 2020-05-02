@@ -21,4 +21,9 @@ public interface UserDAO {
 	
 	public List<Balance> getBalanceByCasherName(String casherName);
 
+	public List<Balance> getBalanceByCasherNameAndDate(String casherName, String date);
+	
+	public List<HeaderResult> getCasherHeaderByDate(String casherName, String date);
+
+
 }
