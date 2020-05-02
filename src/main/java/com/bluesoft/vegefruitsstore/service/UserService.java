@@ -15,4 +15,7 @@ public interface UserService {
 
 	public void deleteBalance(int id);
 
+	public List<HeaderResult> getRelayHeader();
+
+
 }

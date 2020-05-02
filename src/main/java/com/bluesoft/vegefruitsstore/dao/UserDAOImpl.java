@@ -62,4 +62,19 @@ public class UserDAOImpl implements UserDAO {
 		session.delete(theBalance);
 	}
 
+	@Override
+	public List<HeaderResult> getRelayHeader() {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		List<HeaderResult> theHeaderResult = session
+				.createQuery("select sum(B.counter) as totalCount, sum(B.weight) as totalWeight, "
+						+ "sum(B.totalAmount) as totalAmount, sum(B.cash) as totalCash,"
+						+ "B.sellerName as sellerName "
+						+ "FROM Balance B GROUP BY sellerName order by sellerName")
+				.setResultTransformer(new AliasToBeanResultTransformer(HeaderResult.class)).getResultList();
+
+		return theHeaderResult;
+	}
+
 }

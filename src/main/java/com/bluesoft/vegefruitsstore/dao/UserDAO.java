@@ -15,5 +15,5 @@ public interface UserDAO {
 
 	public void deleteBalance(int id);
 
-
+	public List<HeaderResult> getRelayHeader();
 }

@@ -42,46 +42,39 @@
 
 								<tr class="badge-success">
 
-									<td colspan="10">[ اسم البائع : الحاج محمد ]</td>
+									<td colspan="10">[ اسم البائع : ${headerTemp.sellerName} ]</td>
 
 								</tr>
 
 
 
 								<tr>
-									<!-- 									<th>الصنف</th> -->
-									<!-- 									<th>العدد</th> -->
-									<!-- 									<th>الوزن</th> -->
-									<!-- 									<th>سعر الكيلو</th> -->
+									<th>الصنف</th>
+									<th>العدد</th>
+									<th>الوزن</th>
+									<th>سعر الكيلو</th>
 									<th>نقدي</th>
-									<th>آجل</th>
 									<th>اجمالي المبلغ</th>
-									<!-- 									<th>اسم البائع</th> -->
+									<th>الكاشير</th>
 									<th>التاريخ</th>
 								</tr>
+
 							</thead>
 							<tbody>
-								<c:forEach var="tempItem" items="${balanceList}">
-									<c:if
-										test="${tempItem.clientName == headerTemp.clientName && tempItem.itemName == headerTemp.itemName }">
+								<c:forEach var="tempItem" items="${relayList}">
+									<c:if test="${tempItem.sellerName == headerTemp.sellerName}">
 
 										<tr>
-											<%-- 											<td>${tempItem.itemName}</td> --%>
-											<%-- 											<td>${tempItem.counter}</td> --%>
-											<%-- 											<td>${tempItem.weight}</td> --%>
-											<%-- 											<td>${tempItem.kiloPrice}</td> --%>
+											<td>${tempItem.itemName}</td>
+											<td>${tempItem.counter}</td>
+											<td>${tempItem.weight}</td>
+											<td>${tempItem.kiloPrice}</td>
 											<td>${tempItem.cash}</td>
-											<td>${tempItem.later}</td>
 											<td>${tempItem.totalAmount}</td>
-											<%-- 											<td>${tempItem.sellerName}</td> --%>
+											<td>${tempItem.casherName}</td>
 											<td>${tempItem.date}</td>
 
-											<td style="width: 160px"><a
-												style="height: 30px; font-size: 14px;"
-												class="btn btn-danger text-wight
-										font-weight-bold"
-												onclick="return confirm('هل انت متأكد من حذف هذا الصنف ؟')"
-												href="delete-balance?id=${tempItem.id}">حذف</a></td>
+
 										</tr>
 
 
@@ -94,13 +87,13 @@
 
 							<tr class="bg-primary">
 
-								<%-- 								<td>${headerTemp.totalCount}</td> --%>
-								<%-- 								<td>${headerTemp.totalWeight}</td> --%>
-								<!-- 								<td></td> -->
+								<td></td>
+								<td>${headerTemp.totalCount}</td>
+								<td>${headerTemp.totalWeight}</td>
+								<td></td>
 								<td>${headerTemp.totalCash}</td>
-								<td>${headerTemp.totalLater}</td>
 								<td>${headerTemp.totalAmount}</td>
-								<td colspan="6"></td>
+								<td colspan="3"></td>
 
 							</tr>
 

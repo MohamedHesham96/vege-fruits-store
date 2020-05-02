@@ -10,6 +10,7 @@ public class HeaderResult {
 
 	String itemName;
 	String clientName;
+	String sellerName;
 
 	public Long getTotalCount() {
 		return totalCount;
@@ -33,6 +34,14 @@ public class HeaderResult {
 
 	public void setClientName(String clientName) {
 		this.clientName = clientName;
+	}
+
+	public String getSellerName() {
+		return sellerName;
+	}
+
+	public void setSellerName(String sellerName) {
+		this.sellerName = sellerName;
 	}
 
 	public Double getTotalWeight() {

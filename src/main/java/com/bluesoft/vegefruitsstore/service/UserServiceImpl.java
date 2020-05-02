@@ -39,4 +39,10 @@ public class UserServiceImpl implements UserService {
 		userDAO.deleteBalance(id);
 	}
 
+	@Override
+	public List<HeaderResult> getRelayHeader() {
+
+		return userDAO.getRelayHeader();
+	}
+
 }
