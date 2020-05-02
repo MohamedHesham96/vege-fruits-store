@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.bluesoft.vegefruitsstore.dao.UserDAO;
 import com.bluesoft.vegefruitsstore.entity.Balance;
 import com.bluesoft.vegefruitsstore.entity.HeaderResult;
+import com.bluesoft.vegefruitsstore.entity.Seller;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -69,7 +70,10 @@ public class UserServiceImpl implements UserService {
 		return userDAO.getCasherHeaderByDate(casherName, date);
 	}
 
+	@Override
+	public List<Seller> getAllSeller() {
 
+		return userDAO.getAllSeller();
+	}
 
-	
 }

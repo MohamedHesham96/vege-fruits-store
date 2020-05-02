@@ -12,6 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.bluesoft.vegefruitsstore.entity.Balance;
 import com.bluesoft.vegefruitsstore.entity.HeaderResult;
+import com.bluesoft.vegefruitsstore.entity.Seller;
+import com.sun.org.apache.bcel.internal.generic.Select;
 
 @Repository
 public class UserDAOImpl implements UserDAO {
@@ -117,7 +119,7 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public List<HeaderResult> getCasherHeaderByDate(String casherName, String date) {
-		
+
 		Session session = entityManager.unwrap(Session.class);
 
 		List<HeaderResult> theHeaderResult = session
@@ -125,11 +127,20 @@ public class UserDAOImpl implements UserDAO {
 						+ "sum(B.totalAmount) as totalAmount, sum(B.cash) as totalCash, "
 						+ "B.sellerName as sellerName, B.casherName as casherName "
 						+ "FROM Balance B where casherName = :theCasherName and date = :theDate GROUP BY casherName order by date")
-				.setParameter("theCasherName", casherName)
-				.setParameter("theDate", date)
+				.setParameter("theCasherName", casherName).setParameter("theDate", date)
 				.setResultTransformer(new AliasToBeanResultTransformer(HeaderResult.class)).getResultList();
 
 		return theHeaderResult;
+	}
+
+	@Override
+	public List<Seller> getAllSeller() {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		List<Seller> sellerList = session.createQuery("from Seller order by id").getResultList();
+
+		return sellerList;
 	}
 
 }

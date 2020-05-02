@@ -50,7 +50,7 @@
 
 			<li style="margin: 5px;" class=""><a
 				class="btn bg-success text-white font-weight-bold"
-				style="padding: 10px; width: 100px" href="incoming">الاستاذ</a></li>
+				style="padding: 10px; width: 100px" href="master">الاستاذ</a></li>
 
 
 			<li style="margin: 5px;" class=""><a
