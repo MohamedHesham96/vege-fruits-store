@@ -1,6 +1,5 @@
 package com.bluesoft.vegefruitsstore.controller;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bluesoft.vegefruitsstore.entity.Collect;
+import com.bluesoft.vegefruitsstore.entity.Master;
 import com.bluesoft.vegefruitsstore.entity.Seller;
 import com.bluesoft.vegefruitsstore.service.UserService;
 
@@ -30,6 +30,16 @@ public class Masters {
 		return "master";
 	}
 
+	@RequestMapping("/seller-master")
+	public String showSellerMaster(@RequestParam("id") int id, Model theModel) {
+
+		Seller theSeller = userService.getSellerById(id);
+
+		theModel.addAttribute("seller", theSeller);
+
+		return "seller-master";
+	}
+
 	@RequestMapping("/seller-profile")
 	public String showSellerProfile(@RequestParam("id") int id, Model theModel) {
 
@@ -40,42 +50,13 @@ public class Masters {
 		return "seller-profile";
 	}
 
-	@RequestMapping("/seller-collect")
-	public String showSellerCollect(@RequestParam("id") int id, Model theModel) {
-
-		Seller theSeller = userService.getSellerById(id);
-
-		theModel.addAttribute("seller", theSeller);
-		theModel.addAttribute("collect", new Collect());
-
-		return "seller-collect";
-	}
-
-	@RequestMapping("/add-collect")
-	public String addCollect(@ModelAttribute("sellerId") int sellerId,
-			@ModelAttribute(name = "collect") Collect collect, Model theModel) {
-
-		Seller theSeller = userService.getSellerById(sellerId);
-
-		collect.setDate(LocalDate.now().toString());
-
-		collect.setSeller(theSeller);
-
-		userService.addCollect(collect);
-
-		theModel.addAttribute("seller", theSeller);
-
-		return "seller-collect";
-	}
-
 	@RequestMapping("/search-for-seller")
-	public String searchForSellerByName(
-			@RequestParam(name = "sellerName") String sellerName, Model theModel) {
+	public String searchForSellerByName(@RequestParam(name = "sellerName") String sellerName, Model theModel) {
 
 		List<Seller> theSellerList = userService.searchForSellerByName(sellerName);
-			
+
 		theModel.addAttribute("sellerList", theSellerList);
-		
+
 		return "master";
 	}
 

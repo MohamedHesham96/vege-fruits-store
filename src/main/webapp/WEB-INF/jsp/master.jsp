@@ -55,7 +55,7 @@
 
 		<div class="row  my-4">
 			<div dir='rtl' class=" col-lg-12 col-md-8">
-			
+
 				<div class="table-responsive">
 
 					<table
@@ -82,15 +82,23 @@
 								<tr onclick="">
 									<td style="font-size: 18px" class="text-white font-weight-bold">${tempItem.id}</td>
 
-									<td style="font-size: 18px"><a
+									<td style="width: 300px; font-size: 18px"><a
 										class="text-white font-weight-bold"
 										href="seller-profile?id=${tempItem.id}">${tempItem.name} </a>
 
 									</td>
 
 									<td style="font-size: 18px"><a
-										href="seller-collect?id=${tempItem.id}"
-										class="btn btn-primary">التحصيل</a> <a class="btn btn-danger">الاستاذ</a></td>
+										class="btn btn-primary text-white font-weight-bold">الترحيل</a>
+
+										<a href="seller-collect?id=${tempItem.id}"
+										class="btn btn-success text-white font-weight-bold">التحصيل</a>
+
+
+										<a href="seller-master?id=${tempItem.id}"
+										class="btn btn-danger  text-white font-weight-bold">الاستاذ</a>
+
+									</td>
 								</tr>
 
 							</c:forEach>

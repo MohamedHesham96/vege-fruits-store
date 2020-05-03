@@ -27,6 +27,9 @@ public class Seller {
 	@OneToMany(mappedBy = "seller", fetch = FetchType.LAZY)
 	private List<Collect> collects;
 
+	@OneToMany(mappedBy = "seller", fetch = FetchType.LAZY)
+	private List<Master> masters;
+
 	public int getId() {
 		return id;
 	}
@@ -49,6 +52,14 @@ public class Seller {
 
 	public void setCollects(List<Collect> collects) {
 		this.collects = collects;
+	}
+
+	public List<Master> getMasters() {
+		return masters;
+	}
+
+	public void setMasters(List<Master> masters) {
+		this.masters = masters;
 	}
 
 }

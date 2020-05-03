@@ -17,7 +17,7 @@
 <body>
 
 	<div style="width: 100%; height: 100%; margin-top: 200px"
-		align="center" class="alert alert-primary" role="alert">
+		align="center" class="alert alert-primary">
 
 		<h2>!! من فضلك تأكد من ادخال البيانات بشكل صحيح</h2>
 		<br> <a><button style="font-size: 25px;"
