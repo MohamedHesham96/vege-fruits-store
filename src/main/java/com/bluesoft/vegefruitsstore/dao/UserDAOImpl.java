@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.bluesoft.vegefruitsstore.entity.Balance;
+import com.bluesoft.vegefruitsstore.entity.Collect;
 import com.bluesoft.vegefruitsstore.entity.HeaderResult;
 import com.bluesoft.vegefruitsstore.entity.Seller;
 
@@ -150,6 +151,14 @@ public class UserDAOImpl implements UserDAO {
 		Seller seller = session.get(Seller.class, id);
 
 		return seller;
+	}
+
+	@Override
+	public void addCollect(Collect collect) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		session.save(collect);
 	}
 
 }

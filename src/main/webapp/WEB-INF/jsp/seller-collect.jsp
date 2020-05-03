@@ -26,6 +26,31 @@
 
 	<div style="text-align: right;" class="container">
 
+		<div class="card bg-secondary text-white"
+			style="width: 18rem; margin-left: 820px;">
+			<div class="card-header text-white font-weight-bold text-center"
+				style="color: #c4c4c4">التحصيل</div>
+			<ul class="list-group list-group-flush">
+
+				<li class="bg-dark list-group-item"><form:form metho="POST"
+						action="add-collect" modelAttribute="collect">
+						<input type="hidden" name="sellerId" value="${seller.id}">
+						
+						<form:input type="text" path="amount"
+							class="text-center form-control mb-2 col-xs-3"
+							placeholder="ادخل المبلغ"></form:input>
+
+						<input type="submit" value="اضف المبلغ للتحصيل"
+							class="w-100 btn btn-info   
+								 font-weight-bold text-center"
+							onclick="this.disabled=true; this.parentNode.submit();">
+
+					</form:form></li>
+			</ul>
+
+		</div>
+
+
 		<div class="row  my-4">
 			<div dir='rtl' class=" col-lg-12 col-md-8">
 

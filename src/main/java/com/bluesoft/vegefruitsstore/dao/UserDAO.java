@@ -3,6 +3,7 @@ package com.bluesoft.vegefruitsstore.dao;
 import java.util.List;
 
 import com.bluesoft.vegefruitsstore.entity.Balance;
+import com.bluesoft.vegefruitsstore.entity.Collect;
 import com.bluesoft.vegefruitsstore.entity.HeaderResult;
 import com.bluesoft.vegefruitsstore.entity.Seller;
 
@@ -29,6 +30,8 @@ public interface UserDAO {
 	public List<Seller> getAllSeller();
 	
 	public Seller getSellerById(int id);
+
+	public void addCollect(Collect collect);
 
 
 }

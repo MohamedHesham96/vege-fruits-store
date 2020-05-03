@@ -1,5 +1,6 @@
 package com.bluesoft.vegefruitsstore.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,11 +46,29 @@ public class Masters {
 		Seller theSeller = userService.getSellerById(id);
 
 		theModel.addAttribute("seller", theSeller);
+		theModel.addAttribute("collect", new Collect());
 
 		for (Collect collect : theSeller.getCollects()) {
 
 			System.out.println(">>> " + collect.getAmount());
 		}
+
+		return "seller-collect";
+	}
+
+	@RequestMapping("/add-collect")
+	public String addCollect(@ModelAttribute("sellerId") int sellerId,
+			@ModelAttribute(name = "collect") Collect collect, Model theModel) {
+
+		Seller theSeller = userService.getSellerById(sellerId);
+
+		collect.setDate(LocalDate.now().toString());
+		
+		collect.setSeller(theSeller);	
+
+		userService.addCollect(collect);
+
+		theModel.addAttribute("seller", theSeller);
 
 		return "seller-collect";
 	}

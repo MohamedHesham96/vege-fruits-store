@@ -23,7 +23,6 @@ public class Collect {
 	@ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.DETACH, CascadeType.PERSIST, CascadeType.MERGE,
 			CascadeType.REFRESH })
 	@JoinColumn(name = "seller_id")
-	@Pattern(regexp = "[ ء-ي]+", message = "ادخل الاسم بشكل صحيح")
 	private Seller seller;
 
 	@Column(name = "amount")

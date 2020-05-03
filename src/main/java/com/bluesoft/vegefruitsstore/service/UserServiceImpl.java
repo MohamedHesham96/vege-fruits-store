@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.bluesoft.vegefruitsstore.dao.UserDAO;
 import com.bluesoft.vegefruitsstore.entity.Balance;
+import com.bluesoft.vegefruitsstore.entity.Collect;
 import com.bluesoft.vegefruitsstore.entity.HeaderResult;
 import com.bluesoft.vegefruitsstore.entity.Seller;
 
@@ -80,6 +81,12 @@ public class UserServiceImpl implements UserService {
 	public Seller getSellerById(int id) {
 
 		return userDAO.getSellerById(id);
+	}
+
+	@Override
+	public void addCollect(Collect collect) {
+
+		userDAO.addCollect(collect);
 	}
 
 }
