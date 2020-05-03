@@ -166,12 +166,33 @@ public class UserDAOImpl implements UserDAO {
 
 		Session session = entityManager.unwrap(Session.class);
 
-		List<Seller> sellerList = 
-				session.createQuery("from Seller where name like :theSellerName")
-				.setParameter("theSellerName", "%" + sellerName + "%")
-				.getResultList();
+		List<Seller> sellerList = session.createQuery("from Seller where name like :theSellerName")
+				.setParameter("theSellerName", "%" + sellerName + "%").getResultList();
 
 		return sellerList;
+	}
+
+	@Override
+	public List<Collect> getAllCollect() {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		List<Collect> collectList = session.createQuery("from Collect order by date desc").getResultList();
+
+		return collectList;
+	}
+
+	@Override
+	public List<Collect> getCollectByDate(String date) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		List<Collect> collectList = 
+				session.createQuery("from Collect where date = :thedate order by date desc")
+				.setParameter("thedate", date)
+				.getResultList();
+
+		return collectList;
 	}
 
 }

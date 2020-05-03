@@ -95,4 +95,16 @@ public class UserServiceImpl implements UserService {
 		return userDAO.searchForSellerByName(sellerName);
 	}
 
+	@Override
+	public List<Collect> getAllCollect() {
+
+		return userDAO.getAllCollect();
+	}
+
+	@Override
+	public List<Collect> getCollectByDate(String date) {
+
+		return userDAO.getCollectByDate(date);
+	}
+
 }

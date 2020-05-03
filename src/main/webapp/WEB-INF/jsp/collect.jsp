@@ -13,98 +13,89 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 
-<title>Insert title here</title>
+<title>الخزنة</title>
+
+<link href="webjars/bootstrap/4.4.1/css/bootstrap.min.css"
+	rel="stylesheet">
+
 </head>
-<body>
+<body onunload="" background="images/wall1.jpg"
+	style="background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
+
+	<%@ include file="header.jsp"%>
 
 	<div style="text-align: right;" class="container">
 
-		<form:form metho="POST" action="add-incoming"
-			modelAttribute="incoming">
+		<div class="card bg-secondary text-white"
+			style="width: 18rem; margin-left: 820px;">
+			<div class="card-header text-white font-weight-bold text-center"
+				style="color: #c4c4c4">التاريخ</div>
+			<ul class="list-group list-group-flush">
 
-			<div class="row  my-4">
-				<div dir='rtl' class="col-lg-12 col-md-8">
-					<div class="table-responsive">
-						<table class=" table table-striped table-dark">
-							<thead class="thead-inverse">
-								<tr>
-									<th>المبلغ</th>
-									<th>اسم العميل</th>
-								</tr>
-							</thead>
+				<li class="bg-dark list-group-item">
 
-							<tbody>
+					<form method="GET" action="collect">
 
-								<tr>
-									<td><form:input style="width: 100px;" type="text"
-											path="amount" class="text-center form-control mb-2 col-xs-3"
-											placeholder="ادخل المبلغ"></form:input></td>
+						<input type="date" name="date" value="${date}"
+							class="w-100 btn badge-info  font-weight-bold text-center">
 
-									<td style="width:"><form:input type="text"
-											path="clientName"
-											class="text-center form-control mb-2 col-xs-3"
-											placeholder="ادخل اسم العميل"></form:input></td>
+						<input type="submit" style="margin-top: 10px;"
+							class="w-100 btn badge-light  font-weight-bold text-center"
+							value="اذهب لهذا اليوم" />
 
-								</tr>
+					</form>
+				</li>
 
-								<tr style="text-align: center;">
-									<td colspan="6"><input type="submit"
-										value="اضافة لدفتر التحصيل"
-										class="btn badge-info   
-								 font-weight-bold text-center"
-										style="width: 100%; height: 50px;"
-										onclick="this.disabled=true; this.parentNode.submit();">
-									</td>
+			</ul>
+		</div>
 
-								</tr>
-
-							</tbody>
-
-						</table>
-					</div>
-				</div>
-			</div>
-
-		</form:form>
-
-
-		<!-- TABLE			TABLE			TABLE			TABLE -->
 
 		<div class="row  my-4">
 			<div dir='rtl' class=" col-lg-12 col-md-8">
+
 				<div class="table-responsive">
-					<table class="table table-bordered table-striped table-dark">
+
+					<table
+						class="table table-bordered table-striped table-sm table-dark">
 						<thead class="thead-inverse">
-							<tr>
-								<th>الصنف</th>
-								<th>الكمية</th>
-								<th>تاريخ التسجيل</th>
+
+							<tr class="badge-success">
+
+								<td colspan="10" class="font-weight-bold"
+									style="font-size: 22px">[ جدول التحصيل ]</td>
+
 							</tr>
+
+							<tr style="font-size: 18px">
+								<th>المبلغ</th>
+								<th>اسم البائع</th>
+								<th>التاريخ</th>
+							</tr>
+
 						</thead>
 						<tbody>
-							<c:forEach var="tempItem" items="${collects}">
+
+							<c:forEach var="tempItem" items="${collectList}">
 
 								<tr>
 									<td>${tempItem.amount}</td>
-									<td>${tempItem.clientName}</td>
+									<td>${tempItem.seller.name}</td>
 									<td>${tempItem.date}</td>
-
-									<td style="width: 160px"><a
-										style="height: 30px; font-size: 14px;"
-										class="btn btn-danger text-wight
-										font-weight-bold"
-										onclick="return confirm('هل انت متأكد من حذف هذا الصنف ؟')"
-										href="delete-incoming?id=${tempItem.id}">حذف</a></td>
 								</tr>
+
 							</c:forEach>
+
 						</tbody>
+
 					</table>
+
 				</div>
+				<br>
 
 			</div>
-
 		</div>
-
 	</div>
+
+
 </body>
 </html>

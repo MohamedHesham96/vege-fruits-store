@@ -35,5 +35,9 @@ public interface UserService {
 
 	public List<Seller> searchForSellerByName(String sellerName);
 
+	public List<Collect> getAllCollect();
+
+	public List<Collect> getCollectByDate(String date);
+
 
 }
