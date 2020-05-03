@@ -33,5 +33,7 @@ public interface UserService {
 
 	public void addCollect(Collect collect);
 
+	public List<Seller> searchForSellerByName(String sellerName);
+
 
 }

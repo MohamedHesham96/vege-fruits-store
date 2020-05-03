@@ -26,9 +26,36 @@
 
 	<div style="text-align: right;" class="container">
 
+
+		<div class="card bg-secondary text-white"
+			style="width: 18rem; margin-left: 820px;">
+
+			<div class="card-header text-white font-weight-bold text-center"
+				style="color: #c4c4c4">البحث</div>
+
+			<ul class="list-group list-group-flush">
+
+				<li class="bg-dark list-group-item">
+
+					<form method="GET" action="search-for-seller">
+
+						<input type="text" name="sellerName"
+							class="text-center form-control mb-2 col-xs-3"
+							placeholder="ادخل اسم البائع"> <input type="submit"
+							value="ابحث عن الاسم"
+							class="w-100 btn btn-info font-weight-bold text-center"
+							onclick="this.disabled=true; this.parentNode.submit();">
+
+					</form>
+				</li>
+			</ul>
+
+		</div>
+
+
 		<div class="row  my-4">
 			<div dir='rtl' class=" col-lg-12 col-md-8">
-
+			
 				<div class="table-responsive">
 
 					<table
@@ -54,16 +81,13 @@
 
 								<tr onclick="">
 									<td style="font-size: 18px" class="text-white font-weight-bold">${tempItem.id}</td>
-									
-									<td style="font-size: 18px">
-									<a
+
+									<td style="font-size: 18px"><a
 										class="text-white font-weight-bold"
-										href="seller-profile?id=${tempItem.id}">${tempItem.name}
-									
-									</a>
-										
+										href="seller-profile?id=${tempItem.id}">${tempItem.name} </a>
+
 									</td>
-									
+
 									<td style="font-size: 18px"><a
 										href="seller-collect?id=${tempItem.id}"
 										class="btn btn-primary">التحصيل</a> <a class="btn btn-danger">الاستاذ</a></td>

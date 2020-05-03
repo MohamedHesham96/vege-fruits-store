@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bluesoft.vegefruitsstore.entity.Balance;
 import com.bluesoft.vegefruitsstore.entity.HeaderResult;
+import com.bluesoft.vegefruitsstore.entity.Seller;
 import com.bluesoft.vegefruitsstore.service.UserService;
 
 @Controller
@@ -67,5 +68,8 @@ public class Relays {
 
 		return "casher";
 	}
+		
+	
+	
 
 }

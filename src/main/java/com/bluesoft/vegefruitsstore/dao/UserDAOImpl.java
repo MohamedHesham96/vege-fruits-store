@@ -161,4 +161,17 @@ public class UserDAOImpl implements UserDAO {
 		session.save(collect);
 	}
 
+	@Override
+	public List<Seller> searchForSellerByName(String sellerName) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		List<Seller> sellerList = 
+				session.createQuery("from Seller where name like :theSellerName")
+				.setParameter("theSellerName", "%" + sellerName + "%")
+				.getResultList();
+
+		return sellerList;
+	}
+
 }

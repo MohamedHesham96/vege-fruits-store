@@ -26,19 +26,15 @@
 
 	<div style="text-align: right;" class="container">
 
-		<div class="row  my-4">
+		<div class="row my-4">
 			<div dir='rtl' class=" col-lg-12 col-md-8">
 
 				<a style="font-size: 25px;"
 					class="btn btn-dark text-wight font-weight-bold"
-					href="casher?casherName=محمد عصام"
-					>محمد عصام</a> 
-					
-					<a
+					href="casher?casherName=محمد عصام">محمد عصام</a> <a
 					style="font-size: 25px;"
 					class="btn btn-dark text-wight font-weight-bold"
-					href="casher?casherName=احمد رجب">
-					احمد رجب</a>
+					href="casher?casherName=احمد رجب"> احمد رجب</a>
 
 				<c:forEach var="headerTemp" items="${headerResult}">
 

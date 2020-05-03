@@ -33,5 +33,6 @@ public interface UserDAO {
 
 	public void addCollect(Collect collect);
 
+	public List<Seller> searchForSellerByName(String sellerName);
 
 }

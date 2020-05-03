@@ -89,4 +89,10 @@ public class UserServiceImpl implements UserService {
 		userDAO.addCollect(collect);
 	}
 
+	@Override
+	public List<Seller> searchForSellerByName(String sellerName) {
+
+		return userDAO.searchForSellerByName(sellerName);
+	}
+
 }

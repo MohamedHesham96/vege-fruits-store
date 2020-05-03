@@ -48,11 +48,6 @@ public class Masters {
 		theModel.addAttribute("seller", theSeller);
 		theModel.addAttribute("collect", new Collect());
 
-		for (Collect collect : theSeller.getCollects()) {
-
-			System.out.println(">>> " + collect.getAmount());
-		}
-
 		return "seller-collect";
 	}
 
@@ -63,14 +58,25 @@ public class Masters {
 		Seller theSeller = userService.getSellerById(sellerId);
 
 		collect.setDate(LocalDate.now().toString());
-		
-		collect.setSeller(theSeller);	
+
+		collect.setSeller(theSeller);
 
 		userService.addCollect(collect);
 
 		theModel.addAttribute("seller", theSeller);
 
 		return "seller-collect";
+	}
+
+	@RequestMapping("/search-for-seller")
+	public String searchForSellerByName(
+			@RequestParam(name = "sellerName") String sellerName, Model theModel) {
+
+		List<Seller> theSellerList = userService.searchForSellerByName(sellerName);
+			
+		theModel.addAttribute("sellerList", theSellerList);
+		
+		return "master";
 	}
 
 	@RequestMapping("/add-seller")
