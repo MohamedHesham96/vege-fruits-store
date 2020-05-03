@@ -13,7 +13,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 
-<title>كشف البائعين</title>
+<title>${seller.name}</title>
 
 <link href="webjars/bootstrap/4.4.1/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -38,35 +38,24 @@
 							<tr class="badge-success">
 
 								<td colspan="10" class="font-weight-bold"
-									style="font-size: 22px">[ كشف اسماء البائعين ]</td>
+									style="font-size: 22px">[ اسم البائع : ${seller.name} ] -
+									[ رقم البائع : ${seller.id} ]</td>
 
 							</tr>
 
 							<tr style="font-size: 18px">
-								<th>رقم البائع</th>
-								<th>اسم البائع</th>
+								<th>المبلغ</th>
+								<th>التاريخ</th>
 							</tr>
 
 						</thead>
 						<tbody>
 
-							<c:forEach var="tempItem" items="${sellerList}">
+							<c:forEach var="tempItem" items="${seller.collects}">
 
-								<tr onclick="">
-									<td style="font-size: 18px" class="text-white font-weight-bold">${tempItem.id}</td>
-									
-									<td style="font-size: 18px">
-									<a
-										class="text-white font-weight-bold"
-										href="seller-profile?id=${tempItem.id}">${tempItem.name}
-									
-									</a>
-										
-									</td>
-									
-									<td style="font-size: 18px"><a
-										href="seller-collect?id=${tempItem.id}"
-										class="btn btn-primary">التحصيل</a> <a class="btn btn-danger">الاستاذ</a></td>
+								<tr>
+									<td>${tempItem.amount}</td>
+									<td>${tempItem.date}</td>
 								</tr>
 
 							</c:forEach>

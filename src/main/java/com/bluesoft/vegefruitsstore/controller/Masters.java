@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.bluesoft.vegefruitsstore.entity.Collect;
 import com.bluesoft.vegefruitsstore.entity.Seller;
 import com.bluesoft.vegefruitsstore.service.UserService;
 
@@ -37,13 +38,21 @@ public class Masters {
 
 		return "seller-profile";
 	}
-	
-	
-	
-	
-	
-	
-	
+
+	@RequestMapping("/seller-collect")
+	public String showSellerCollect(@RequestParam("id") int id, Model theModel) {
+
+		Seller theSeller = userService.getSellerById(id);
+
+		theModel.addAttribute("seller", theSeller);
+
+		for (Collect collect : theSeller.getCollects()) {
+
+			System.out.println(">>> " + collect.getAmount());
+		}
+
+		return "seller-collect";
+	}
 
 	@RequestMapping("/add-seller")
 	public String getAllBalance(@ModelAttribute(name = "seller") Seller theSeller) {
