@@ -84,9 +84,10 @@
 
 									<td style="width: 300px; font-size: 18px"><a
 										class="text-white font-weight-bold"
-										href="seller-profile?id=${tempItem.id}">${tempItem.name} </a>
-
-									</td>
+										
+										<%-- href="seller-profile?id=${tempItem.id}" --%>>
+										
+											${tempItem.name} </a></td>
 
 									<td style="font-size: 18px"><a
 										class="btn btn-primary text-white font-weight-bold">الترحيل</a>
