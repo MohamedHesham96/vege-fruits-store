@@ -5,6 +5,7 @@ import java.util.List;
 import com.bluesoft.vegefruitsstore.entity.Balance;
 import com.bluesoft.vegefruitsstore.entity.Collect;
 import com.bluesoft.vegefruitsstore.entity.HeaderResult;
+import com.bluesoft.vegefruitsstore.entity.Master;
 import com.bluesoft.vegefruitsstore.entity.Seller;
 
 public interface UserService {
@@ -19,13 +20,13 @@ public interface UserService {
 
 	public List<HeaderResult> getRelayHeader();
 
-	public List<HeaderResult> getCasherHeader(String casherName);
+	public HeaderResult getCasherHeader(String casherName);
 
 	public List<Balance> getBalanceByCasherName(String casherName);
 
 	public List<Balance> getBalanceByCasherNameAndDate(String casherName, String date);
 
-	public List<HeaderResult> getCasherHeaderByDate(String casherName, String date);
+	public HeaderResult getCasherHeaderByDate(String casherName, String date);
 
 	public List<Seller> getAllSeller();
 
@@ -42,5 +43,7 @@ public interface UserService {
 	public List<Balance> getSellerRelay(String sellerName);
 
 	public HeaderResult getSellerRelayHeader(String sellerName);
+
+	public List<Master> getAllMaster();
 
 }

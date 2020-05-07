@@ -77,6 +77,11 @@
 											class="text-center form-control mb-2 col-xs-3"
 											placeholder="ادخل اسم البائع"></form:input></td>
 
+									<td><form:input type="text" path="casherName"
+											class="text-center form-control mb-2 col-xs-3"
+											placeholder="ادخل اسم الكاشير"></form:input></td>
+
+
 								</tr>
 
 								<tr style="text-align: center;">

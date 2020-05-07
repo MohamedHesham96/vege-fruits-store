@@ -11,6 +11,7 @@ public class HeaderResult {
 	String itemName;
 	String clientName;
 	String sellerName;
+	String sellerid;
 	String casherName;
 
 	public Long getTotalCount() {
@@ -44,7 +45,15 @@ public class HeaderResult {
 	public void setSellerName(String sellerName) {
 		this.sellerName = sellerName;
 	}
-	
+
+	public String getSellerid() {
+		return sellerid;
+	}
+
+	public void setSellerid(String sellerid) {
+		this.sellerid = sellerid;
+	}
+
 	public String getCasherName() {
 		return casherName;
 	}

@@ -39,9 +39,8 @@
 					<form method="GET" action="casher">
 
 						<input type="hidden" name="casherName"
-							value="<%= session.getAttribute("casherName") %>"> <input type="date"
-						
-							name="date" value="${date}"
+							value="<%=session.getAttribute("casherName")%>"> <input
+							type="date" name="date" value="${date}"
 							class="w-100 btn badge-info  font-weight-bold text-center">
 
 						<input type="submit" style="margin-top: 10px;"
@@ -60,69 +59,66 @@
 
 			<div dir='rtl' class=" col-lg-12 col-md-8">
 
-				<c:forEach var="headerTemp" items="${headerResult}">
+				<div class="table-responsive">
 
-					<div class="table-responsive">
+					<table
+						class="table table-bordered table-striped table-sm table-dark">
+						<thead class="thead-inverse">
 
-						<table
-							class="table table-bordered table-striped table-sm table-dark">
-							<thead class="thead-inverse">
+							<tr class="badge-success">
 
-								<tr class="badge-success">
-
-									<td colspan="10" class="font-weight-bold"
-										style="font-size: 20px">[ اسم الكاشير :
-										${headerTemp.casherName} ]</td>
-
-								</tr>
-
-								<tr>
-									<th>الصنف</th>
-									<th>العدد</th>
-									<th>الوزن</th>
-									<th>سعر الكيلو</th>
-									<th>نقدي</th>
-									<th>اجمالي المبلغ</th>
-									<th>التاريخ</th>
-								</tr>
-
-							</thead>
-							<tbody>
-								<c:forEach var="tempItem" items="${casherList}">
-
-									<tr>
-										<td>${tempItem.itemName}</td>
-										<td>${tempItem.counter}</td>
-										<td>${tempItem.weight}</td>
-										<td>${tempItem.kiloPrice}</td>
-										<td>${tempItem.cash}</td>
-										<td>${tempItem.totalAmount}</td>
-										<td>${tempItem.date}</td>
-
-									</tr>
-
-								</c:forEach>
-
-							</tbody>
-
-							<tr class="bg-primary">
-
-								<td></td>
-								<td>${headerTemp.totalCount}</td>
-								<td>${headerTemp.totalWeight}</td>
-								<td></td>
-								<td>${headerTemp.totalCash}</td>
-								<td>${headerTemp.totalAmount}</td>
-								<td colspan="3"></td>
+								<td colspan="10" class="font-weight-bold"
+									style="font-size: 20px">[ اسم الكاشير :
+									${headerResult.casherName} ]</td>
 
 							</tr>
 
-						</table>
+							<tr>
+								<th>الصنف</th>
+								<th>العدد</th>
+								<th>الوزن</th>
+								<th>سعر الكيلو</th>
+								<th>نقدي</th>
+								<th>اجمالي المبلغ</th>
+								<th>التاريخ</th>
+							</tr>
 
-					</div>
-					<br>
+						</thead>
+						<tbody>
+							<c:forEach var="tempItem" items="${casherList}">
 
-				</c:forEach>
+								<tr>
+									<td>${tempItem.itemName}</td>
+									<td>${tempItem.counter}</td>
+									<td>${tempItem.weight}</td>
+									<td>${tempItem.kiloPrice}</td>
+									<td>${tempItem.cash}</td>
+									<td>${tempItem.totalAmount}</td>
+									<td>${tempItem.date}</td>
+
+								</tr>
+
+							</c:forEach>
+
+						</tbody>
+
+						<tr class="bg-primary">
+
+							<td></td>
+							<td>${headerResult.totalCount}</td>
+							<td>${headerResult.totalWeight}</td>
+							<td></td>
+							<td>${headerResult.totalCash}</td>
+							<td>${headerResult.totalAmount}</td>
+							<td colspan="3"></td>
+
+						</tr>
+
+					</table>
+
+				</div>
+				<br>
+
 			</div>
 		</div>
 	</div>

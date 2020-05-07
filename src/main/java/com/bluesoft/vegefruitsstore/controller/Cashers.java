@@ -29,25 +29,23 @@ public class Cashers {
 			@RequestParam(name = "date", required = false) String theDate, Model theModel) {
 
 		List<Balance> casherList;
-		List<HeaderResult> theHeaderResult;
+		HeaderResult theHeaderResult;
 
 		if (theDate == null) {
 
 			theDate = LocalDate.now().toString();
 			casherList = userService.getBalanceByCasherName(casherName);
 			theHeaderResult = userService.getCasherHeader(casherName);
-			httpSession.setAttribute("casherName", casherName);
 
 		} else {
 
 			casherList = userService.getBalanceByCasherNameAndDate(casherName, theDate);
 			theHeaderResult = userService.getCasherHeaderByDate(casherName, theDate);
 
-			httpSession.setAttribute("casherName", casherName);
-
 		}
 
 		theModel.addAttribute("date", theDate);
+		httpSession.setAttribute("casherName", casherName);
 		theModel.addAttribute("headerResult", theHeaderResult);
 		theModel.addAttribute("casherList", casherList);
 

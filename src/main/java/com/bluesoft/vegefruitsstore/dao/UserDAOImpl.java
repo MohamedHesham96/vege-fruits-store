@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.bluesoft.vegefruitsstore.entity.Balance;
 import com.bluesoft.vegefruitsstore.entity.Collect;
 import com.bluesoft.vegefruitsstore.entity.HeaderResult;
+import com.bluesoft.vegefruitsstore.entity.Master;
 import com.bluesoft.vegefruitsstore.entity.Seller;
 
 @Repository
@@ -79,17 +80,17 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public List<HeaderResult> getCasherHeader(String casherName) {
+	public HeaderResult getCasherHeader(String casherName) {
 
 		Session session = entityManager.unwrap(Session.class);
 
-		List<HeaderResult> theHeaderResult = session
+		HeaderResult theHeaderResult = (HeaderResult) session
 				.createQuery("select sum(B.counter) as totalCount, sum(B.weight) as totalWeight, "
 						+ "sum(B.totalAmount) as totalAmount, sum(B.cash) as totalCash, "
 						+ "B.sellerName as sellerName, B.casherName as casherName "
 						+ "FROM Balance B where casherName = :theCasherName GROUP BY casherName order by date")
 				.setParameter("theCasherName", casherName)
-				.setResultTransformer(new AliasToBeanResultTransformer(HeaderResult.class)).getResultList();
+				.setResultTransformer(new AliasToBeanResultTransformer(HeaderResult.class)).getSingleResult();
 
 		return theHeaderResult;
 	}
@@ -118,17 +119,17 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public List<HeaderResult> getCasherHeaderByDate(String casherName, String date) {
+	public HeaderResult getCasherHeaderByDate(String casherName, String date) {
 
 		Session session = entityManager.unwrap(Session.class);
 
-		List<HeaderResult> theHeaderResult = session
+		HeaderResult theHeaderResult = (HeaderResult) session
 				.createQuery("select sum(B.counter) as totalCount, sum(B.weight) as totalWeight, "
 						+ "sum(B.totalAmount) as totalAmount, sum(B.cash) as totalCash, "
 						+ "B.sellerName as sellerName, B.casherName as casherName "
 						+ "FROM Balance B where casherName = :theCasherName and date = :theDate GROUP BY casherName order by date")
 				.setParameter("theCasherName", casherName).setParameter("theDate", date)
-				.setResultTransformer(new AliasToBeanResultTransformer(HeaderResult.class)).getResultList();
+				.setResultTransformer(new AliasToBeanResultTransformer(HeaderResult.class)).getSingleResult();
 
 		return theHeaderResult;
 	}
@@ -213,12 +214,22 @@ public class UserDAOImpl implements UserDAO {
 
 		HeaderResult theHeaderResult = (HeaderResult) session
 				.createQuery("select sum(B.counter) as totalCount, sum(B.weight) as totalWeight, "
-						+ "sum(B.totalAmount) as totalAmount, sum(B.cash) as totalCash "
+						+ "sum(B.totalAmount) as totalAmount, sum(B.cash) as totalCash, B.sellerName as  sellerName "
 						+ "FROM Balance B  where seller_name = :theSellerName")
 				.setResultTransformer(new AliasToBeanResultTransformer(HeaderResult.class))
 				.setParameter("theSellerName", sellerName).getSingleResult();
 
 		return theHeaderResult;
+	}
+
+	@Override
+	public List<Master> getAllMaster() {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		List<Master> masterList = session.createQuery("from Master order by date").getResultList();
+
+		return masterList;
 	}
 
 }

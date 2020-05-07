@@ -40,8 +40,9 @@
 
 							<tr class="badge-success">
 
-								<td colspan="10">[ اسم البائع : ${headerResult.sellerName}
-									]</td>
+								<td colspan="10" class="font-weight-bold"
+									style="font-size: 22px">[ الترحيل ] - [ اسم البائع : ${headerResult.sellerName} ]
+									</td>
 
 							</tr>
 

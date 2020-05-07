@@ -9,6 +9,7 @@ import com.bluesoft.vegefruitsstore.dao.UserDAO;
 import com.bluesoft.vegefruitsstore.entity.Balance;
 import com.bluesoft.vegefruitsstore.entity.Collect;
 import com.bluesoft.vegefruitsstore.entity.HeaderResult;
+import com.bluesoft.vegefruitsstore.entity.Master;
 import com.bluesoft.vegefruitsstore.entity.Seller;
 
 @Service
@@ -48,7 +49,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<HeaderResult> getCasherHeader(String casherName) {
+	public HeaderResult getCasherHeader(String casherName) {
 
 		return userDAO.getCasherHeader(casherName);
 	}
@@ -66,7 +67,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<HeaderResult> getCasherHeaderByDate(String casherName, String date) {
+	public HeaderResult getCasherHeaderByDate(String casherName, String date) {
 
 		return userDAO.getCasherHeaderByDate(casherName, date);
 	}
@@ -117,6 +118,12 @@ public class UserServiceImpl implements UserService {
 	public HeaderResult getSellerRelayHeader(String sellerName) {
 
 		return userDAO.getSellerRelayHeader(sellerName);
+	}
+
+	@Override
+	public List<Master> getAllMaster() {
+
+		return userDAO.getAllMaster();
 	}
 
 }
