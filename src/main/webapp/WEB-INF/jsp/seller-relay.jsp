@@ -29,69 +29,67 @@
 		<div class="row my-4">
 			<div dir='rtl' class=" col-lg-12 col-md-8">
 
-					<br>
-					<br>
+				<br> <br>
 
 
-					<div class="table-responsive">
+				<div class="table-responsive">
 
-						<table
-							class="table table-bordered table-striped table-sm table-dark">
-							<thead class="thead-inverse">
+					<table
+						class="table table-bordered table-striped table-sm table-dark">
+						<thead class="thead-inverse">
 
-								<tr class="badge-success">
+							<tr class="badge-success">
 
-									<td colspan="10">[ اسم البائع : ${headerResult.sellerName} ]</td>
-
-								</tr>
-
-								<tr>
-									<th>الصنف</th>
-									<th>العدد</th>
-									<th>الوزن</th>
-									<th>سعر الكيلو</th>
-									<th>اجمالي المبلغ</th>
-									<th>الكاشير</th>
-									<th>التاريخ</th>
-								</tr>
-
-							</thead>
-							<tbody>
-								<c:forEach var="tempItem" items="${relayList}">
-									<c:if test="${tempItem.sellerName == headerTemp.sellerName}">
-
-										<tr>
-											<td>${tempItem.itemName}</td>
-											<td>${tempItem.counter}</td>
-											<td>${tempItem.weight}</td>
-											<td>${tempItem.kiloPrice}</td>
-											<td>${tempItem.totalAmount}</td>
-											<td>${tempItem.casherName}</td>
-											<td>${tempItem.date}</td>
-
-										</tr>
-
-									</c:if>
-
-								</c:forEach>
-
-							</tbody>
-
-							<tr class="bg-primary">
-
-								<td></td>
-								<td>${headerResult.totalCount}</td>
-								<td>${headerResult.totalWeight}</td>
-								<td></td>
-								<td>${headerResult.totalAmount}</td>
-								<td colspan="3"></td>
+								<td colspan="10">[ اسم البائع : ${headerResult.sellerName}
+									]</td>
 
 							</tr>
 
-						</table>
+							<tr>
+								<th>الصنف</th>
+								<th>العدد</th>
+								<th>الوزن</th>
+								<th>سعر الكيلو</th>
+								<th>اجمالي المبلغ</th>
+								<th>الكاشير</th>
+								<th>التاريخ</th>
+							</tr>
 
-					</div>
-					<br>
+						</thead>
+						<tbody>
+							<c:forEach var="tempItem" items="${relayList}">
+
+								<tr>
+									<td>${tempItem.itemName}</td>
+									<td>${tempItem.counter}</td>
+									<td>${tempItem.weight}</td>
+									<td>${tempItem.kiloPrice}</td>
+									<td>${tempItem.totalAmount}</td>
+									<td>${tempItem.casherName}</td>
+									<td>${tempItem.date}</td>
+
+								</tr>
+
+
+							</c:forEach>
+
+						</tbody>
+
+						<tr class="bg-primary">
+
+							<td></td>
+							<td>${headerResult.totalCount}</td>
+							<td>${headerResult.totalWeight}</td>
+							<td></td>
+							<td>${headerResult.totalAmount}</td>
+							<td colspan="3"></td>
+
+						</tr>
+
+					</table>
+
+				</div>
+				<br>
 
 
 			</div>

@@ -18,7 +18,6 @@ public class Masters {
 	@Autowired
 	UserService userService;
 
-	
 	@RequestMapping("/master")
 	public String getAllBalance(Model theModel) {
 
@@ -28,7 +27,7 @@ public class Masters {
 
 		return "master";
 	}
-	
+
 	@RequestMapping("/sellers")
 	public String getSellers(Model theModel) {
 
@@ -38,7 +37,6 @@ public class Masters {
 
 		return "sellers-list";
 	}
-
 
 	@RequestMapping("/seller-master")
 	public String showSellerMaster(@RequestParam("id") int id, Model theModel) {

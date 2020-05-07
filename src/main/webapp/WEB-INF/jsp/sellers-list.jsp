@@ -89,7 +89,7 @@
 											${tempItem.name} </a></td>
 
 									<td><a style="font-size: 12px"
-										href="seller-relay?id=${tempItem.id}"
+										href="seller-relay?sellerName=${tempItem.name}"
 										class="btn btn-primary text-white font-weight-bold">الترحيل</a>
 
 										<a style="font-size: 12px"
