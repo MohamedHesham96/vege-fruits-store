@@ -46,4 +46,6 @@ public interface UserService {
 
 	public List<Master> getAllMaster();
 
+	public void addMaster(int sellerId, String date, float amount);
+
 }

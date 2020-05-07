@@ -28,7 +28,7 @@ public class Collects {
 		if (theDate == null) {
 
 			theDate = LocalDate.now().toString();
-			
+
 			collectList = userService.getAllCollect();
 
 		} else {
@@ -43,7 +43,6 @@ public class Collects {
 		return "collect";
 	}
 
-	
 	@RequestMapping("/seller-collect")
 	public String showSellerCollect(@RequestParam("id") int id, Model theModel) {
 
@@ -66,6 +65,8 @@ public class Collects {
 		collect.setSeller(theSeller);
 
 		userService.addCollect(collect);
+
+		userService.addMaster(collect.getSeller().getId(), collect.getDate(), collect.getAmount());
 
 		theModel.addAttribute("seller", theSeller);
 

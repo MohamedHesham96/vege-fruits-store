@@ -20,11 +20,11 @@ public class Masters {
 	UserService userService;
 
 	@RequestMapping("/master")
-	public String getAllBalance(Model theModel) {
+	public String getAllMaster(Model theModel) {
 
-		List<Master> sellerList = userService.getAllMaster();
+		List<Master> masterList = userService.getAllMaster();
 
-		theModel.addAttribute("sellerList", sellerList);
+		theModel.addAttribute("masterList", masterList);
 
 		return "master";
 	}

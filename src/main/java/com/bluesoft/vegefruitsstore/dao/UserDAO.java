@@ -45,6 +45,7 @@ public interface UserDAO {
 	public HeaderResult getSellerRelayHeader(String sellerName);
 	
 	public List<Master> getAllMaster();
-
+	
+	public void addMaster(int sellerId, String date, float amount);
 
 }

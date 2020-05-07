@@ -65,7 +65,7 @@
 							<tr class="badge-success">
 
 								<td colspan="10" class="font-weight-bold"
-									style="font-size: 22px">[ كشف اسماء البائعين ]</td>
+									style="font-size: 22px">[ كشف الاستاذ ]</td>
 
 							</tr>
 
@@ -77,30 +77,14 @@
 						</thead>
 						<tbody>
 
-							<c:forEach var="tempItem" items="${sellerList}">
+							<c:forEach var="tempItem" items="${masterList}">
 
 								<tr>
 									<td style="width: 300px; padding-top: 8px; font-size: 16px"
 										class="text-white font-weight-bold">${tempItem.id}</td>
 
-									<td style="padding-top: 8px; width: 350px; font-size: 16px"><a
-										class="text-white font-weight-bold"<%-- href="seller-profile?id=${tempItem.id}" --%>>
-
-											${tempItem.name} </a></td>
-
-									<td><a style="font-size: 12px"
-										href="seller-relay?id=${tempItem.id}"
-										class="btn btn-primary text-white font-weight-bold">الترحيل</a>
-
-										<a style="font-size: 12px"
-										href="seller-collect?id=${tempItem.id}"
-										class="btn btn-success text-white font-weight-bold">التحصيل</a>
-
-										<a style="font-size: 12px"
-										href="seller-master?id=${tempItem.id}"
-										class="btn btn-danger text-white font-weight-bold">الاستاذ</a>
-
-									</td>
+									<td style="width: 300px; padding-top: 8px; font-size: 16px"
+										class="text-white font-weight-bold">${tempItem.id}</td>
 
 								</tr>
 

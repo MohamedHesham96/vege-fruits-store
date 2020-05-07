@@ -1,10 +1,12 @@
 package com.bluesoft.vegefruitsstore.dao;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 import org.hibernate.transform.AliasToBeanResultTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -230,6 +232,46 @@ public class UserDAOImpl implements UserDAO {
 		List<Master> masterList = session.createQuery("from Master order by date").getResultList();
 
 		return masterList;
+	}
+
+	@Override
+	@Transactional
+	public void addMaster(int sellerId, String date, float amount) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		Master master = new Master();	
+		
+		Master lastMaster = (Master) session
+				.createQuery("from Master m where m.seller.id = :theSellerId order by date desc")
+				.setMaxResults(1)
+				.setParameter("theSellerId", sellerId).uniqueResult();
+		
+		List<Master> masterList = session
+				.createQuery("from Master m where m.date = :thedate and m.seller.id = :theSellerId")
+				.setParameter("thedate", date).setParameter("theSellerId", sellerId).getResultList();
+
+
+		
+		if (!masterList.isEmpty()) {
+			
+			master = masterList.get(0);
+			
+			master.setAmount(master.getAmount() - amount);
+
+			session.saveOrUpdate(master);
+
+		} else {
+
+			Seller theSeller = session.get(Seller.class, sellerId);
+						
+			master.setAmount(lastMaster.getAmount() - amount);
+			master.setDate(LocalDate.now().toString());
+			master.setSeller(theSeller);
+
+			session.save(master);
+		}
+
 	}
 
 }

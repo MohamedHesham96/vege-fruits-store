@@ -126,4 +126,10 @@ public class UserServiceImpl implements UserService {
 		return userDAO.getAllMaster();
 	}
 
+	@Override
+	public void addMaster(int sellerId, String date, float amount) {
+
+		userDAO.addMaster(sellerId, date, amount);
+	}
+
 }
