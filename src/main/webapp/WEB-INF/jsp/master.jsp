@@ -79,27 +79,29 @@
 
 							<c:forEach var="tempItem" items="${sellerList}">
 
-								<tr onclick="">
-									<td style="font-size: 18px" class="text-white font-weight-bold">${tempItem.id}</td>
+								<tr>
+									<td style="width: 300px; padding-top: 8px; font-size: 16px"
+										class="text-white font-weight-bold">${tempItem.id}</td>
 
-									<td style="width: 300px; font-size: 18px"><a
-										class="text-white font-weight-bold"
-										
-										<%-- href="seller-profile?id=${tempItem.id}" --%>>
-										
+									<td style="padding-top: 8px; width: 350px; font-size: 16px"><a
+										class="text-white font-weight-bold"<%-- href="seller-profile?id=${tempItem.id}" --%>>
+
 											${tempItem.name} </a></td>
 
-									<td style="font-size: 18px"><a
+									<td><a style="font-size: 12px"
+										href="seller-relay?id=${tempItem.id}"
 										class="btn btn-primary text-white font-weight-bold">الترحيل</a>
 
-										<a href="seller-collect?id=${tempItem.id}"
+										<a style="font-size: 12px"
+										href="seller-collect?id=${tempItem.id}"
 										class="btn btn-success text-white font-weight-bold">التحصيل</a>
 
-
-										<a href="seller-master?id=${tempItem.id}"
-										class="btn btn-danger  text-white font-weight-bold">الاستاذ</a>
+										<a style="font-size: 12px"
+										href="seller-master?id=${tempItem.id}"
+										class="btn btn-danger text-white font-weight-bold">الاستاذ</a>
 
 									</td>
+
 								</tr>
 
 							</c:forEach>
@@ -109,12 +111,8 @@
 					</table>
 
 				</div>
-				<br>
-
 			</div>
 		</div>
 	</div>
-
-
 </body>
 </html>

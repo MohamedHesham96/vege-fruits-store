@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.bluesoft.vegefruitsstore.entity.Collect;
-import com.bluesoft.vegefruitsstore.entity.Master;
 import com.bluesoft.vegefruitsstore.entity.Seller;
 import com.bluesoft.vegefruitsstore.service.UserService;
 
@@ -20,6 +18,7 @@ public class Masters {
 	@Autowired
 	UserService userService;
 
+	
 	@RequestMapping("/master")
 	public String getAllBalance(Model theModel) {
 
@@ -29,6 +28,17 @@ public class Masters {
 
 		return "master";
 	}
+	
+	@RequestMapping("/sellers")
+	public String getSellers(Model theModel) {
+
+		List<Seller> sellerList = userService.getAllSeller();
+
+		theModel.addAttribute("sellerList", sellerList);
+
+		return "sellers-list";
+	}
+
 
 	@RequestMapping("/seller-master")
 	public String showSellerMaster(@RequestParam("id") int id, Model theModel) {

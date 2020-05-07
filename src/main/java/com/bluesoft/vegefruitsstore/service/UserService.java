@@ -39,5 +39,8 @@ public interface UserService {
 
 	public List<Collect> getCollectByDate(String date);
 
+	public List<Balance> getSellerRelay(String sellerName);
+
+	public HeaderResult getSellerRelayHeader(String sellerName);
 
 }

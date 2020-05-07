@@ -107,4 +107,16 @@ public class UserServiceImpl implements UserService {
 		return userDAO.getCollectByDate(date);
 	}
 
+	@Override
+	public List<Balance> getSellerRelay(String sellerName) {
+
+		return userDAO.getSellerRelay(sellerName);
+	}
+
+	@Override
+	public HeaderResult getSellerRelayHeader(String sellerName) {
+
+		return userDAO.getSellerRelayHeader(sellerName);
+	}
+
 }

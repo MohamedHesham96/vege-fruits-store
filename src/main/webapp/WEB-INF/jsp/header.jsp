@@ -61,12 +61,20 @@
 				<h1 class="text-white">|</h1>
 			</li>
 
+
+			<li style="margin: 5px;" class=""><a
+				class="btn bg-success text-white font-weight-bold"
+				style="padding: 10px; width: 100px" href="sellers">البائعون</a></li>
+
+
+			<li style="margin-left: 5px; margin-right: 5px">
+				<h1 class="text-white">|</h1>
+			</li>
+
+
 			<li style="margin: 5px;"><a
 				class="btn bg-danger text-white font-weight-bold "
 				style="padding: 10px; width: 100px" href="logout">خروج</a></li>
-
-
-
 
 		</ul>
 

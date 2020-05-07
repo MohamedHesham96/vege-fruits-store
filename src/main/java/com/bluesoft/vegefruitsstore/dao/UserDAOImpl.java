@@ -187,12 +187,38 @@ public class UserDAOImpl implements UserDAO {
 
 		Session session = entityManager.unwrap(Session.class);
 
-		List<Collect> collectList = 
-				session.createQuery("from Collect where date = :thedate order by date desc")
-				.setParameter("thedate", date)
-				.getResultList();
+		List<Collect> collectList = session.createQuery("from Collect where date = :thedate order by date desc")
+				.setParameter("thedate", date).getResultList();
 
 		return collectList;
+	}
+
+	@Override
+	public List<Balance> getSellerRelay(String sellerName) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		List<Balance> sellerRelayList = session
+				.createQuery("from Balance where seller_name = :theSellerName order by date")
+				.setParameter("theSellerName", sellerName).getResultList();
+
+		return sellerRelayList;
+
+	}
+
+	@Override
+	public HeaderResult getSellerRelayHeader(String sellerName) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		HeaderResult theHeaderResult = (HeaderResult) session
+				.createQuery("select sum(B.counter) as totalCount, sum(B.weight) as totalWeight, "
+						+ "sum(B.totalAmount) as totalAmount, sum(B.cash) as totalCash "
+						+ "FROM Balance B  where seller_name = :theSellerName")
+				.setResultTransformer(new AliasToBeanResultTransformer(HeaderResult.class))
+				.setParameter("theSellerName", sellerName).getSingleResult();
+
+		return theHeaderResult;
 	}
 
 }

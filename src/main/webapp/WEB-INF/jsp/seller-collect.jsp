@@ -35,7 +35,7 @@
 				<li class="bg-dark list-group-item"><form:form metho="POST"
 						action="add-collect" modelAttribute="collect">
 						<input type="hidden" name="sellerId" value="${seller.id}">
-						
+
 						<form:input type="text" path="amount"
 							class="text-center form-control mb-2 col-xs-3"
 							placeholder="ادخل المبلغ"></form:input>
