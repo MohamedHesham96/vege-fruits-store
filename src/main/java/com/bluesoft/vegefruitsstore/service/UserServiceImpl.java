@@ -10,6 +10,7 @@ import com.bluesoft.vegefruitsstore.entity.Balance;
 import com.bluesoft.vegefruitsstore.entity.Collect;
 import com.bluesoft.vegefruitsstore.entity.HeaderResult;
 import com.bluesoft.vegefruitsstore.entity.Master;
+import com.bluesoft.vegefruitsstore.entity.MasterResult;
 import com.bluesoft.vegefruitsstore.entity.Seller;
 
 @Service
@@ -130,6 +131,12 @@ public class UserServiceImpl implements UserService {
 	public void addMaster(int sellerId, String date, float amount) {
 
 		userDAO.addMaster(sellerId, date, amount);
+	}
+
+	@Override
+	public MasterResult getMasterTotals() {
+
+		return userDAO.getMasterTotals();
 	}
 
 }

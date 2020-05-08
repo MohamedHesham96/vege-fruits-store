@@ -26,77 +26,47 @@
 
 	<div style="text-align: right;" class="container">
 
-
-		<div class="card bg-secondary text-white"
-			style="width: 18rem; margin-left: 820px;">
-
-			<div class="card-header text-white font-weight-bold text-center"
-				style="color: #c4c4c4">البحث</div>
-
-			<ul class="list-group list-group-flush">
-
-				<li class="bg-dark list-group-item">
-
-					<form method="GET" action="search-for-seller">
-
-						<input type="text" name="sellerName"
-							class="text-center form-control mb-2 col-xs-3"
-							placeholder="ادخل اسم البائع"> <input type="submit"
-							value="ابحث عن الاسم"
-							class="w-100 btn btn-info font-weight-bold text-center"
-							onclick="this.disabled=true; this.parentNode.submit();">
-
-					</form>
-				</li>
-			</ul>
-
-		</div>
-
-
 		<div class="row  my-4">
-			<div dir='rtl' class=" col-lg-12 col-md-8">
 
-				<div class="table-responsive">
 
-					<table
-						class="table table-bordered table-striped table-sm table-dark">
-						<thead class="thead-inverse">
 
-							<tr class="badge-success">
+			<div style="margin-left: 200px" class="col-sm">
 
-								<td colspan="10" class="font-weight-bold"
-									style="font-size: 22px">[ كشف الاستاذ ]</td>
+				<div class="card text-white bg-success" style="max-width: 18rem;">
+					<div class="card-header">
+						<img style="margin-right: 75px; width: 50px; display: inline"
+							src="icons/commerce-and-shopping.png">
+						<h2 style="display: inline;">التحصيل</h2>
+					</div>
+					<div class="card-body">
+						<h1 class="font-weight-bold card-title">${masterResult.totalCollect}</h1>
 
-							</tr>
-
-							<tr style="font-size: 18px">
-								<th>رقم البائع</th>
-								<th>اسم البائع</th>
-							</tr>
-
-						</thead>
-						<tbody>
-
-							<c:forEach var="tempItem" items="${masterList}">
-
-								<tr>
-									<td style="width: 300px; padding-top: 8px; font-size: 16px"
-										class="text-white font-weight-bold">${tempItem.id}</td>
-
-									<td style="width: 300px; padding-top: 8px; font-size: 16px"
-										class="text-white font-weight-bold">${tempItem.id}</td>
-
-								</tr>
-
-							</c:forEach>
-
-						</tbody>
-
-					</table>
-
+					</div>
 				</div>
+
 			</div>
+
+			<div class="col-sm">
+
+				<div class="card text-white bg-danger" style="max-width: 18rem;">
+					<div class="card-header">
+						<img style="margin-right: 90px; width: 50px; display: inline"
+							src="icons/food-and-restaurant.png">
+						<h2 style="display: inline;">الترحيل</h2>
+					</div>
+					<div class="card-body">
+
+						<h1 class="font-weight-bold card-title">${masterResult.totalCollect}</h1>
+
+
+					</div>
+				</div>
+
+			</div>
+
 		</div>
+
 	</div>
+
 </body>
 </html>

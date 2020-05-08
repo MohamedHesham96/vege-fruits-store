@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bluesoft.vegefruitsstore.entity.Master;
+import com.bluesoft.vegefruitsstore.entity.MasterResult;
 import com.bluesoft.vegefruitsstore.entity.Seller;
 import com.bluesoft.vegefruitsstore.service.UserService;
 
@@ -22,9 +23,11 @@ public class Masters {
 	@RequestMapping("/master")
 	public String getAllMaster(Model theModel) {
 
-		List<Master> masterList = userService.getAllMaster();
-
-		theModel.addAttribute("masterList", masterList);
+		//List<Master> masterList = userService.getAllMaster();
+		
+		MasterResult masterResult = userService.getMasterTotals();
+		
+		theModel.addAttribute("masterResult", masterResult);
 
 		return "master";
 	}

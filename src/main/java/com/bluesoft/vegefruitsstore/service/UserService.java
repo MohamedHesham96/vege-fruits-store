@@ -6,6 +6,7 @@ import com.bluesoft.vegefruitsstore.entity.Balance;
 import com.bluesoft.vegefruitsstore.entity.Collect;
 import com.bluesoft.vegefruitsstore.entity.HeaderResult;
 import com.bluesoft.vegefruitsstore.entity.Master;
+import com.bluesoft.vegefruitsstore.entity.MasterResult;
 import com.bluesoft.vegefruitsstore.entity.Seller;
 
 public interface UserService {
@@ -47,5 +48,7 @@ public interface UserService {
 	public List<Master> getAllMaster();
 
 	public void addMaster(int sellerId, String date, float amount);
+
+	public MasterResult getMasterTotals();
 
 }
