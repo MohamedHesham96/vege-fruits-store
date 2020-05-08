@@ -68,7 +68,7 @@
 											placeholder="ادخل الآجل"></form:input></td>
 
 
-									<td><form:select path="clientName" style="width: 150px;"
+									<td><form:select path="clientName" style="width: 175px;"
 											class="text-center form-control ">
 
 											<c:forEach var="tempItem" items="${clientsList}">
@@ -80,7 +80,7 @@
 
 										</form:select></td>
 
-									<td><form:select path="sellerName" style="width: 150px;"
+									<td><form:select path="sellerName" style="width: 175px;"
 											class="text-center form-control ">
 
 											<c:forEach var="tempItem" items="${sellersList}">
@@ -93,10 +93,8 @@
 										</form:select></td>
 
 
-									<td><form:input type="text" path="casherName"
-											class="text-center form-control "
-											placeholder="ادخل اسم الكاشير"></form:input></td>
-
+									<td><input type="hidden" name="casherName"
+										value="<%=session.getAttribute("casherName")%>"></td>
 
 								</tr>
 

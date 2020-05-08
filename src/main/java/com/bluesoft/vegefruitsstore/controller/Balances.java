@@ -3,6 +3,8 @@ package com.bluesoft.vegefruitsstore.controller;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +24,9 @@ public class Balances {
 	@Autowired
 	UserService userService;
 
+	@Autowired
+	private HttpSession httpSession;
+	
 	@RequestMapping("/balance")
 	public String getAllBalance(Model theModel) {
 
@@ -32,6 +37,8 @@ public class Balances {
 
 		List<Balance> balanceList = userService.getAllBalance();
 
+		httpSession.setAttribute("casherName", "محمد عصام");
+		
 		theModel.addAttribute("balance", new Balance());
 		theModel.addAttribute("sellersList", sellerList);
 		theModel.addAttribute("clientsList", clientsList);
