@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bluesoft.vegefruitsstore.entity.Balance;
+import com.bluesoft.vegefruitsstore.entity.Client;
 import com.bluesoft.vegefruitsstore.entity.HeaderResult;
+import com.bluesoft.vegefruitsstore.entity.Seller;
 import com.bluesoft.vegefruitsstore.service.UserService;
 
 @Controller
@@ -25,11 +27,16 @@ public class Balances {
 
 		List<HeaderResult> theHeaderResult = userService.getBalanceHeader();
 
+		List<Seller> sellerList = userService.getAllSeller();
+		List<Client> clientsList = userService.getAllClients();
+
 		List<Balance> balanceList = userService.getAllBalance();
 
 		theModel.addAttribute("balance", new Balance());
-		theModel.addAttribute("headerResult", theHeaderResult);
+		theModel.addAttribute("sellersList", sellerList);
+		theModel.addAttribute("clientsList", clientsList);
 		theModel.addAttribute("balanceList", balanceList);
+		theModel.addAttribute("headerResult", theHeaderResult);
 
 		return "balance";
 	}

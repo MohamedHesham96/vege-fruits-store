@@ -54,7 +54,7 @@
 			<li style="margin: 5px;" class=""><a
 				class="btn bg-success text-white font-weight-bold"
 				style="font-family: Amiri, sans-serif; padding: 5px; width: 110px"
-				href="collect">الخزنة <img
+				href="collect">الخزنـة <img
 					style="margin-right: 10px; width: 35px; display: inline"
 					src="icons/safe.png">
 			</a></li>
@@ -85,7 +85,7 @@
 			<li style="margin: 5px;" class=""><a
 				class="btn bg-success text-white font-weight-bold"
 				style="font-family: Amiri, sans-serif; padding: 10px; width: 100px"
-				href="sellers">البائعون</a></li>
+				href="sellers">البائعــون</a></li>
 
 
 			<li style="margin-left: 5px; margin-right: 5px">

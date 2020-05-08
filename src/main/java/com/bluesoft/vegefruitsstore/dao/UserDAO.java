@@ -3,6 +3,7 @@ package com.bluesoft.vegefruitsstore.dao;
 import java.util.List;
 
 import com.bluesoft.vegefruitsstore.entity.Balance;
+import com.bluesoft.vegefruitsstore.entity.Client;
 import com.bluesoft.vegefruitsstore.entity.Collect;
 import com.bluesoft.vegefruitsstore.entity.HeaderResult;
 import com.bluesoft.vegefruitsstore.entity.Master;
@@ -50,5 +51,7 @@ public interface UserDAO {
 	public void addMaster(int sellerId, String date, float amount);
 	
 	public MasterResult getMasterTotals();
+	
+	public List<Client> getAllClients();
 
 }

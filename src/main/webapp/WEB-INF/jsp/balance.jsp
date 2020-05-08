@@ -47,45 +47,61 @@
 
 								<tr>
 									<td style="width: 125px"><form:input type="text"
-											path="counter" class="text-center form-control mb-2 col-xs-3"
+											path="counter" class="text-center form-control  "
 											placeholder="ادخل العدد"></form:input></td>
 
 									<td><form:input type="text" path="itemName"
-											class="text-center form-control mb-2 col-xs-3"
+											class="text-center form-control  "
 											placeholder="ادخل اسم الصنف"></form:input></td>
 
 
 									<td style="width: 125px"><form:input type="text"
-											path="weight" class="text-center form-control mb-2 col-xs-3"
+											path="weight" class="text-center form-control  "
 											placeholder="ادخل الوزن"></form:input></td>
 
 									<td style="width: 125px"><form:input type="text"
-											path="kiloPrice"
-											class="text-center form-control mb-2 col-xs-3"
+											path="kiloPrice" class="text-center form-control  "
 											placeholder="ادخل سعر الكيلو"></form:input></td>
 
 									<td style="width: 125px" style="width:"><form:input
-											type="text" path="later"
-											class="text-center form-control mb-2 col-xs-3"
+											type="text" path="later" class="text-center form-control  "
 											placeholder="ادخل الآجل"></form:input></td>
 
-									<td><form:input type="text" path="clientName"
-											class="text-center form-control mb-2 col-xs-3"
-											placeholder="ادخل اسم العميل"></form:input></td>
 
-									<td><form:input type="text" path="sellerName"
-											class="text-center form-control mb-2 col-xs-3"
-											placeholder="ادخل اسم البائع"></form:input></td>
+									<td><form:select path="clientName" style="width: 150px;"
+											class="text-center form-control ">
+
+											<c:forEach var="tempItem" items="${clientsList}">
+
+												<option value="${tempItem.name}">${tempItem.name}</option>
+
+
+											</c:forEach>
+
+										</form:select></td>
+
+									<td><form:select path="sellerName" style="width: 150px;"
+											class="text-center form-control ">
+
+											<c:forEach var="tempItem" items="${sellersList}">
+
+												<option value="${tempItem.name}">${tempItem.name}</option>
+
+
+											</c:forEach>
+
+										</form:select></td>
+
 
 									<td><form:input type="text" path="casherName"
-											class="text-center form-control mb-2 col-xs-3"
+											class="text-center form-control "
 											placeholder="ادخل اسم الكاشير"></form:input></td>
 
 
 								</tr>
 
 								<tr style="text-align: center;">
-									<td colspan="8"><input type="submit" value="اضف الصنف"
+									<td colspan="8"><input type="submit" value="اضف للميزان"
 										class="btn badge-success  
 								 font-weight-bold text-center"
 										style="width: 100%; height: 50px;"

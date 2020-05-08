@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.bluesoft.vegefruitsstore.entity.Balance;
+import com.bluesoft.vegefruitsstore.entity.Client;
 import com.bluesoft.vegefruitsstore.entity.Collect;
 import com.bluesoft.vegefruitsstore.entity.HeaderResult;
 import com.bluesoft.vegefruitsstore.entity.Master;
@@ -285,8 +286,18 @@ public class UserDAOImpl implements UserDAO {
 				.setResultTransformer(new AliasToBeanResultTransformer(MasterResult.class)).getSingleResult();
 
 		theMasterResult.setTotalRelay(theMasterResult2.getTotalRelay());
-		
+
 		return theMasterResult;
+	}
+
+	@Override
+	public List<Client> getAllClients() {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		List<Client> clientList = session.createQuery("from Client order by id").getResultList();
+
+		return clientList;
 	}
 
 }
