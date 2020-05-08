@@ -6,7 +6,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import org.hibernate.Session;
-import org.hibernate.query.Query;
 import org.hibernate.transform.AliasToBeanResultTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -279,9 +278,14 @@ public class UserDAOImpl implements UserDAO {
 
 		MasterResult theMasterResult = (MasterResult) session
 				.createQuery("SELECT sum(C.amount) as totalCollect FROM Collect C")
-				.setResultTransformer(new AliasToBeanResultTransformer(MasterResult.class))
-				.getSingleResult();
+				.setResultTransformer(new AliasToBeanResultTransformer(MasterResult.class)).getSingleResult();
 
+		MasterResult theMasterResult2 = (MasterResult) session
+				.createQuery("SELECT sum(B.totalAmount) as totalRelay FROM Balance B")
+				.setResultTransformer(new AliasToBeanResultTransformer(MasterResult.class)).getSingleResult();
+
+		theMasterResult.setTotalRelay(theMasterResult2.getTotalRelay());
+		
 		return theMasterResult;
 	}
 

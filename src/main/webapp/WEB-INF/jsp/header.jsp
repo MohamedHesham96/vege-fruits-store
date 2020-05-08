@@ -35,7 +35,7 @@
 
 			<li style="margin: 5px;" class=""><a
 				class="btn bg-success text-white font-weight-bold"
-				style="font-family: Amiri, sans-sans-serif; padding: 5px; width: 110px"
+				style="font-family: Amiri, sans-serif; padding: 5px; width: 110px"
 				href="balance"> الميزان <img
 					style="margin-right: 10px; width: 35px; display: inline"
 					src="icons/fruit(2).png">
@@ -95,7 +95,7 @@
 
 			<li style="margin: 5px;"><a
 				class="btn bg-danger text-white font-weight-bold "
-				style="padding: 10px; width: 100px" href="logout">خروج</a></li>
+				style="font-family: Amiri, sans-serif; padding: 10px; width: 100px" href="logout">خروج</a></li>
 
 		</ul>
 

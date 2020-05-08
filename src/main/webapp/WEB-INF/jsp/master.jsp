@@ -34,11 +34,13 @@
 
 				<div class="card text-white bg-success" style="max-width: 18rem;">
 					<div class="card-header">
-						<img style="margin-right: 75px; width: 50px; display: inline"
+						<img style="margin-right: 100px; width: 50px; display: inline"
 							src="icons/commerce-and-shopping.png">
-						<h2 style="display: inline;">التحصيل</h2>
+						<h2 class="font-weight-bold" style="font-family: Amiri, sans-serif; display: inline;">التحصيل</h2>
 					</div>
-					<div class="card-body">
+					<div align="center" class="card-body">
+
+
 						<h1 class="font-weight-bold card-title">${masterResult.totalCollect}</h1>
 
 					</div>
@@ -50,13 +52,13 @@
 
 				<div class="card text-white bg-danger" style="max-width: 18rem;">
 					<div class="card-header">
-						<img style="margin-right: 90px; width: 50px; display: inline"
+						<img style="margin-right: 110px; width: 50px; display: inline"
 							src="icons/food-and-restaurant.png">
-						<h2 style="display: inline;">الترحيل</h2>
+						<h2 class="font-weight-bold" style="font-family: Amiri, sans-serif; display: inline">الترحيل</h2>
 					</div>
-					<div class="card-body">
+					<div align="center" class="card-body">
 
-						<h1 class="font-weight-bold card-title">${masterResult.totalCollect}</h1>
+						<h1 class="font-weight-bold card-title">${masterResult.totalRelay}</h1>
 
 
 					</div>
