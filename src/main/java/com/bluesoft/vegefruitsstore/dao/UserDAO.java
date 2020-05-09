@@ -63,4 +63,6 @@ public interface UserDAO {
 	
 	public List<Casher> getAllCasher();
 
+	public List<Client> searchForClientByName(String clientName);
+
 }

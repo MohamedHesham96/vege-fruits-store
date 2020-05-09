@@ -63,4 +63,6 @@ public interface UserService {
 
 	public List<Casher> getAllCasher();
 
+	public List<Client> searchForClientByName(String clientName);
+
 }

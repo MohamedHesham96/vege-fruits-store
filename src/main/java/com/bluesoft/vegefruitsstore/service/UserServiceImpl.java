@@ -171,4 +171,11 @@ public class UserServiceImpl implements UserService {
 		return userDAO.getAllCasher();
 	}
 
+	@Override
+	public List<Client> searchForClientByName(String clientName) {
+
+		return userDAO.searchForClientByName(clientName);
+	}
+
+
 }

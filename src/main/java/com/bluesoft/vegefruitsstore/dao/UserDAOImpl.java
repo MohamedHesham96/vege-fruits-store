@@ -368,9 +368,20 @@ public class UserDAOImpl implements UserDAO {
 
 		Session session = entityManager.unwrap(Session.class);
 
-		List<Casher> casherList = session.createQuery("from Casher  order by id").getResultList();
+		List<Casher> casherList = session.createQuery("from Casher order by id").getResultList();
 
 		return casherList;
 
+	}
+
+	@Override
+	public List<Client> searchForClientByName(String clientName) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		List<Client> clientList = session.createQuery("from Client where name like :theClientName")
+				.setParameter("theClientName", "%" + clientName + "%").getResultList();
+
+		return clientList;
 	}
 }

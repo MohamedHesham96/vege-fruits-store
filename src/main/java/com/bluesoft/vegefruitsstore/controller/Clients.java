@@ -29,6 +29,19 @@ public class Clients {
 		return "clients-list";
 	}
 
+	@RequestMapping("/search-for-clients")
+	public String searchForClientByName(@RequestParam(name = "clientName") String clientName, Model theModel) {
+
+		List<Client> clientList = userService.searchForClientByName(clientName);
+
+		theModel.addAttribute("clientList", clientList);
+
+		return "clients-list";
+	}
+
+	
+	
+	
 	
 	
 	
@@ -51,16 +64,6 @@ public class Clients {
 		theModel.addAttribute("seller", theSeller);
 
 		return "seller-profile";
-	}
-
-	@RequestMapping("/search-for-client")
-	public String searchForClientByName(@RequestParam(name = "sellerName") String clientName, Model theModel) {
-
-		List<Seller> theSellerList = userService.searchForSellerByName(clientName);
-
-		theModel.addAttribute("sellerList", theSellerList);
-
-		return "master";
 	}
 
 	@RequestMapping("/add-client")
