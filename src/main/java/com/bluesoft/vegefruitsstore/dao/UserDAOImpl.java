@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.bluesoft.vegefruitsstore.entity.Balance;
+import com.bluesoft.vegefruitsstore.entity.Casher;
 import com.bluesoft.vegefruitsstore.entity.Client;
 import com.bluesoft.vegefruitsstore.entity.Collect;
 import com.bluesoft.vegefruitsstore.entity.HeaderResult;
@@ -52,7 +53,7 @@ public class UserDAOImpl implements UserDAO {
 				.createQuery("select sum(B.counter) as totalCount, sum(B.weight) as totalWeight, "
 						+ "sum(B.cash) as totalCash," + "sum(B.later) as totalLater, "
 						+ "sum(B.totalAmount) as totalAmount, "
-						+ "B.itemName as itemName, B.clientName as clientName FROM Balance B GROUP BY clientName, itemName order by clientName, itemName")
+						+ "B.itemName as itemName, B.client.name as clientName FROM Balance B GROUP BY clientName, itemName order by clientName, itemName")
 				.setResultTransformer(new AliasToBeanResultTransformer(HeaderResult.class)).getResultList();
 
 		return theHeaderResult;
@@ -75,7 +76,7 @@ public class UserDAOImpl implements UserDAO {
 
 		List<HeaderResult> theHeaderResult = session
 				.createQuery("select sum(B.counter) as totalCount, sum(B.weight) as totalWeight, "
-						+ "sum(B.totalAmount) as totalAmount, sum(B.cash) as totalCash, B.sellerName as sellerName "
+						+ "sum(B.totalAmount) as totalAmount, sum(B.cash) as totalCash, B.seller.name as sellerName "
 						+ "FROM Balance B GROUP BY sellerName order by sellerName")
 				.setResultTransformer(new AliasToBeanResultTransformer(HeaderResult.class)).getResultList();
 
@@ -90,8 +91,8 @@ public class UserDAOImpl implements UserDAO {
 		HeaderResult theHeaderResult = (HeaderResult) session
 				.createQuery("select sum(B.counter) as totalCount, sum(B.weight) as totalWeight, "
 						+ "sum(B.totalAmount) as totalAmount, sum(B.cash) as totalCash, "
-						+ "B.sellerName as sellerName, B.casherName as casherName "
-						+ "FROM Balance B where casherName = :theCasherName GROUP BY casherName order by date")
+						+ "B.seller.name as sellerName, B.casher.name as casherName "
+						+ "FROM Balance B where B.casher.name = :theCasherName GROUP BY casherName order by date")
 				.setParameter("theCasherName", casherName)
 				.setResultTransformer(new AliasToBeanResultTransformer(HeaderResult.class)).getSingleResult();
 
@@ -103,7 +104,8 @@ public class UserDAOImpl implements UserDAO {
 
 		Session session = entityManager.unwrap(Session.class);
 
-		List<Balance> casherList = session.createQuery("from Balance where casherName = :theCasherName order by date")
+		List<Balance> casherList = session
+				.createQuery("from Balance B where B.casher.name = :theCasherName order by date")
 				.setParameter("theCasherName", casherName).getResultList();
 
 		return casherList;
@@ -115,7 +117,7 @@ public class UserDAOImpl implements UserDAO {
 		Session session = entityManager.unwrap(Session.class);
 
 		List<Balance> casherList = session
-				.createQuery("from Balance where casherName = :theCasherName and date = :theDate order by date")
+				.createQuery("from Balance B where B.casher.name = :theCasherName and date = :theDate order by date")
 				.setParameter("theCasherName", casherName).setParameter("theDate", date).getResultList();
 
 		return casherList;
@@ -126,15 +128,24 @@ public class UserDAOImpl implements UserDAO {
 
 		Session session = entityManager.unwrap(Session.class);
 
-		HeaderResult theHeaderResult = (HeaderResult) session
+		List<HeaderResult> headerResultList = session
 				.createQuery("select sum(B.counter) as totalCount, sum(B.weight) as totalWeight, "
 						+ "sum(B.totalAmount) as totalAmount, sum(B.cash) as totalCash, "
-						+ "B.sellerName as sellerName, B.casherName as casherName "
-						+ "FROM Balance B where casherName = :theCasherName and date = :theDate GROUP BY casherName order by date")
+						+ "B.seller.name as sellerName, B.casher.name as casherName "
+						+ "FROM Balance B where B.casher.name = :theCasherName and date = :theDate GROUP BY casherName order by date")
 				.setParameter("theCasherName", casherName).setParameter("theDate", date)
-				.setResultTransformer(new AliasToBeanResultTransformer(HeaderResult.class)).getSingleResult();
+				.setResultTransformer(new AliasToBeanResultTransformer(HeaderResult.class)).getResultList();
 
-		return theHeaderResult;
+		if (!headerResultList.isEmpty()) {
+
+			return headerResultList.get(0);
+
+		} else {
+
+			return new HeaderResult();
+
+		}
+
 	}
 
 	@Override
@@ -217,7 +228,7 @@ public class UserDAOImpl implements UserDAO {
 
 		HeaderResult theHeaderResult = (HeaderResult) session
 				.createQuery("select sum(B.counter) as totalCount, sum(B.weight) as totalWeight, "
-						+ "sum(B.totalAmount) as totalAmount, sum(B.cash) as totalCash, B.sellerName as  sellerName "
+						+ "sum(B.totalAmount) as totalAmount, sum(B.cash) as totalCash, B.seller.name as sellerName "
 						+ "FROM Balance B  where seller_name = :theSellerName")
 				.setResultTransformer(new AliasToBeanResultTransformer(HeaderResult.class))
 				.setParameter("theSellerName", sellerName).getSingleResult();
@@ -237,7 +248,7 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	@Transactional
-	public void addMaster(int sellerId, String date, float amount) {
+	public void updateMaster(int sellerId, String date, float amount) {
 
 		Session session = entityManager.unwrap(Session.class);
 
@@ -298,6 +309,37 @@ public class UserDAOImpl implements UserDAO {
 		List<Client> clientList = session.createQuery("from Client order by id").getResultList();
 
 		return clientList;
+	}
+
+	@Override
+	public Casher getCasher(int id) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		Casher casher = session.get(Casher.class, id);
+
+		return casher;
+
+	}
+
+	@Override
+	public Client getClient(int id) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		Client client = session.get(Client.class, id);
+
+		return client;
+	}
+
+	@Override
+	public Seller getSeller(int id) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		Seller seller = session.get(Seller.class, id);
+
+		return seller;
 	}
 
 }

@@ -38,7 +38,9 @@ public class Balances {
 		List<Balance> balanceList = userService.getAllBalance();
 
 		httpSession.setAttribute("loginCasherName", "محمد عصام");
-
+		httpSession.setAttribute("loginCasherId", "1");
+		
+		System.out.println(balanceList.get(0).getCasher().getName());
 		theModel.addAttribute("balance", new Balance());
 		theModel.addAttribute("sellersList", sellerList);
 		theModel.addAttribute("clientsList", clientsList);
@@ -49,15 +51,23 @@ public class Balances {
 	}
 
 	@RequestMapping("/add-balance")
-	public String getAllBalance(@ModelAttribute(name = "balance") Balance theBalance) {
+	public String getAllBalance(@RequestParam("clientId") int clientId, @RequestParam("sellerId") int sellerId,
+			@ModelAttribute("balance") Balance theBalance) {
+
+		// get casher id from the session
+		int casherId = Integer.parseInt(httpSession.getAttribute("loginCasherId").toString());
 
 		theBalance.setDate(LocalDate.now().toString());
 
 		theBalance.setTotalAmount(theBalance.getWeight() * theBalance.getKiloPrice());
-		
-		theBalance.setCasherName(httpSession.getAttribute("loginCasherName").toString());
-		
+
+		theBalance.setCasher(userService.getCasher(casherId));
+		theBalance.setClient(userService.getClient(clientId));
+		theBalance.setSeller(userService.getSeller(sellerId));
+
 		userService.saveBalance(theBalance);
+
+		//userService.updateMaster(theBalance.getSeller().getId(), theBalance.getDate(), theBalance.getLater());
 
 		return "redirect:/balance";
 	}

@@ -25,6 +25,9 @@ public class Seller {
 	@Pattern(regexp = "[ ء-ي]+", message = "ادخل الاسم بشكل صحيح")
 	String name;
 
+	@OneToMany(mappedBy = "casher", fetch = FetchType.LAZY)
+	private List<Balance> balances;
+
 	@OneToMany(mappedBy = "seller", fetch = FetchType.LAZY)
 	private List<Collect> collects;
 

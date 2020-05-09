@@ -68,33 +68,27 @@
 											placeholder="ادخل الآجل"></form:input></td>
 
 
-									<td><form:select path="clientName" style="width: 175px;"
-											class="text-center form-control ">
+									<td><select name="clientId" style="width: 175px;"
+										class="text-center form-control ">
 
 											<c:forEach var="tempItem" items="${clientsList}">
 
-												<option value="${tempItem.name}">${tempItem.name}</option>
-
+												<option value="${tempItem.id}">${tempItem.name}</option>
 
 											</c:forEach>
 
-										</form:select></td>
+									</select></td>
 
-									<td><form:select path="sellerName" style="width: 175px;"
-											class="text-center form-control ">
+									<td><select name="sellerId" style="width: 175px;"
+										class="text-center form-control ">
 
 											<c:forEach var="tempItem" items="${sellersList}">
 
-												<option value="${tempItem.name}">${tempItem.name}</option>
-
+												<option value="${tempItem.id}">${tempItem.name}</option>
 
 											</c:forEach>
 
-										</form:select></td>
-
-
-									<td><input type="hidden" name="casherName"
-										value="<%=session.getAttribute("casherName")%>"></td>
+									</select></td>
 
 								</tr>
 
@@ -157,7 +151,7 @@
 							<tbody>
 								<c:forEach var="tempItem" items="${balanceList}">
 									<c:if
-										test="${tempItem.clientName == headerTemp.clientName && tempItem.itemName == headerTemp.itemName }">
+										test="${tempItem.client.name == headerTemp.clientName && tempItem.itemName == headerTemp.itemName }">
 
 										<tr>
 											<%-- 											<td>${tempItem.itemName}</td> --%>
@@ -166,8 +160,8 @@
 											<td>${tempItem.kiloPrice}</td>
 											<td>${tempItem.later}</td>
 											<td>${tempItem.totalAmount}</td>
-											<td>${tempItem.sellerName}</td>
-											<td>${tempItem.casherName}</td>
+											<td>${tempItem.seller.name}</td>
+											<td>${tempItem.casher.name}</td>
 											<td>${tempItem.date}</td>
 
 											<td style="width: 160px"><a

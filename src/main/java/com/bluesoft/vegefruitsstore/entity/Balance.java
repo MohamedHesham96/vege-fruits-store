@@ -1,10 +1,14 @@
 package com.bluesoft.vegefruitsstore.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Pattern;
 
@@ -38,16 +42,20 @@ public class Balance {
 	@Column(name = "total_amount")
 	float totalAmount;
 
-	@Column(name = "client_name")
-	@Pattern(regexp = "[ ء-ي]+", message = "ادخل الاسم بشكل صحيح")
-	String clientName;
+	@ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.DETACH, CascadeType.PERSIST, CascadeType.MERGE,
+			CascadeType.REFRESH })
+	@JoinColumn(name = "client_id")
+	private Client client;
 
-	@Column(name = "casher_name")
-	String casherName;
+	@ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.DETACH, CascadeType.PERSIST, CascadeType.MERGE,
+			CascadeType.REFRESH })
+	@JoinColumn(name = "casher_id")
+	private Casher casher;
 
-	@Column(name = "seller_name")
-	@Pattern(regexp = "[ ء-ي]+", message = "ادخل الاسم بشكل صحيح")
-	String sellerName;
+	@ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.DETACH, CascadeType.PERSIST, CascadeType.MERGE,
+			CascadeType.REFRESH })
+	@JoinColumn(name = "seller_id")
+	private Seller seller;
 
 	@Column(name = "date")
 	String date;
@@ -58,6 +66,30 @@ public class Balance {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
+	public Casher getCasher() {
+		return casher;
+	}
+
+	public void setCasher(Casher casher) {
+		this.casher = casher;
+	}
+
+	public Seller getSeller() {
+		return seller;
+	}
+
+	public void setSeller(Seller seller) {
+		this.seller = seller;
 	}
 
 	public String getItemName() {
@@ -114,30 +146,6 @@ public class Balance {
 
 	public void setTotalAmount(float totalAmount) {
 		this.totalAmount = totalAmount;
-	}
-
-	public String getClientName() {
-		return clientName;
-	}
-
-	public void setClientName(String clientName) {
-		this.clientName = clientName;
-	}
-
-	public String getCasherName() {
-		return casherName;
-	}
-
-	public void setCasherName(String casherName) {
-		this.casherName = casherName;
-	}
-	
-	public String getSellerName() {
-		return sellerName;
-	}
-
-	public void setSellerName(String sellerName) {
-		this.sellerName = sellerName;
 	}
 
 	public String getDate() {

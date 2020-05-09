@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.bluesoft.vegefruitsstore.dao.UserDAO;
 import com.bluesoft.vegefruitsstore.entity.Balance;
+import com.bluesoft.vegefruitsstore.entity.Casher;
 import com.bluesoft.vegefruitsstore.entity.Client;
 import com.bluesoft.vegefruitsstore.entity.Collect;
 import com.bluesoft.vegefruitsstore.entity.HeaderResult;
@@ -129,9 +130,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void addMaster(int sellerId, String date, float amount) {
+	public void updateMaster(int sellerId, String date, float amount) {
 
-		userDAO.addMaster(sellerId, date, amount);
+		userDAO.updateMaster(sellerId, date, amount);
 	}
 
 	@Override
@@ -144,6 +145,24 @@ public class UserServiceImpl implements UserService {
 	public List<Client> getAllClients() {
 
 		return userDAO.getAllClients();
+	}
+
+	@Override
+	public Casher getCasher(int id) {
+
+		return userDAO.getCasher(id);
+	}
+
+	@Override
+	public Client getClient(int id) {
+
+		return userDAO.getClient(id);
+	}
+
+	@Override
+	public Seller getSeller(int id) {
+
+		return userDAO.getSeller(id);
 	}
 
 }

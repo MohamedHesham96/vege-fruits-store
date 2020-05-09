@@ -3,6 +3,7 @@ package com.bluesoft.vegefruitsstore.service;
 import java.util.List;
 
 import com.bluesoft.vegefruitsstore.entity.Balance;
+import com.bluesoft.vegefruitsstore.entity.Casher;
 import com.bluesoft.vegefruitsstore.entity.Client;
 import com.bluesoft.vegefruitsstore.entity.Collect;
 import com.bluesoft.vegefruitsstore.entity.HeaderResult;
@@ -48,10 +49,16 @@ public interface UserService {
 
 	public List<Master> getAllMaster();
 
-	public void addMaster(int sellerId, String date, float amount);
+	public void updateMaster(int sellerId, String date, float amount);
 
 	public MasterResult getMasterTotals();
 
 	public List<Client> getAllClients();
+
+	public Casher getCasher(int id);
+
+	public Client getClient(int id);
+
+	public Seller getSeller(int id);
 
 }

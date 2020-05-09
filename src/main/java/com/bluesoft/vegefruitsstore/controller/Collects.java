@@ -66,7 +66,7 @@ public class Collects {
 
 		userService.addCollect(collect);
 
-		userService.addMaster(collect.getSeller().getId(), collect.getDate(), collect.getAmount());
+		userService.updateMaster(collect.getSeller().getId(), collect.getDate(), collect.getAmount());
 
 		theModel.addAttribute("seller", theSeller);
 

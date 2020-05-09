@@ -67,7 +67,7 @@
 							</thead>
 							<tbody>
 								<c:forEach var="tempItem" items="${relayList}">
-									<c:if test="${tempItem.sellerName == headerTemp.sellerName}">
+									<c:if test="${tempItem.seller.name == headerTemp.sellerName}">
 
 										<tr>
 											<td>${tempItem.itemName}</td>
@@ -75,7 +75,7 @@
 											<td>${tempItem.weight}</td>
 											<td>${tempItem.kiloPrice}</td>
 											<td>${tempItem.totalAmount}</td>
-											<td>${tempItem.casherName}</td>
+											<td>${tempItem.casher.name}</td>
 											<td>${tempItem.date}</td>
 
 										</tr>
