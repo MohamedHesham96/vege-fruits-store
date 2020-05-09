@@ -60,5 +60,7 @@ public interface UserDAO {
 	public Client getClient(int id);
 
 	public Seller getSeller(int id);
+	
+	public List<Casher> getAllCasher();
 
 }

@@ -29,12 +29,16 @@
 		<div class="row my-4">
 			<div dir='rtl' class=" col-lg-12 col-md-8">
 
-				<a style="font-size: 25px;"
-					class="btn btn-dark text-wight font-weight-bold"
-					href="casher?casherName=محمد عصام">محمد عصام</a> <a
-					style="font-size: 25px;"
-					class="btn btn-dark text-wight font-weight-bold"
-					href="casher?casherName=احمد رجب"> احمد رجب</a>
+				<c:forEach var="tempItem" items="${casherList}">
+
+					<a style="font-size: 25px;"
+						class="btn btn-dark text-wight font-weight-bold"
+						href="casher?casherName=${tempItem.name}"> ${tempItem.name}</a>
+
+				</c:forEach>
+
+
+
 
 				<c:forEach var="headerTemp" items="${headerResult}">
 

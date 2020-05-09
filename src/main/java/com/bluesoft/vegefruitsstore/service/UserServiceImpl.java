@@ -165,4 +165,10 @@ public class UserServiceImpl implements UserService {
 		return userDAO.getSeller(id);
 	}
 
+	@Override
+	public List<Casher> getAllCasher() {
+
+		return userDAO.getAllCasher();
+	}
+
 }

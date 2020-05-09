@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bluesoft.vegefruitsstore.entity.Balance;
+import com.bluesoft.vegefruitsstore.entity.Casher;
 import com.bluesoft.vegefruitsstore.entity.HeaderResult;
 import com.bluesoft.vegefruitsstore.service.UserService;
 
@@ -25,8 +26,10 @@ public class Relays {
 
 		List<Balance> relayList = userService.getAllBalance();
 
-		theModel.addAttribute("headerResult", theHeaderResult);
+		List<Casher> casherList = userService.getAllCasher();
 
+		theModel.addAttribute("headerResult", theHeaderResult);
+		theModel.addAttribute("casherList", casherList);
 		theModel.addAttribute("relayList", relayList);
 
 		return "relay";

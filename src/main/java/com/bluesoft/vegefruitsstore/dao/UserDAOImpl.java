@@ -314,7 +314,7 @@ public class UserDAOImpl implements UserDAO {
 				.setResultTransformer(new AliasToBeanResultTransformer(MasterResult.class)).getSingleResult();
 
 		MasterResult theMasterResult2 = (MasterResult) session
-				.createQuery("SELECT sum(B.totalAmount) as totalRelay FROM Balance B")
+				.createQuery("SELECT sum(B.later) as totalRelay FROM Balance B")
 				.setResultTransformer(new AliasToBeanResultTransformer(MasterResult.class)).getSingleResult();
 
 		theMasterResult.setTotalRelay(theMasterResult2.getTotalRelay());
@@ -363,4 +363,14 @@ public class UserDAOImpl implements UserDAO {
 		return seller;
 	}
 
+	@Override
+	public List<Casher> getAllCasher() {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		List<Casher> casherList = session.createQuery("from Casher  order by id").getResultList();
+
+		return casherList;
+
+	}
 }

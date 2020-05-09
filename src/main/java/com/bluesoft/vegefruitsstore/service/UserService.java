@@ -61,4 +61,6 @@ public interface UserService {
 
 	public Seller getSeller(int id);
 
+	public List<Casher> getAllCasher();
+
 }
