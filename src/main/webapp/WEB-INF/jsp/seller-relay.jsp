@@ -66,7 +66,7 @@
 									<td>${tempItem.weight}</td>
 									<td>${tempItem.kiloPrice}</td>
 									<td>${tempItem.totalAmount}</td>
-									<td>${tempItem.casherName}</td>
+									<td>${tempItem.casher.name}</td>
 									<td>${tempItem.date}</td>
 
 								</tr>
