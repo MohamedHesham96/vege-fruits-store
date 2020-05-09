@@ -29,6 +29,7 @@ public class Relays {
 		List<Casher> casherList = userService.getAllCasher();
 
 		theModel.addAttribute("headerResult", theHeaderResult);
+		
 		theModel.addAttribute("casherList", casherList);
 		theModel.addAttribute("relayList", relayList);
 

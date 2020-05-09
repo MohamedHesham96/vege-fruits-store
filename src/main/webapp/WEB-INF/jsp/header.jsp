@@ -80,7 +80,7 @@
 			<li style="margin: 5px;" class=""><a
 				class="btn bg-success text-white font-weight-bold"
 				style="font-family: Amiri, sans-serif; padding: 10px; width: 100px"
-				href="sellers">العمــلاء</a></li>
+				href="clients">العمــلاء</a></li>
 
 
 			<li style="margin: 5px;" class=""><a
