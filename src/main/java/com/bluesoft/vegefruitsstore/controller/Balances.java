@@ -26,7 +26,7 @@ public class Balances {
 
 	@Autowired
 	private HttpSession httpSession;
-	
+
 	@RequestMapping("/balance")
 	public String getAllBalance(Model theModel) {
 
@@ -37,8 +37,8 @@ public class Balances {
 
 		List<Balance> balanceList = userService.getAllBalance();
 
-		httpSession.setAttribute("casherName", "محمد عصام");
-		
+		httpSession.setAttribute("loginCasherName", "محمد عصام");
+
 		theModel.addAttribute("balance", new Balance());
 		theModel.addAttribute("sellersList", sellerList);
 		theModel.addAttribute("clientsList", clientsList);
@@ -53,8 +53,10 @@ public class Balances {
 
 		theBalance.setDate(LocalDate.now().toString());
 
-		theBalance.setTotalAmount(theBalance.getCash() + theBalance.getLater());
-
+		theBalance.setTotalAmount(theBalance.getWeight() * theBalance.getKiloPrice());
+		
+		theBalance.setCasherName(httpSession.getAttribute("loginCasherName").toString());
+		
 		userService.saveBalance(theBalance);
 
 		return "redirect:/balance";

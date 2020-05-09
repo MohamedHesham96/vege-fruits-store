@@ -22,10 +22,13 @@
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
 
-			<!-- 			<li style="margin: 5px;" class=""><a -->
-			<!-- 				class="btn bg-light text-dark font-weight-bold" -->
-			<%-- 				style="padding: 10px;" href="today">اليوم | <%=LocalDate.now().toString()%> --%>
-			<!-- 			</a></li> -->
+			<li style="margin: 5px;" class=""><a
+				class="btn bg-warning text-dark  font-weight-bold"
+				style="font-size: 20px; font-family: Amiri, sans-serif; padding: 5px;"
+				href="balance"> <img
+					style="margin-left: 5px; width: 35px; display: inline"
+					src="icons/professions-and-jobs.png"> <%=session.getAttribute("loginCasherName")%>
+			</a></li>
 
 
 			<li style="margin-left: 5px; margin-right: 5px">
@@ -36,7 +39,7 @@
 			<li style="margin: 5px;" class=""><a
 				class="btn bg-success text-white font-weight-bold"
 				style="font-family: Amiri, sans-serif; padding: 5px; width: 110px"
-				href="balance"> الميزان <img
+				href="balance"> الميـزان <img
 					style="margin-right: 10px; width: 35px; display: inline"
 					src="icons/fruit(2).png">
 			</a></li>
@@ -45,7 +48,7 @@
 			<li style="margin: 5px;" class=""><a
 				class="btn bg-success text-white font-weight-bold"
 				style="font-family: Amiri, sans-serif; padding: 5px; width: 110px"
-				href="relay"> الترحيل <img
+				href="relay"> الترحيـل <img
 					style="margin-right: 10px; width: 35px; display: inline"
 					src="icons/food-and-restaurant.png">
 			</a></li>
@@ -54,7 +57,7 @@
 			<li style="margin: 5px;" class=""><a
 				class="btn bg-success text-white font-weight-bold"
 				style="font-family: Amiri, sans-serif; padding: 5px; width: 110px"
-				href="collect">الخزنـة <img
+				href="collect">الخـزنـة <img
 					style="margin-right: 10px; width: 35px; display: inline"
 					src="icons/safe.png">
 			</a></li>
@@ -63,23 +66,21 @@
 			<li style="margin: 5px;" class=""><a
 				class="btn bg-success text-white font-weight-bold"
 				style="font-family: Amiri, sans-serif; padding: 5px; width: 110px"
-				href="master">الاستاذ <img
+				href="master">الاستـاذ <img
 					style="margin-right: 10px; width: 35px; display: inline"
 					src="icons/master.png">
 			</a></li>
 
 
-			<li style="margin: 5px;" class=""><a
-				class="btn bg-success text-white font-weight-bold"
-				style="font-family: Amiri, sans-serif; padding-top: 5px; padding-buttom: 5px; width: 110px"
-				href="clients">الطماطم <img
-					style="margin-right:; width: 35px; display: inline"
-					src="icons/tomatoes.png">
-			</a></li>
-
 			<li style="margin-left: 5px; margin-right: 5px">
 				<h1 class="text-white">|</h1>
 			</li>
+
+
+			<li style="margin: 5px;" class=""><a
+				class="btn bg-success text-white font-weight-bold"
+				style="font-family: Amiri, sans-serif; padding: 10px; width: 100px"
+				href="sellers">العمــلاء</a></li>
 
 
 			<li style="margin: 5px;" class=""><a
@@ -93,9 +94,10 @@
 			</li>
 
 
-			<li style="margin: 5px;"><a
-				class="btn bg-danger text-white font-weight-bold "
-				style="font-family: Amiri, sans-serif; padding: 10px; width: 100px" href="logout">خروج</a></li>
+			<li style="margin: 5px;" class=""><a
+				class="btn bg-danger text-white font-weight-bold"
+				style="font-family: Amiri, sans-serif; padding: 10px;">خروج</a></li>
+
 
 		</ul>
 
@@ -108,7 +110,3 @@
 <br>
 <br>
 <br>
-
-
-
-
