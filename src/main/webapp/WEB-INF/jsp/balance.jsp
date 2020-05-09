@@ -37,7 +37,7 @@
 									<th>الصنف</th>
 									<th>الوزن</th>
 									<th>سعر الكيلو</th>
-									<th>آجل</th>
+									<th>نقدي</th>
 									<th>اسم العميل</th>
 									<th>اسم البائع</th>
 								</tr>
@@ -64,8 +64,8 @@
 											placeholder="ادخل سعر الكيلو"></form:input></td>
 
 									<td style="width: 125px" style="width:"><form:input
-											type="text" path="later" class="text-center form-control  "
-											placeholder="ادخل الآجل"></form:input></td>
+											type="text" path="cash" class="text-center form-control  "
+											placeholder="ادخل النقدي"></form:input></td>
 
 
 									<td><select name="clientId" style="width: 175px;"

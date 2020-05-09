@@ -60,13 +60,27 @@ public class Balances {
 
 		theBalance.setTotalAmount(theBalance.getWeight() * theBalance.getKiloPrice());
 
+		theBalance.setLater(theBalance.getWeight() * theBalance.getKiloPrice() - theBalance.getCash());
+
+		theBalance.setCash(theBalance.getCash());
+
 		theBalance.setCasher(userService.getCasher(casherId));
 		theBalance.setClient(userService.getClient(clientId));
 		theBalance.setSeller(userService.getSeller(sellerId));
 
 		userService.saveBalance(theBalance);
 
-		userService.updateMaster(sellerId, theBalance.getDate(), theBalance.getLater(), "relay");
+		if (theBalance.getCash() != theBalance.getTotalAmount()) {
+
+			userService.updateMaster(sellerId, theBalance.getDate(), theBalance.getTotalAmount(), "relay");
+
+			userService.updateMaster(sellerId, theBalance.getDate(), theBalance.getCash(), "collect");
+
+		} else if (theBalance.getCash() == 0) {
+
+			userService.updateMaster(sellerId, theBalance.getDate(), theBalance.getTotalAmount(), "relay");
+
+		}
 
 		return "redirect:/balance";
 	}

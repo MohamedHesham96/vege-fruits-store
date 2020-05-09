@@ -139,7 +139,7 @@ public class UserDAOImpl implements UserDAO {
 		Session session = entityManager.unwrap(Session.class);
 
 		List<Balance> casherList = session
-				.createQuery("from Balance B where B.casher.name = :theCasherName order by date")
+				.createQuery("from Balance B where B.casher.name = :theCasherName order by date desc")
 				.setParameter("theCasherName", casherName).getResultList();
 
 		return casherList;
