@@ -139,7 +139,7 @@ public class UserDAOImpl implements UserDAO {
 		Session session = entityManager.unwrap(Session.class);
 
 		List<Balance> casherList = session
-				.createQuery("from Balance B where B.casher.name = :theCasherName order by date desc")
+				.createQuery("from Balance B where  B.casher.name = :theCasherName order by date desc")
 				.setParameter("theCasherName", casherName).getResultList();
 
 		return casherList;
@@ -223,7 +223,8 @@ public class UserDAOImpl implements UserDAO {
 		Session session = entityManager.unwrap(Session.class);
 
 		List<Balance> sellerRelayList = session
-				.createQuery("from Balance B where B.seller.name = :theSellerName order by date")
+				.createQuery(
+						"from Balance B where B.cash != B.totalAmount and B.seller.name = :theSellerName order by date")
 				.setParameter("theSellerName", sellerName).getResultList();
 
 		return sellerRelayList;
@@ -238,7 +239,7 @@ public class UserDAOImpl implements UserDAO {
 		HeaderResult theHeaderResult = (HeaderResult) session
 				.createQuery("select sum(B.counter) as totalCount, sum(B.weight) as totalWeight, "
 						+ "sum(B.totalAmount) as totalAmount, sum(B.cash) as totalCash, B.seller.name as sellerName "
-						+ "FROM Balance B  where B.seller.name  = :theSellerName")
+						+ "FROM Balance B  where B.cash != B.totalAmount and B.seller.name  = :theSellerName")
 				.setResultTransformer(new AliasToBeanResultTransformer(HeaderResult.class))
 				.setParameter("theSellerName", sellerName).getSingleResult();
 

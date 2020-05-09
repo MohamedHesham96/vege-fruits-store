@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bluesoft.vegefruitsstore.entity.Balance;
 import com.bluesoft.vegefruitsstore.entity.Client;
+import com.bluesoft.vegefruitsstore.entity.Collect;
 import com.bluesoft.vegefruitsstore.entity.HeaderResult;
 import com.bluesoft.vegefruitsstore.entity.Seller;
 import com.bluesoft.vegefruitsstore.service.UserService;
@@ -76,7 +77,17 @@ public class Balances {
 
 			userService.updateMaster(sellerId, theBalance.getDate(), theBalance.getCash(), "collect");
 
-		} else if (theBalance.getCash() == 0) {
+			userService.addCollect(
+					new Collect(userService.getSeller(sellerId), theBalance.getCash(), theBalance.getDate()));
+
+		} else if (theBalance.getCash() == theBalance.getTotalAmount()) {
+
+			userService.addCollect(
+					new Collect(userService.getSeller(sellerId), theBalance.getCash(), theBalance.getDate()));
+
+		}
+
+		else if (theBalance.getCash() == 0) {
 
 			userService.updateMaster(sellerId, theBalance.getDate(), theBalance.getTotalAmount(), "relay");
 

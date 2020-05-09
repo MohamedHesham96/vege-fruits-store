@@ -30,6 +30,17 @@ public class Collect {
 	@Column(name = "date")
 	String date;
 
+	public Collect() {
+
+	}
+
+	public Collect(Seller seller, float amount, String date) {
+
+		this.seller = seller;
+		this.amount = amount;
+		this.date = date;
+	}
+
 	public int getId() {
 		return id;
 	}
