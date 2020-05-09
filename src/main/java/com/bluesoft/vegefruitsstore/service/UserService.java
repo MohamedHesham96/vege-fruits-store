@@ -49,7 +49,7 @@ public interface UserService {
 
 	public List<Master> getAllMaster();
 
-	public void updateMaster(int sellerId, String date, float amount);
+	public void updateMaster(int sellerId, String date, float amount, String operation);
 
 	public MasterResult getMasterTotals();
 

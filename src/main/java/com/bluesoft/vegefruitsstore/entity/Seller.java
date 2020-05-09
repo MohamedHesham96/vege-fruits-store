@@ -25,7 +25,7 @@ public class Seller {
 	@Pattern(regexp = "[ ء-ي]+", message = "ادخل الاسم بشكل صحيح")
 	String name;
 
-	@OneToMany(mappedBy = "casher", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "seller", fetch = FetchType.LAZY)
 	private List<Balance> balances;
 
 	@OneToMany(mappedBy = "seller", fetch = FetchType.LAZY)
@@ -49,6 +49,14 @@ public class Seller {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public List<Balance> getBalances() {
+		return balances;
+	}
+
+	public void setBalances(List<Balance> balances) {
+		this.balances = balances;
 	}
 
 	public List<Collect> getCollects() {

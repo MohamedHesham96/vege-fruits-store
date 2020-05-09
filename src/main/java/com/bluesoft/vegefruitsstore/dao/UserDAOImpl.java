@@ -257,7 +257,7 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	@Transactional
-	public void updateMaster(int sellerId, String date, float amount) {
+	public void updateMaster(int sellerId, String date, float amount, String operation) {
 
 		Session session = entityManager.unwrap(Session.class);
 
@@ -268,14 +268,17 @@ public class UserDAOImpl implements UserDAO {
 				.setParameter("theSellerId", sellerId).uniqueResult();
 
 		List<Master> masterList = session
-				.createQuery("from Master m where m.date = :thedate and m.seller.id = :theSellerId")
+				.createQuery("from Master m where m.seller.id = :theSellerId and m.date = :thedate")
 				.setParameter("thedate", date).setParameter("theSellerId", sellerId).getResultList();
 
 		if (!masterList.isEmpty()) {
 
 			master = masterList.get(0);
 
-			master.setAmount(master.getAmount() - amount);
+			if (operation == "relay") // بينفذ على حسب نوع العملية لان الفرق ما بينهم الطرح والجمع فقط
+				master.setAmount(master.getAmount() + amount);
+			else
+				master.setAmount(master.getAmount() - amount);
 
 			session.saveOrUpdate(master);
 
@@ -283,7 +286,21 @@ public class UserDAOImpl implements UserDAO {
 
 			Seller theSeller = session.get(Seller.class, sellerId);
 
-			master.setAmount(lastMaster.getAmount() - amount);
+			if (lastMaster != null) {
+
+				if (operation == "relay")
+					master.setAmount(lastMaster.getAmount() + amount);
+				else
+					master.setAmount(lastMaster.getAmount() - amount);
+
+			} else {
+
+				if (operation == "relay")
+					master.setAmount(master.getAmount() + amount);
+				else
+					master.setAmount(master.getAmount() - amount);
+			}
+
 			master.setDate(LocalDate.now().toString());
 			master.setSeller(theSeller);
 

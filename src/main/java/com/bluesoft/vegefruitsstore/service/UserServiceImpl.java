@@ -130,9 +130,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void updateMaster(int sellerId, String date, float amount) {
+	public void updateMaster(int sellerId, String date, float amount, String operation) {
 
-		userDAO.updateMaster(sellerId, date, amount);
+		userDAO.updateMaster(sellerId, date, amount, operation);
 	}
 
 	@Override

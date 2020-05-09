@@ -39,7 +39,7 @@ public class Balances {
 
 		httpSession.setAttribute("loginCasherName", "محمد عصام");
 		httpSession.setAttribute("loginCasherId", "1");
-		
+
 		System.out.println(balanceList.get(0).getCasher().getName());
 		theModel.addAttribute("balance", new Balance());
 		theModel.addAttribute("sellersList", sellerList);
@@ -67,7 +67,7 @@ public class Balances {
 
 		userService.saveBalance(theBalance);
 
-		//userService.updateMaster(theBalance.getSeller().getId(), theBalance.getDate(), theBalance.getLater());
+		userService.updateMaster(sellerId, theBalance.getDate(), theBalance.getLater(), "relay");
 
 		return "redirect:/balance";
 	}
