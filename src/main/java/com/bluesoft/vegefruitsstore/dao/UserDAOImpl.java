@@ -261,6 +261,9 @@ public class UserDAOImpl implements UserDAO {
 
 		Session session = entityManager.unwrap(Session.class);
 
+		if (operation == "collect") // بينفذ على حسب نوع العملية لان الفرق ما بينهم الطرح والجمع فقط
+			amount *= -1;
+
 		Master master = new Master();
 
 		Master lastMaster = (Master) session
@@ -275,10 +278,7 @@ public class UserDAOImpl implements UserDAO {
 
 			master = masterList.get(0);
 
-			if (operation == "relay") // بينفذ على حسب نوع العملية لان الفرق ما بينهم الطرح والجمع فقط
-				master.setAmount(master.getAmount() + amount);
-			else
-				master.setAmount(master.getAmount() - amount);
+			master.setAmount(master.getAmount() + amount);
 
 			session.saveOrUpdate(master);
 
@@ -288,17 +288,12 @@ public class UserDAOImpl implements UserDAO {
 
 			if (lastMaster != null) {
 
-				if (operation == "relay")
-					master.setAmount(lastMaster.getAmount() + amount);
-				else
-					master.setAmount(lastMaster.getAmount() - amount);
+				master.setAmount(lastMaster.getAmount() + amount);
 
 			} else {
 
-				if (operation == "relay")
-					master.setAmount(master.getAmount() + amount);
-				else
-					master.setAmount(master.getAmount() - amount);
+				master.setAmount(master.getAmount() + amount);
+
 			}
 
 			master.setDate(LocalDate.now().toString());

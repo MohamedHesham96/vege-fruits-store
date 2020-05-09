@@ -40,7 +40,6 @@ public class Balances {
 		httpSession.setAttribute("loginCasherName", "محمد عصام");
 		httpSession.setAttribute("loginCasherId", "1");
 
-		System.out.println(balanceList.get(0).getCasher().getName());
 		theModel.addAttribute("balance", new Balance());
 		theModel.addAttribute("sellersList", sellerList);
 		theModel.addAttribute("clientsList", clientsList);
