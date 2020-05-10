@@ -27,7 +27,7 @@
 				style="font-size: 20px; font-family: Amiri, sans-serif; padding: 5px;"
 				href="balance"> <img
 					style="margin-left: 5px; width: 35px; display: inline"
-					src="icons/professions-and-jobs.png"> <%=session.getAttribute("loginCasherName")%>
+					src="icons/casher.png"> <%=session.getAttribute("loginCasherName")%>
 			</a></li>
 
 
@@ -41,7 +41,7 @@
 				style="font-family: Amiri, sans-serif; padding: 5px; width: 110px"
 				href="balance"> الميـزان <img
 					style="margin-right: 10px; width: 35px; display: inline"
-					src="icons/fruit(2).png">
+					src="icons/balance.png">
 			</a></li>
 
 
@@ -50,7 +50,7 @@
 				style="font-family: Amiri, sans-serif; padding: 5px; width: 110px"
 				href="relay"> الترحيـل <img
 					style="margin-right: 10px; width: 35px; display: inline"
-					src="icons/food-and-restaurant.png">
+					src="icons/fruits.png">
 			</a></li>
 
 

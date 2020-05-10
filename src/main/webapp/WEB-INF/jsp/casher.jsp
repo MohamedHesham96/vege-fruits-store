@@ -54,7 +54,6 @@
 		</div>
 
 
-		<br>
 		<div class="row  my-4">
 
 			<div dir='rtl' class=" col-lg-12 col-md-8">

@@ -31,7 +31,7 @@
 			style="width: 18rem; margin-left: 820px;">
 
 			<div class="card-header text-white font-weight-bold text-center"
-				style="color: #c4c4c4">البحث</div>
+				style="color: #c4c4c4">البحث والاضافة</div>
 
 			<ul class="list-group list-group-flush">
 
@@ -56,6 +56,7 @@
 						<form:input type="text" path="name"
 							class="text-center form-control mb-2 col-xs-3"
 							placeholder="ادخل اسم البائع"></form:input>
+
 
 						<input type="submit" value="اضافة بائع جديد"
 							class="w-100 btn btn-info font-weight-bold text-center"

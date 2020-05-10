@@ -31,7 +31,7 @@
 			style="width: 18rem; margin-left: 820px;">
 
 			<div class="card-header text-white font-weight-bold text-center"
-				style="color: #c4c4c4">البحث</div>
+				style="color: #c4c4c4">البحث والاضافة</div>
 
 			<ul class="list-group list-group-flush">
 
