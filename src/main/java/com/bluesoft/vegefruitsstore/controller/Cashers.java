@@ -25,7 +25,7 @@ public class Cashers {
 	private HttpSession httpSession;
 
 	@RequestMapping("/casher")
-	public String getAllBalance(@RequestParam("casherName") String casherName,
+	public String getCasher(@RequestParam("casherName") String casherName,
 			@RequestParam(name = "date", required = false) String theDate, Model theModel) {
 
 		List<Balance> casherList;

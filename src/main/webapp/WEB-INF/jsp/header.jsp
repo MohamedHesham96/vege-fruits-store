@@ -25,7 +25,7 @@
 			<li style="margin: 5px;" class=""><a
 				class="btn bg-warning text-dark  font-weight-bold"
 				style="font-size: 20px; font-family: Amiri, sans-serif; padding: 5px;"
-				href="balance"> <img
+				href="casher?casherName=<%=session.getAttribute("loginCasherName")%>"> <img
 					style="margin-left: 5px; width: 35px; display: inline"
 					src="icons/casher.png"> <%=session.getAttribute("loginCasherName")%>
 			</a></li>
