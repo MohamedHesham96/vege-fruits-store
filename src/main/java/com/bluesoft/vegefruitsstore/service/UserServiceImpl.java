@@ -177,5 +177,11 @@ public class UserServiceImpl implements UserService {
 		return userDAO.searchForClientByName(clientName);
 	}
 
+	@Override
+	public void saveSeller(Seller seller) {
+
+		userDAO.saveSeller(seller);
+	}
+
 
 }

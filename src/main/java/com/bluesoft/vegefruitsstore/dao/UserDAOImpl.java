@@ -385,4 +385,12 @@ public class UserDAOImpl implements UserDAO {
 
 		return clientList;
 	}
+
+	@Override
+	public void saveSeller(Seller seller) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		session.saveOrUpdate(seller);
+	}
 }

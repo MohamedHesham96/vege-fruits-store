@@ -24,6 +24,7 @@ public class Sellers {
 		List<Seller> sellerList = userService.getAllSeller();
 
 		theModel.addAttribute("sellerList", sellerList);
+		theModel.addAttribute("seller", new Seller());
 
 		return "sellers-list";
 	}
@@ -61,9 +62,9 @@ public class Sellers {
 	@RequestMapping("/add-seller")
 	public String getAllBalance(@ModelAttribute(name = "seller") Seller theSeller) {
 
-//		userService.saveSeller(theSeller);
+		userService.saveSeller(theSeller);
 
-		return "redirect:/master";
+		return "redirect:/sellers";
 	}
 
 	@RequestMapping("/delete-seller")

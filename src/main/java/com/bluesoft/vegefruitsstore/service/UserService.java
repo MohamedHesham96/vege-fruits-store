@@ -65,4 +65,6 @@ public interface UserService {
 
 	public List<Client> searchForClientByName(String clientName);
 
+	public void saveSeller(Seller seller);
+
 }
