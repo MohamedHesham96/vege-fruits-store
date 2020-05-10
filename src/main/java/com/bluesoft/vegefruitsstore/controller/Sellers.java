@@ -55,6 +55,7 @@ public class Sellers {
 		List<Seller> theSellerList = userService.searchForSellerByName(sellerName);
 
 		theModel.addAttribute("sellerList", theSellerList);
+		theModel.addAttribute("seller", new Seller());
 
 		return "sellers-list";
 	}
