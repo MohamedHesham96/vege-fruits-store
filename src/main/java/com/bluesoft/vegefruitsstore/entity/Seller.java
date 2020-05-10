@@ -13,6 +13,8 @@ import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import javax.validation.constraints.Pattern;
 
+import org.hibernate.annotations.Where;
+
 @Entity
 @Table(name = "seller")
 public class Seller {
@@ -26,6 +28,7 @@ public class Seller {
 	String name;
 
 	@OneToMany(mappedBy = "seller", fetch = FetchType.LAZY)
+	@Where(clause = "cash != total_amount")
 	private List<Balance> balances;
 
 	@OneToMany(mappedBy = "seller", fetch = FetchType.LAZY)

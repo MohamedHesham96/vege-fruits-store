@@ -63,8 +63,6 @@ public class Balances {
 
 		theBalance.setLater(theBalance.getWeight() * theBalance.getKiloPrice() - theBalance.getCash());
 
-		theBalance.setCash(theBalance.getCash());
-
 		theBalance.setCasher(userService.getCasher(casherId));
 		theBalance.setClient(userService.getClient(clientId));
 		theBalance.setSeller(userService.getSeller(sellerId));
@@ -82,8 +80,9 @@ public class Balances {
 
 		} else if (theBalance.getCash() == theBalance.getTotalAmount()) {
 
-			userService.addCollect(
-					new Collect(userService.getSeller(sellerId), theBalance.getCash(), theBalance.getDate()));
+			// اسئله هل في تحصيل بيتسجل لو دفع المبلغ كله ولا لأ
+			// userService.addCollect(new Collect(userService.getSeller(sellerId),
+			// theBalance.getCash(), theBalance.getDate()));
 
 		}
 

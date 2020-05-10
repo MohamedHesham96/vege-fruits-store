@@ -315,7 +315,7 @@ public class UserDAOImpl implements UserDAO {
 				.setResultTransformer(new AliasToBeanResultTransformer(MasterResult.class)).getSingleResult();
 
 		MasterResult theMasterResult2 = (MasterResult) session
-				.createQuery("SELECT sum(B.later) as totalRelay FROM Balance B")
+				.createQuery("SELECT sum(B.totalAmount) as totalRelay FROM Balance B where B.cash != B.totalAmount")
 				.setResultTransformer(new AliasToBeanResultTransformer(MasterResult.class)).getSingleResult();
 
 		theMasterResult.setTotalRelay(theMasterResult2.getTotalRelay());

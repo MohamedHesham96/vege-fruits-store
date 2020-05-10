@@ -55,7 +55,7 @@ public class Sellers {
 
 		theModel.addAttribute("sellerList", theSellerList);
 
-		return "master";
+		return "sellers-list";
 	}
 
 	@RequestMapping("/add-seller")
