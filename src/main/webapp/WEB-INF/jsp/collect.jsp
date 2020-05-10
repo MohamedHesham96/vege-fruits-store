@@ -69,6 +69,7 @@
 							<tr style="font-size: 18px">
 								<th>المبلغ</th>
 								<th>اسم البائع</th>
+								<th>اسم المستلم</th>
 								<th>التاريخ</th>
 							</tr>
 
@@ -80,6 +81,7 @@
 								<tr>
 									<td>${tempItem.amount}</td>
 									<td>${tempItem.seller.name}</td>
+									<td>${tempItem.receiver}</td>
 									<td>${tempItem.date}</td>
 								</tr>
 

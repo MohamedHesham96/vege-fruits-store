@@ -34,11 +34,18 @@
 
 				<li class="bg-dark list-group-item"><form:form metho="POST"
 						action="add-collect" modelAttribute="collect">
+
 						<input type="hidden" name="sellerId" value="${seller.id}">
 
 						<form:input type="text" path="amount"
 							class="text-center form-control mb-2 col-xs-3"
 							placeholder="ادخل المبلغ"></form:input>
+
+
+						<form:input type="text" path="receiver"
+							class="text-center form-control mb-2 col-xs-3"
+							placeholder="ادخل اسم المستلم"></form:input>
+
 
 						<input type="submit" value="اضف المبلغ للتحصيل"
 							class="w-100 btn btn-info   
@@ -63,12 +70,14 @@
 							<tr class="badge-success">
 
 								<td colspan="10" class="font-weight-bold"
-									style="font-size: 22px">[ التحصيل ] - [ اسم البائع : ${seller.name} ]</td>
+									style="font-size: 22px">[ التحصيل ] - [ اسم البائع :
+									${seller.name} ]</td>
 
 							</tr>
 
 							<tr style="font-size: 18px">
 								<th>المبلغ</th>
+								<th>اسم المستلم</th>
 								<th>التاريخ</th>
 							</tr>
 
@@ -79,6 +88,7 @@
 
 								<tr>
 									<td>${tempItem.amount}</td>
+									<td>${tempItem.receiver}</td>
 									<td>${tempItem.date}</td>
 								</tr>
 

@@ -33,6 +33,7 @@ public class Seller {
 
 	@OneToMany(mappedBy = "seller", fetch = FetchType.LAZY)
 	@Where(clause = "amount != 0")
+	@OrderBy("date DESC")
 	private List<Collect> collects;
 
 	@OneToMany(mappedBy = "seller", fetch = FetchType.LAZY)

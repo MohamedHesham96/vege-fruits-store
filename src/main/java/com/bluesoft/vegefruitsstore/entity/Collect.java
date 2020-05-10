@@ -27,6 +27,9 @@ public class Collect {
 	@Column(name = "amount")
 	float amount;
 
+	@Column(name = "receiver")
+	String receiver;
+
 	@Column(name = "date")
 	String date;
 
@@ -71,6 +74,14 @@ public class Collect {
 
 	public void setSeller(Seller seller) {
 		this.seller = seller;
+	}
+
+	public String getReceiver() {
+		return receiver;
+	}
+
+	public void setReceiver(String receiver) {
+		this.receiver = receiver;
 	}
 
 }
