@@ -27,10 +27,10 @@
 	<div style="text-align: right;" class="container">
 
 
-		<div class="card bg-secondary text-white"
+		<div class="card bg-success"
 			style="width: 18rem; margin-left: 820px;">
 
-			<div class="card-header text-white font-weight-bold text-center"
+			<div class="card-header text-dark font-weight-bold text-center"
 				style="color: #c4c4c4">البحث والاضافة</div>
 
 			<ul class="list-group list-group-flush">
@@ -41,9 +41,10 @@
 
 						<input type="text" name="clientName"
 							class="text-center form-control mb-2 col-xs-3"
-							placeholder="ادخل اسم العميل"> <input type="submit"
-							value="ابحث عن الاسم"
-							class="w-100 btn btn-info font-weight-bold text-center"
+							placeholder="ادخل اسم العميل"> 
+							
+							<input type="submit" value="ابحث عن الاسم"
+							class="w-100 btn btn-success font-weight-bold text-center"
 							onclick="this.disabled=true; this.parentNode.submit();">
 
 					</form>
@@ -58,7 +59,7 @@
 							placeholder="ادخل اسم العميل"></form:input>
 
 						<input type="submit" value="اضافة عميل جديد"
-							class="w-100 btn btn-info font-weight-bold text-center"
+							class="w-100 btn btn-success font-weight-bold text-center"
 							onclick="return confirm('هل انت متأكد من اضافة هذا العميل ؟')">
 
 					</form:form></li>
