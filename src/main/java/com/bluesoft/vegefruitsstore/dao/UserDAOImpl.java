@@ -211,7 +211,7 @@ public class UserDAOImpl implements UserDAO {
 
 		Session session = entityManager.unwrap(Session.class);
 
-		List<Collect> collectList = session.createQuery("from Collect where date = :thedate order by date desc")
+		List<Collect> collectList = session.createQuery("from Collect where date = :thedate and amount != 0 order by date desc")
 				.setParameter("thedate", date).getResultList();
 
 		return collectList;
