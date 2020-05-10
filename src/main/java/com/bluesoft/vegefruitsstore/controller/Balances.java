@@ -56,7 +56,8 @@ public class Balances {
 
 		// get casher id from the session
 		int casherId = Integer.parseInt(httpSession.getAttribute("loginCasherId").toString());
-
+		System.out.println(">>>>> " + casherId);
+	
 		theBalance.setDate(LocalDate.now().toString());
 
 		theBalance.setTotalAmount(theBalance.getWeight() * theBalance.getKiloPrice());

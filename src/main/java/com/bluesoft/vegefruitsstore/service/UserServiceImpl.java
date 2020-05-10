@@ -189,5 +189,4 @@ public class UserServiceImpl implements UserService {
 		userDAO.saveClient(client);
 	}
 
-
 }

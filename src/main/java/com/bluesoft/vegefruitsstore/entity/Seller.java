@@ -32,6 +32,7 @@ public class Seller {
 	private List<Balance> balances;
 
 	@OneToMany(mappedBy = "seller", fetch = FetchType.LAZY)
+	@Where(clause = "amount != 0")
 	private List<Collect> collects;
 
 	@OneToMany(mappedBy = "seller", fetch = FetchType.LAZY)
