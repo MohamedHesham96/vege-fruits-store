@@ -67,4 +67,6 @@ public interface UserService {
 
 	public void saveSeller(Seller seller);
 
+	public void saveClient(Client client);
+
 }

@@ -25,6 +25,7 @@ public class Clients {
 		List<Client> clientList = userService.getAllClients();
 
 		theModel.addAttribute("clientList", clientList);
+		theModel.addAttribute("client", new Client());
 
 		return "clients-list";
 	}
@@ -39,23 +40,14 @@ public class Clients {
 		return "clients-list";
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	@RequestMapping("/add-client")
+	public String addClient(@ModelAttribute(name = "client") Client client) {
+
+		userService.saveClient(client);
+
+		return "redirect:/clients";
+	}
+
 	@RequestMapping("/client-profile")
 	public String showClientProfile(@RequestParam("id") int id, Model theModel) {
 
@@ -64,14 +56,6 @@ public class Clients {
 		theModel.addAttribute("seller", theSeller);
 
 		return "seller-profile";
-	}
-
-	@RequestMapping("/add-client")
-	public String addClient(@ModelAttribute(name = "seller") Seller theSeller) {
-
-//		userService.saveSeller(theSeller);
-
-		return "redirect:/master";
 	}
 
 	@RequestMapping("/delete-client")

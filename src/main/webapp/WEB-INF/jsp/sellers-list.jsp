@@ -59,7 +59,7 @@
 
 						<input type="submit" value="اضافة بائع جديد"
 							class="w-100 btn btn-info font-weight-bold text-center"
-							onclick="this.disabled=true; this.parentNode.submit();">
+							onclick="return confirm('هل انت متأكد من اضافة هذا البائع ؟')">
 
 					</form:form></li>
 			</ul>

@@ -183,5 +183,11 @@ public class UserServiceImpl implements UserService {
 		userDAO.saveSeller(seller);
 	}
 
+	@Override
+	public void saveClient(Client client) {
+
+		userDAO.saveClient(client);
+	}
+
 
 }

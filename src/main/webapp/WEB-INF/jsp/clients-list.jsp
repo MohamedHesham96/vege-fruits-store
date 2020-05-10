@@ -49,19 +49,19 @@
 					</form>
 				</li>
 
-				<li class="bg-dark list-group-item">
 
-					<form method="GET" action="search-for-clients">
+				<li class="bg-dark list-group-item"><form:form
+						modelAttribute="client" method="POST" action="add-client">
 
-						<input type="text" name="clientName"
+						<form:input type="text" path="name"
 							class="text-center form-control mb-2 col-xs-3"
-							placeholder="ادخل اسم العميل"> <input type="submit"
-							value="اضافة عميل جديد"
-							class="w-100 btn btn-info font-weight-bold text-center"
-							onclick="this.disabled=true; this.parentNode.submit();">
+							placeholder="ادخل اسم العميل"></form:input>
 
-					</form>
-				</li>
+						<input type="submit" value="اضافة عميل جديد"
+							class="w-100 btn btn-info font-weight-bold text-center"
+							onclick="return confirm('هل انت متأكد من اضافة هذا العميل ؟')">
+
+					</form:form></li>
 			</ul>
 
 		</div>
