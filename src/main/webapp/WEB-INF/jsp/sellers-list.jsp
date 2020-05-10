@@ -48,6 +48,21 @@
 
 					</form>
 				</li>
+
+
+				<li class="bg-dark list-group-item">
+
+					<form method="GET" action="search-for-seller">
+
+						<input type="text" name="sellerName"
+							class="text-center form-control mb-2 col-xs-3"
+							placeholder="ادخل اسم البائع"> <input type="submit"
+							value="اضافة بائع جديد"
+							class="w-100 btn btn-info font-weight-bold text-center"
+							onclick="this.disabled=true; this.parentNode.submit();">
+
+					</form>
+				</li>
 			</ul>
 
 		</div>
