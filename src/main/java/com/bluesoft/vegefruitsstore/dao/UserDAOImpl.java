@@ -16,6 +16,7 @@ import com.bluesoft.vegefruitsstore.entity.Casher;
 import com.bluesoft.vegefruitsstore.entity.Client;
 import com.bluesoft.vegefruitsstore.entity.Collect;
 import com.bluesoft.vegefruitsstore.entity.HeaderResult;
+import com.bluesoft.vegefruitsstore.entity.Item;
 import com.bluesoft.vegefruitsstore.entity.Master;
 import com.bluesoft.vegefruitsstore.entity.MasterResult;
 import com.bluesoft.vegefruitsstore.entity.Seller;
@@ -53,7 +54,7 @@ public class UserDAOImpl implements UserDAO {
 				.createQuery("select sum(B.counter) as totalCount, sum(B.weight) as totalWeight, "
 						+ "sum(B.cash) as totalCash," + "sum(B.later) as totalLater, "
 						+ "sum(B.totalAmount) as totalAmount, "
-						+ "B.itemName as itemName, B.client.name as clientName FROM Balance B GROUP BY clientName, itemName order by clientName, itemName")
+						+ "B.item.name as itemName, B.client.name as clientName FROM Balance B GROUP BY clientName, itemName order by clientName, itemName")
 				.setResultTransformer(new AliasToBeanResultTransformer(HeaderResult.class)).getResultList();
 
 		return theHeaderResult;
@@ -403,4 +404,15 @@ public class UserDAOImpl implements UserDAO {
 
 		session.saveOrUpdate(client);
 	}
+
+	@Override
+	public List<Item> getAllItems() {
+		Session session = entityManager.unwrap(Session.class);
+
+		List<Item> itemList = session.createQuery("from Item order by name").getResultList();
+
+		return itemList;
+
+	}
+
 }

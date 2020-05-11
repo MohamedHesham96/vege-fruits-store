@@ -33,20 +33,35 @@
 						<table class=" table table-striped table-dark">
 							<thead class="thead-inverse">
 								<tr>
-									<th>اسم العميل</th>
-									<th>اسم البائع</th>
-									<th>الصنف</th>
 									<th>العدد</th>
+									<th>الصنف</th>
 									<th>الوزن</th>
 									<th>سعر الكيلو</th>
-									<th>نقدي</th>
-
+									<th>اسم العميل</th>
 								</tr>
 							</thead>
 
 							<tbody>
 
 								<tr>
+									<td style="width: 125px"><form:input type="text"
+											path="counter" class="text-center form-control  "
+											placeholder="ادخل العدد"></form:input></td>
+
+									<td><form:input type="text" path="itemName"
+											class="text-center form-control  "
+											placeholder="ادخل اسم الصنف"></form:input></td>
+
+
+									<td style="width: 125px"><form:input type="text"
+											path="weight" class="text-center form-control  "
+											placeholder="ادخل الوزن"></form:input></td>
+
+									<td style="width: 125px"><form:input type="text"
+											path="kiloPrice" class="text-center form-control  "
+											placeholder="ادخل سعر الكيلو"></form:input></td>
+
+
 									<td><select name="clientId" style="width: 175px;"
 										class="text-center form-control ">
 
@@ -57,48 +72,6 @@
 											</c:forEach>
 
 									</select></td>
-
-									<td><select name="sellerId" style="width: 175px;"
-										class="text-center form-control ">
-
-											<c:forEach var="tempItem" items="${sellersList}">
-
-												<option value="${tempItem.id}">${tempItem.name}</option>
-
-											</c:forEach>
-
-									</select></td>
-
-									<td><select name="sellerId" style="width: 175px;"
-										class="text-center form-control ">
-
-											<c:forEach var="tempItem" items="${itemsList}">
-
-												<option value="${tempItem.id}">${tempItem.name}</option>
-
-											</c:forEach>
-
-									</select></td>
-
-
-
-									<td style="width: 125px"><form:input type="text"
-											path="counter" class="text-center form-control  "
-											placeholder="ادخل العدد"></form:input></td>
-
-									<td style="width: 125px"><form:input type="text"
-											path="weight" class="text-center form-control  "
-											placeholder="ادخل الوزن"></form:input></td>
-
-									<td style="width: 125px"><form:input type="text"
-											path="kiloPrice" class="text-center form-control  "
-											placeholder="ادخل سعر الكيلو"></form:input></td>
-
-									<td style="width: 125px" style="width:"><form:input
-											type="text" path="cash" class="text-center form-control  "
-											placeholder="ادخل النقدي"></form:input></td>
-
-
 
 								</tr>
 
@@ -151,9 +124,7 @@
 									<th>العدد</th>
 									<th>الوزن</th>
 									<th>سعر الكيلو</th>
-									<th>آجل</th>
 									<th>اجمالي المبلغ</th>
-									<th>اسم البائع</th>
 									<th>الكاشير</th>
 									<th>التاريخ</th>
 								</tr>

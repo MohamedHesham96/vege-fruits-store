@@ -7,6 +7,7 @@ import com.bluesoft.vegefruitsstore.entity.Casher;
 import com.bluesoft.vegefruitsstore.entity.Client;
 import com.bluesoft.vegefruitsstore.entity.Collect;
 import com.bluesoft.vegefruitsstore.entity.HeaderResult;
+import com.bluesoft.vegefruitsstore.entity.Item;
 import com.bluesoft.vegefruitsstore.entity.Master;
 import com.bluesoft.vegefruitsstore.entity.MasterResult;
 import com.bluesoft.vegefruitsstore.entity.Seller;
@@ -68,5 +69,7 @@ public interface UserService {
 	public void saveSeller(Seller seller);
 
 	public void saveClient(Client client);
+
+	public List<Item> getAllItems();
 
 }

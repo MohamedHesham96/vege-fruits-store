@@ -20,10 +20,6 @@ public class Balance {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
 
-	@Column(name = "item_name")
-	@Pattern(regexp = "[ ء-ي]+", message = "ادخل الاسم بشكل صحيح")
-	String itemName;
-
 	@Column(name = "count")
 	int counter;
 
@@ -41,6 +37,11 @@ public class Balance {
 
 	@Column(name = "total_amount")
 	float totalAmount;
+
+	@ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.DETACH, CascadeType.PERSIST, CascadeType.MERGE,
+			CascadeType.REFRESH })
+	@JoinColumn(name = "item_id")
+	private Item item;
 
 	@ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.DETACH, CascadeType.PERSIST, CascadeType.MERGE,
 			CascadeType.REFRESH })
@@ -68,6 +69,14 @@ public class Balance {
 		this.id = id;
 	}
 
+	public Item getItem() {
+		return item;
+	}
+
+	public void setItem(Item item) {
+		this.item = item;
+	}
+
 	public Client getClient() {
 		return client;
 	}
@@ -90,14 +99,6 @@ public class Balance {
 
 	public void setSeller(Seller seller) {
 		this.seller = seller;
-	}
-
-	public String getItemName() {
-		return itemName;
-	}
-
-	public void setItemName(String itemName) {
-		this.itemName = itemName;
 	}
 
 	public int getCounter() {

@@ -16,6 +16,7 @@ import com.bluesoft.vegefruitsstore.entity.Balance;
 import com.bluesoft.vegefruitsstore.entity.Client;
 import com.bluesoft.vegefruitsstore.entity.Collect;
 import com.bluesoft.vegefruitsstore.entity.HeaderResult;
+import com.bluesoft.vegefruitsstore.entity.Item;
 import com.bluesoft.vegefruitsstore.entity.Seller;
 import com.bluesoft.vegefruitsstore.service.UserService;
 
@@ -38,10 +39,13 @@ public class Balances {
 
 		List<Balance> balanceList = userService.getAllBalance();
 
+		List<Item> itemList = userService.getAllItems();
+
 		httpSession.setAttribute("loginCasherName", "محمد عصام");
 		httpSession.setAttribute("loginCasherId", "1");
 
 		theModel.addAttribute("balance", new Balance());
+		theModel.addAttribute("itemsList", itemList);
 		theModel.addAttribute("sellersList", sellerList);
 		theModel.addAttribute("clientsList", clientsList);
 		theModel.addAttribute("balanceList", balanceList);
@@ -57,7 +61,7 @@ public class Balances {
 		// get casher id from the session
 		int casherId = Integer.parseInt(httpSession.getAttribute("loginCasherId").toString());
 		System.out.println(">>>>> " + casherId);
-	
+
 		theBalance.setDate(LocalDate.now().toString());
 
 		theBalance.setTotalAmount(theBalance.getWeight() * theBalance.getKiloPrice());

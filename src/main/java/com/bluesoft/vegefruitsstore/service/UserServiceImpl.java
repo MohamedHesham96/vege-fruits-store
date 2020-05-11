@@ -11,6 +11,7 @@ import com.bluesoft.vegefruitsstore.entity.Casher;
 import com.bluesoft.vegefruitsstore.entity.Client;
 import com.bluesoft.vegefruitsstore.entity.Collect;
 import com.bluesoft.vegefruitsstore.entity.HeaderResult;
+import com.bluesoft.vegefruitsstore.entity.Item;
 import com.bluesoft.vegefruitsstore.entity.Master;
 import com.bluesoft.vegefruitsstore.entity.MasterResult;
 import com.bluesoft.vegefruitsstore.entity.Seller;
@@ -187,6 +188,12 @@ public class UserServiceImpl implements UserService {
 	public void saveClient(Client client) {
 
 		userDAO.saveClient(client);
+	}
+
+	@Override
+	public List<Item> getAllItems() {
+
+		return userDAO.getAllItems();
 	}
 
 }
