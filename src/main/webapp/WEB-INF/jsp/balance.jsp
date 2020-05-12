@@ -57,7 +57,7 @@
 											<c:forEach var="tempItem" items="${clientsList}">
 
 												<option
-													${tempItem.id == selectedClient.id ? 'selected="selected"' : ''}
+													${tempItem.id == selectedClientId ? 'selected="selected"' : ''}
 													value="${tempItem.id}">${tempItem.name}</option>
 
 											</c:forEach>

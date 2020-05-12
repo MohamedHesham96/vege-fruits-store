@@ -39,7 +39,7 @@
 			<li style="margin: 5px;" class=""><a
 				class="btn bg-success text-white font-weight-bold"
 				style="font-family: Amiri, sans-serif; padding: 5px; width: 125px"
-				href="balance"> الميـزان (ع)<img
+				href="client-balance"> الميـزان (ع)<img
 					style="margin-right: 10px; width: 35px; display: inline"
 					src="icons/balance.png">
 			</a></li>

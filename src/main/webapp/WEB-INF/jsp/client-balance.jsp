@@ -26,43 +26,26 @@
 
 	<div style="text-align: right;" class="container">
 
-		<form:form metho="POST" action="add-balance" modelAttribute="balance">
+		<form:form metho="POST" action="add-balance"
+			modelAttribute="clientBalance">
 			<div class="row  my-4">
 				<div dir='rtl' class="col-lg-12 col-md-8">
 					<div class="table-responsive">
 						<table class=" table table-striped table-dark">
 							<thead class="thead-inverse">
 								<tr>
-									<th>العدد</th>
-									<th>الصنف</th>
-									<th>الوزن</th>
-									<th>سعر الكيلو</th>
 									<th>اسم العميل</th>
+									<th>الصنف</th>
+									<th>العدد</th>
+									<th>الوزن</th>
 								</tr>
 							</thead>
 
 							<tbody>
 
 								<tr>
-									<td style="width: 125px"><form:input type="text"
-											path="counter" class="text-center form-control  "
-											placeholder="ادخل العدد"></form:input></td>
 
-									<td><form:input type="text" path="itemName"
-											class="text-center form-control  "
-											placeholder="ادخل اسم الصنف"></form:input></td>
-
-
-									<td style="width: 125px"><form:input type="text"
-											path="weight" class="text-center form-control  "
-											placeholder="ادخل الوزن"></form:input></td>
-
-									<td style="width: 125px"><form:input type="text"
-											path="kiloPrice" class="text-center form-control  "
-											placeholder="ادخل سعر الكيلو"></form:input></td>
-
-
-									<td><select name="clientId" style="width: 175px;"
+									<td><select name="clientId" style="width: 250px;"
 										class="text-center form-control ">
 
 											<c:forEach var="tempItem" items="${clientsList}">
@@ -72,6 +55,28 @@
 											</c:forEach>
 
 									</select></td>
+
+
+									<td><select name="itemId" style="width: 250px;"
+										class="text-center form-control ">
+
+											<c:forEach var="tempItem" items="${itemsList}">
+
+												<option value="${tempItem.id}">${tempItem.name}</option>
+
+											</c:forEach>
+
+									</select></td>
+
+
+
+									<td style="width:"><form:input type="text" path="counter"
+											class="text-center form-control  " placeholder="ادخل العدد"></form:input></td>
+
+									<td style="width:"><form:input type="text" path="weight"
+											class="text-center form-control  " placeholder="ادخل الوزن"></form:input></td>
+
+
 
 								</tr>
 

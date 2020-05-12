@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.bluesoft.vegefruitsstore.entity.Balance;
 import com.bluesoft.vegefruitsstore.entity.Casher;
 import com.bluesoft.vegefruitsstore.entity.Client;
+import com.bluesoft.vegefruitsstore.entity.ClientBalance;
 import com.bluesoft.vegefruitsstore.entity.Collect;
 import com.bluesoft.vegefruitsstore.entity.HeaderResult;
 import com.bluesoft.vegefruitsstore.entity.Item;
@@ -424,6 +425,17 @@ public class UserDAOImpl implements UserDAO {
 		Item item = session.get(Item.class, id);
 
 		return item;
+	}
+
+	@Override
+	public List<ClientBalance> getAllClientBalance() {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		List<ClientBalance> clientBalanceList = session.createQuery("from ClientBalance").getResultList();
+
+		return clientBalanceList;
+
 	}
 
 }

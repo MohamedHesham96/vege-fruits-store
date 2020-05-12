@@ -9,6 +9,7 @@ import com.bluesoft.vegefruitsstore.dao.UserDAO;
 import com.bluesoft.vegefruitsstore.entity.Balance;
 import com.bluesoft.vegefruitsstore.entity.Casher;
 import com.bluesoft.vegefruitsstore.entity.Client;
+import com.bluesoft.vegefruitsstore.entity.ClientBalance;
 import com.bluesoft.vegefruitsstore.entity.Collect;
 import com.bluesoft.vegefruitsstore.entity.HeaderResult;
 import com.bluesoft.vegefruitsstore.entity.Item;
@@ -198,10 +199,15 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Item getItem(int id) {
-		
+
 		return userDAO.getItem(id);
 	}
 
-	
+	@Override
+	public List<ClientBalance> getAllClientBalance() {
+		
+		return userDAO.getAllClientBalance();
+		
+	}
 
 }

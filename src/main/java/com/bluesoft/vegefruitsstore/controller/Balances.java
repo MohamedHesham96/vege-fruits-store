@@ -44,19 +44,24 @@ public class Balances {
 		List<Balance> balanceList = userService.getAllBalance();
 		Balance balance = new Balance();
 		Client client = new Client();
+
 		List<ClientBalance> clientBalances = new ArrayList<ClientBalance>();
-		
+
 		if (theClientID != null) {
 
 			client = userService.getClient(theClientID);
 			clientBalances = client.getClientBalances();
-			theModel.addAttribute("selectedClient", client);
-			System.out.println(client.getName());
 			balance.setClient(client);
+
+			// add to be the selected client in balance form
+			theModel.addAttribute("selectedClientId", theClientID);
 
 		} else {
 
-			clientBalances = clientsList.get(0).getClientBalances();
+			if (!clientsList.isEmpty()) {
+				client = clientsList.get(0);
+				clientBalances = client.getClientBalances();
+			}
 		}
 
 		for (ClientBalance clientBalance : clientBalances) {
@@ -121,6 +126,8 @@ public class Balances {
 
 		return "redirect:/balance";
 	}
+
+	
 
 	@RequestMapping("/delete-balance")
 	public String getAllBalance(@RequestParam(name = "id") int id) {

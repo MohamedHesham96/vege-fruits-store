@@ -5,6 +5,7 @@ import java.util.List;
 import com.bluesoft.vegefruitsstore.entity.Balance;
 import com.bluesoft.vegefruitsstore.entity.Casher;
 import com.bluesoft.vegefruitsstore.entity.Client;
+import com.bluesoft.vegefruitsstore.entity.ClientBalance;
 import com.bluesoft.vegefruitsstore.entity.Collect;
 import com.bluesoft.vegefruitsstore.entity.HeaderResult;
 import com.bluesoft.vegefruitsstore.entity.Item;
@@ -73,5 +74,8 @@ public interface UserService {
 	public List<Item> getAllItems();
 
 	public Item getItem(int id);
+
+	public List<ClientBalance> getAllClientBalance();
+
 
 }
