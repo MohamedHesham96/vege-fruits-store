@@ -36,7 +36,8 @@ public class Clients {
 		List<Client> clientList = userService.searchForClientByName(clientName);
 
 		theModel.addAttribute("clientList", clientList);
-
+		theModel.addAttribute("client", new Client());
+		
 		return "clients-list";
 	}
 
