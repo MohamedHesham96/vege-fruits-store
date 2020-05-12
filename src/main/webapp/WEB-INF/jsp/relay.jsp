@@ -33,7 +33,7 @@
 
 					<a style="font-size: 25px;"
 						class="btn btn-dark text-wight font-weight-bold"
-						href="casher?casherName=${tempItem.name}"> ${tempItem.name}</a>
+						href="casher?casherId=${tempItem.id}"> ${tempItem.name}</a>
 
 				</c:forEach>
 

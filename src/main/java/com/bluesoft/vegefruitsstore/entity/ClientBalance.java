@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Where;
+
 @Entity
 @Table(name = "Client_balance")
 public class ClientBalance {
@@ -20,9 +22,11 @@ public class ClientBalance {
 	int id;
 
 	@Column(name = "count")
+	@Where(clause = "count > 0")
 	int counter;
 
 	@Column(name = "weight")
+	@Where(clause = "count > 0")
 	float weight;
 
 	@ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.DETACH, CascadeType.PERSIST, CascadeType.MERGE,
@@ -34,6 +38,11 @@ public class ClientBalance {
 			CascadeType.REFRESH })
 	@JoinColumn(name = "client_id")
 	private Client client;
+
+	@ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.DETACH, CascadeType.PERSIST, CascadeType.MERGE,
+			CascadeType.REFRESH })
+	@JoinColumn(name = "casher_id")
+	private Casher casher;
 
 	@Column(name = "date")
 	String date;
@@ -84,6 +93,14 @@ public class ClientBalance {
 
 	public void setDate(String date) {
 		this.date = date;
+	}
+
+	public Casher getCasher() {
+		return casher;
+	}
+
+	public void setCasher(Casher casher) {
+		this.casher = casher;
 	}
 
 }

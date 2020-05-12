@@ -1,7 +1,6 @@
 package com.bluesoft.vegefruitsstore.controller;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -13,14 +12,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.bluesoft.vegefruitsstore.entity.Balance;
-import com.bluesoft.vegefruitsstore.entity.Casher;
 import com.bluesoft.vegefruitsstore.entity.Client;
 import com.bluesoft.vegefruitsstore.entity.ClientBalance;
-import com.bluesoft.vegefruitsstore.entity.Collect;
-import com.bluesoft.vegefruitsstore.entity.HeaderResult;
 import com.bluesoft.vegefruitsstore.entity.Item;
-import com.bluesoft.vegefruitsstore.entity.Seller;
 import com.bluesoft.vegefruitsstore.service.UserService;
 
 @Controller
@@ -52,49 +46,26 @@ public class ClientBalances {
 
 	}
 
-//	@RequestMapping("/add-balance")
-//	public String getAllBalance(@RequestParam("clientId") int clientId, @RequestParam("sellerId") int sellerId,
-//			@RequestParam("itemId") int itemId, @ModelAttribute("balance") Balance theBalance) {
-//
-//		// get casher id from the session
-//		int casherId = Integer.parseInt(httpSession.getAttribute("loginCasherId").toString());
-//
-//		theBalance.setDate(LocalDate.now().toString());
-//
-//		theBalance.setTotalAmount(theBalance.getWeight() * theBalance.getKiloPrice());
-//
-//		theBalance.setLater(theBalance.getWeight() * theBalance.getKiloPrice() - theBalance.getCash());
-//
-//		Casher theCasher = userService.getCasher(casherId);
-//
-//		Seller theSeller = userService.getSeller(sellerId);
-//
-//		theBalance.setCasher(theCasher);
-//		theBalance.setClient(userService.getClient(clientId));
-//		theBalance.setSeller(theSeller);
-//
-//		// جلب الايتم للبالانس
-//		theBalance.setItem(userService.getItem(itemId));
-//
-//		userService.saveBalance(theBalance);
-//
-//		if (theBalance.getCash() != theBalance.getTotalAmount() && theBalance.getCash() != 0) {
-//
-//			userService.updateMaster(sellerId, theBalance.getDate(), theBalance.getTotalAmount(), "relay");
-//
-//			userService.updateMaster(sellerId, theBalance.getDate(), theBalance.getCash(), "collect");
-//
-//			userService.addCollect(new Collect(userService.getSeller(sellerId), theBalance.getCash(),
-//					theBalance.getDate(), theCasher.getName()));
-//
-//		} else if (theBalance.getCash() == 0) {
-//
-//			userService.updateMaster(sellerId, theBalance.getDate(), theBalance.getTotalAmount(), "relay");
-//
-//		}
-//
-//		return "redirect:/balance";
-//	}
+	@RequestMapping("/add-client-balance")
+	public String getAllBalance(@RequestParam("clientId") int clientId, @RequestParam("itemId") int itemId,
+			@ModelAttribute("clientBalance") ClientBalance theClientBalance) {
+
+		// get casher id from the session
+		int casherId = Integer.parseInt(httpSession.getAttribute("loginCasherId").toString());
+
+		theClientBalance.setDate(LocalDate.now().toString());
+
+		theClientBalance.setCasher(userService.getCasher(casherId));
+		theClientBalance.setClient(userService.getClient(clientId));
+
+		// جلب الايتم للبالانس
+		theClientBalance.setItem(userService.getItem(itemId));
+
+		userService.saveClientBalance(theClientBalance);
+
+		return "redirect:/client-balance";
+
+	}
 
 //	@RequestMapping("/delete-balance")
 //	public String getAllBalance(@RequestParam(name = "id") int id) {

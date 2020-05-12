@@ -25,13 +25,13 @@ public interface UserDAO {
 
 	public List<HeaderResult> getRelayHeader();
 
-	public HeaderResult getCasherHeader(String casherName);
+	public HeaderResult getCasherHeader(int casherId);
+	
+	public HeaderResult getCasherHeaderByDate(int casherId, String date);
 
-	public HeaderResult getCasherHeaderByDate(String casherName, String date);
+	//public List<Balance> getBalanceByCasherId(int casherId);
 
-	public List<Balance> getBalanceByCasherName(String casherName);
-
-	public List<Balance> getBalanceByCasherNameAndDate(String casherName, String date);
+	public List<Balance> getBalanceByCasherIdAndDate(int casherId, String date);
 
 	public List<Seller> getAllSeller();
 
@@ -76,5 +76,7 @@ public interface UserDAO {
 	public Item getItem(int id);
 
 	public List<ClientBalance> getAllClientBalance();
+
+	public void saveClientBalance(ClientBalance clientBalance);
 
 }

@@ -54,27 +54,28 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public HeaderResult getCasherHeader(String casherName) {
+	public HeaderResult getCasherHeader(int casherId) {
 
-		return userDAO.getCasherHeader(casherName);
+		return userDAO.getCasherHeader(casherId);
+	}
+
+	//
+//	@Override
+//	public List<Balance> getBalanceByCasherId(int casherId) {
+//
+//		return userDAO.getBalanceByCasherId(casherId);
+//	}
+
+	@Override
+	public List<Balance> getBalanceByCasherIdAndDate(int casherId, String date) {
+
+		return userDAO.getBalanceByCasherIdAndDate(casherId, date);
 	}
 
 	@Override
-	public List<Balance> getBalanceByCasherName(String casherName) {
+	public HeaderResult getCasherHeaderByDate(int casherId, String date) {
 
-		return userDAO.getBalanceByCasherName(casherName);
-	}
-
-	@Override
-	public List<Balance> getBalanceByCasherNameAndDate(String casherName, String date) {
-
-		return userDAO.getBalanceByCasherNameAndDate(casherName, date);
-	}
-
-	@Override
-	public HeaderResult getCasherHeaderByDate(String casherName, String date) {
-
-		return userDAO.getCasherHeaderByDate(casherName, date);
+		return userDAO.getCasherHeaderByDate(casherId, date);
 	}
 
 	@Override
@@ -205,9 +206,15 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<ClientBalance> getAllClientBalance() {
-		
+
 		return userDAO.getAllClientBalance();
-		
+
+	}
+
+	@Override
+	public void saveClientBalance(ClientBalance clientBalance) {
+
+		userDAO.saveClientBalance(clientBalance);
 	}
 
 }

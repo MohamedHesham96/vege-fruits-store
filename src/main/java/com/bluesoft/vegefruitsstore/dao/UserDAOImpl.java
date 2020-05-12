@@ -86,7 +86,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public HeaderResult getCasherHeader(String casherName) {
+	public HeaderResult getCasherHeader(int casherId) {
 
 		Session session = entityManager.unwrap(Session.class);
 
@@ -94,8 +94,8 @@ public class UserDAOImpl implements UserDAO {
 				.createQuery("select sum(B.counter) as totalCount, sum(B.weight) as totalWeight, "
 						+ "sum(B.totalAmount) as totalAmount, sum(B.cash) as totalCash, "
 						+ "B.seller.name as sellerName, B.casher.name as casherName "
-						+ "FROM Balance B where B.casher.name = :theCasherName GROUP BY casherName order by date")
-				.setParameter("theCasherName", casherName)
+						+ "FROM Balance B where B.casher.id = :theCasherId GROUP BY casherName order by date")
+				.setParameter("theCasherId", casherId)
 				.setResultTransformer(new AliasToBeanResultTransformer(HeaderResult.class)).getResultList();
 
 		if (!headerResultList.isEmpty()) {
@@ -111,7 +111,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public HeaderResult getCasherHeaderByDate(String casherName, String date) {
+	public HeaderResult getCasherHeaderByDate(int casherId, String date) {
 
 		Session session = entityManager.unwrap(Session.class);
 
@@ -119,8 +119,8 @@ public class UserDAOImpl implements UserDAO {
 				.createQuery("select sum(B.counter) as totalCount, sum(B.weight) as totalWeight, "
 						+ "sum(B.totalAmount) as totalAmount, sum(B.cash) as totalCash, "
 						+ "B.seller.name as sellerName, B.casher.name as casherName "
-						+ "FROM Balance B where B.casher.name = :theCasherName and date = :theDate GROUP BY casherName order by date")
-				.setParameter("theCasherName", casherName).setParameter("theDate", date)
+						+ "FROM Balance B where B.casher.id = :theCasherId and date = :theDate GROUP BY casherName order by date")
+				.setParameter("theCasherId", casherId).setParameter("theDate", date)
 				.setResultTransformer(new AliasToBeanResultTransformer(HeaderResult.class)).getResultList();
 
 		if (!headerResultList.isEmpty()) {
@@ -135,26 +135,26 @@ public class UserDAOImpl implements UserDAO {
 
 	}
 
+	/*
+	 * @Override public List<Balance> getBalanceByCasherId(int casherId) {
+	 * 
+	 * Session session = entityManager.unwrap(Session.class);
+	 * 
+	 * List<Balance> casherList = session
+	 * .createQuery("from Balance B where  B.casher.id = :theCasherId order by date desc"
+	 * ) .setParameter("theCasherId", casherId).getResultList();
+	 * 
+	 * return casherList; }
+	 */
+
 	@Override
-	public List<Balance> getBalanceByCasherName(String casherName) {
+	public List<Balance> getBalanceByCasherIdAndDate(int casherId, String date) {
 
 		Session session = entityManager.unwrap(Session.class);
 
 		List<Balance> casherList = session
-				.createQuery("from Balance B where  B.casher.name = :theCasherName order by date desc")
-				.setParameter("theCasherName", casherName).getResultList();
-
-		return casherList;
-	}
-
-	@Override
-	public List<Balance> getBalanceByCasherNameAndDate(String casherName, String date) {
-
-		Session session = entityManager.unwrap(Session.class);
-
-		List<Balance> casherList = session
-				.createQuery("from Balance B where B.casher.name = :theCasherName and date = :theDate order by date")
-				.setParameter("theCasherName", casherName).setParameter("theDate", date).getResultList();
+				.createQuery("from Balance B where B.casher.id = :theCasherId and date = :theDate order by date")
+				.setParameter("theCasherId", casherId).setParameter("theDate", date).getResultList();
 
 		return casherList;
 	}
@@ -436,6 +436,14 @@ public class UserDAOImpl implements UserDAO {
 
 		return clientBalanceList;
 
+	}
+
+	@Override
+	public void saveClientBalance(ClientBalance clientBalance) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		session.saveOrUpdate(clientBalance);
 	}
 
 }

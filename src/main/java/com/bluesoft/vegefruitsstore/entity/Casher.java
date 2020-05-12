@@ -12,6 +12,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Pattern;
 
+import org.hibernate.annotations.Where;
+
 @Entity
 @Table(name = "casher")
 public class Casher {
@@ -27,6 +29,10 @@ public class Casher {
 	@OneToMany(mappedBy = "casher", fetch = FetchType.LAZY)
 	private List<Balance> balances;
 
+	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
+	@Where(clause = "count > 0")
+	private List<ClientBalance> clientBalances;
+
 	public int getId() {
 		return id;
 	}
@@ -41,6 +47,22 @@ public class Casher {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public List<Balance> getBalances() {
+		return balances;
+	}
+
+	public void setBalances(List<Balance> balances) {
+		this.balances = balances;
+	}
+
+	public List<ClientBalance> getClientBalances() {
+		return clientBalances;
+	}
+
+	public void setClientBalances(List<ClientBalance> clientBalances) {
+		this.clientBalances = clientBalances;
 	}
 
 }

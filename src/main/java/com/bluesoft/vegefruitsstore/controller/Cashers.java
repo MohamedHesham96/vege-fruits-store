@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bluesoft.vegefruitsstore.entity.Balance;
+import com.bluesoft.vegefruitsstore.entity.Casher;
 import com.bluesoft.vegefruitsstore.entity.HeaderResult;
 import com.bluesoft.vegefruitsstore.service.UserService;
 
@@ -25,27 +26,32 @@ public class Cashers {
 	private HttpSession httpSession;
 
 	@RequestMapping("/casher")
-	public String getCasher(@RequestParam("casherName") String casherName,
+	public String getCasher(@RequestParam("casherId") int casherId,
 			@RequestParam(name = "date", required = false) String theDate, Model theModel) {
 
 		List<Balance> casherList;
 		HeaderResult theHeaderResult;
 
+		Casher theCasher = userService.getCasher(casherId);
+
 		if (theDate == null) {
 
 			theDate = LocalDate.now().toString();
-			casherList = userService.getBalanceByCasherName(casherName);
-			theHeaderResult = userService.getCasherHeader(casherName);
+			// casherList = userService.getBalanceByCasherId(casherId);
+
+			casherList = theCasher.getBalances();
+
+			theHeaderResult = userService.getCasherHeader(casherId);
 
 		} else {
 
-			casherList = userService.getBalanceByCasherNameAndDate(casherName, theDate);
-			theHeaderResult = userService.getCasherHeaderByDate(casherName, theDate);
+			casherList = userService.getBalanceByCasherIdAndDate(casherId, theDate);
+			theHeaderResult = userService.getCasherHeaderByDate(casherId, theDate);
 
 		}
 
 		theModel.addAttribute("date", theDate);
-		httpSession.setAttribute("casherName", casherName);
+		httpSession.setAttribute("casher", theCasher);
 		theModel.addAttribute("headerResult", theHeaderResult);
 		theModel.addAttribute("casherList", casherList);
 

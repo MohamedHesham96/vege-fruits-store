@@ -26,7 +26,7 @@
 
 	<div style="text-align: right;" class="container">
 
-		<form:form metho="POST" action="add-balance"
+		<form:form metho="POST" action="add-client-balance"
 			modelAttribute="clientBalance">
 			<div class="row  my-4">
 				<div dir='rtl' class="col-lg-12 col-md-8">
@@ -152,8 +152,7 @@
 
 											<td style="width: 160px"><a
 												style="height: 30px; font-size: 14px;"
-												class="btn btn-danger text-wight
-										font-weight-bold"
+												class="btn btn-danger text-wight font-weight-bold"
 												onclick="return confirm('هل انت متأكد من حذف هذا الصنف ؟')"
 												href="delete-balance?id=${tempItem.id}">حذف</a></td>
 										</tr>
