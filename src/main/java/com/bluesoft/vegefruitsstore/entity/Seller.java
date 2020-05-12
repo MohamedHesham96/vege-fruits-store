@@ -80,4 +80,12 @@ public class Seller {
 		this.masters = masters;
 	}
 
+	public float getDrawee() {
+
+		if (!masters.isEmpty())
+			return masters.get(0).getAmount();
+		else
+			return 0;
+	}
+
 }

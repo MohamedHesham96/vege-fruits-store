@@ -38,7 +38,7 @@
 							<tr class="badge-success">
 
 								<td colspan="10" class="font-weight-bold"
-									style="font-size: 22px">[الاستاذ ] - [ اسم البائع : ${seller.name} ] 
+									style="font-size: 22px">[ الاستاذ ] - [ اسم البائع : ${seller.name} ] 
 								</td>
 
 							</tr>

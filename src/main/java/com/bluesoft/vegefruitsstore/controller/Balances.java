@@ -42,8 +42,9 @@ public class Balances {
 		List<Seller> sellerList = userService.getAllSeller();
 		List<Client> clientsList = userService.getAllClients();
 		List<Balance> balanceList = userService.getAllBalance();
-		Balance balance = new Balance();
+	
 		Client client = new Client();
+		Balance balance = new Balance();
 
 		List<ClientBalance> clientBalances = new ArrayList<ClientBalance>();
 
@@ -97,7 +98,6 @@ public class Balances {
 		theBalance.setLater(theBalance.getWeight() * theBalance.getKiloPrice() - theBalance.getCash());
 
 		Casher theCasher = userService.getCasher(casherId);
-
 		Seller theSeller = userService.getSeller(sellerId);
 
 		theBalance.setCasher(theCasher);
@@ -126,8 +126,6 @@ public class Balances {
 
 		return "redirect:/balance";
 	}
-
-	
 
 	@RequestMapping("/delete-balance")
 	public String getAllBalance(@RequestParam(name = "id") int id) {

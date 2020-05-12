@@ -29,7 +29,7 @@
 
 		<div class="card bg-success" style="width: 18rem; margin-left: 820px;">
 
-			<div class="card-header text-dark font-weight-bold text-center"
+			<div class="card-header text-white font-weight-bold text-center"
 				style="color: #c4c4c4">البحث والاضافة</div>
 
 
@@ -102,7 +102,9 @@
 
 											${tempItem.name} </a></td>
 
-									<td><a style="font-size: 12px"
+									<td>
+									
+										<a style="font-size: 12px"
 										href="seller-relay?sellerName=${tempItem.name}"
 										class=" btn btn-primary text-white font-weight-bold ${ tempItem.balances.size() == 0 ? 'disabled' : ''}">الترحيل</a>
 
@@ -110,6 +112,8 @@
 										href="seller-collect?id=${tempItem.id}"
 										class="btn 
 										text-white font-weight-bold btn-success	${ tempItem.masters.size() == 0 ? 'disabled' : ''}">التحصيل</a>
+
+
 										<a style="font-size: 12px"
 										href="seller-master?id=${tempItem.id}"
 										class="btn btn-danger text-white font-weight-bold ${ tempItem.masters.size() == 0 ? 'disabled' : ''}">الاستاذ</a>

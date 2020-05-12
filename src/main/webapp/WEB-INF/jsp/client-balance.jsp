@@ -116,7 +116,7 @@
 
 								<tr class="badge-success">
 
-									<td colspan="10">[ اسم العميل : ${itemTemp.name} ]</td>
+									<td class="font-weight-bold" colspan="10">[ اسم العميل : ${itemTemp.name} ]</td>
 
 								</tr>
 

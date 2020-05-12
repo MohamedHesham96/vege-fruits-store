@@ -37,7 +37,7 @@ public class Clients {
 
 		theModel.addAttribute("clientList", clientList);
 		theModel.addAttribute("client", new Client());
-		
+
 		return "clients-list";
 	}
 
@@ -52,11 +52,11 @@ public class Clients {
 	@RequestMapping("/client-profile")
 	public String showClientProfile(@RequestParam("id") int id, Model theModel) {
 
-		Seller theSeller = userService.getSellerById(id);
+		Client theClient = userService.getClient(id);
 
-		theModel.addAttribute("seller", theSeller);
+		theModel.addAttribute("client", theClient);
 
-		return "seller-profile";
+		return "client-profile";
 	}
 
 	@RequestMapping("/delete-client")

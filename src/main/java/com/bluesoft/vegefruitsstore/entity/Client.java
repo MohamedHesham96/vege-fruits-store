@@ -64,5 +64,6 @@ public class Client {
 	public void setClientBalances(List<ClientBalance> clientBalances) {
 		this.clientBalances = clientBalances;
 	}
-
+	
+	
 }

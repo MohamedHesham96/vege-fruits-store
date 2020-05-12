@@ -26,7 +26,7 @@
 
 	<div style="text-align: right;" class="container">
 
-		<div class="card bg-secondary text-white"
+		<div class="card bg-success text-white"
 			style="width: 18rem; margin-left: 820px;">
 			<div class="card-header text-white font-weight-bold text-center"
 				style="color: #c4c4c4">التاريخ</div>
@@ -37,10 +37,10 @@
 					<form method="GET" action="collect">
 
 						<input type="date" name="date" value="${date}"
-							class="w-100 btn badge-info  font-weight-bold text-center">
+							class="w-100 btn badge-light font-weight-bold text-center">
 
 						<input type="submit" style="margin-top: 10px;"
-							class="w-100 btn badge-light  font-weight-bold text-center"
+							class="w-100 btn badge-success font-weight-bold text-center"
 							value="اذهب لهذا اليوم" />
 
 					</form>

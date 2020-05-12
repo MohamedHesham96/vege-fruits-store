@@ -27,10 +27,9 @@
 	<div style="text-align: right;" class="container">
 
 
-		<div class="card bg-success"
-			style="width: 18rem; margin-left: 820px;">
+		<div class="card bg-success" style="width: 18rem; margin-left: 820px;">
 
-			<div class="card-header text-dark font-weight-bold text-center"
+			<div class="card-header text-white font-weight-bold text-center"
 				style="color: #c4c4c4">البحث والاضافة</div>
 
 			<ul class="list-group list-group-flush">
@@ -41,9 +40,8 @@
 
 						<input type="text" name="clientName"
 							class="text-center form-control mb-2 col-xs-3"
-							placeholder="ادخل اسم العميل"> 
-							
-							<input type="submit" value="ابحث عن الاسم"
+							placeholder="ادخل اسم العميل"> <input type="submit"
+							value="ابحث عن الاسم"
 							class="w-100 btn btn-success font-weight-bold text-center"
 							onclick="this.disabled=true; this.parentNode.submit();">
 
@@ -104,7 +102,7 @@
 											${tempItem.name} </a></td>
 
 									<td><a style="font-size: 12px"
-										href="seller-relay?sellerName=${tempItem.name}"
+										href="client-profile?id=${tempItem.id}"
 										class=" btn btn-primary text-white font-weight-bold ">الميزان</a>
 
 										<a style="font-size: 12px"

@@ -17,27 +17,50 @@
 
 <link href="webjars/bootstrap/4.4.1/css/bootstrap.min.css"
 	rel="stylesheet">
+<script type="text/javascript">
+	function checkAmount() {
 
+		var amountValue = document.getElementById("a");
+		var draweFromJSP = document.getElementById("draweeFromJSP");
+
+		if (amountValue.value > draweFromJSP.value) {
+
+			alert("المبلغ اكبر من الدين");
+
+			return false;
+
+		} else {
+
+			return true;
+
+		}
+
+	}
+</script>
 </head>
 <body onunload="" background="images/wall1.jpg"
 	style="background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
 
 	<%@ include file="header.jsp"%>
 
+
+
 	<div style="text-align: right;" class="container">
 
-		<div class="card bg-secondary text-white"
+		<input id="draweeFromJSP" value="${seller.getDrawee()}">
+
+		<div class="card bg-success  text-white"
 			style="width: 18rem; margin-left: 820px;">
 			<div class="card-header text-white font-weight-bold text-center"
-				style="color: #c4c4c4">التحصيل</div>
+				style="color: #c4c4c4">[ التحصيل ]</div>
 			<ul class="list-group list-group-flush">
 
-				<li class="bg-dark list-group-item"><form:form metho="POST"
-						action="add-collect" modelAttribute="collect">
+				<li class="bg-dark list-group-item"><form:form id="form"
+						metho="POST" action="add-collect" modelAttribute="collect">
 
 						<input type="hidden" name="sellerId" value="${seller.id}">
 
-						<form:input type="text" path="amount"
+						<form:input id="a" type="text" path="amount"
 							class="text-center form-control mb-2 col-xs-3"
 							placeholder="ادخل المبلغ"></form:input>
 
@@ -47,10 +70,11 @@
 							placeholder="ادخل اسم المستلم"></form:input>
 
 
-						<input type="submit" value="اضف المبلغ للتحصيل"
-							class="w-100 btn btn-info   
+						<input type="submit" ${seller.getDrawee() == 0 ? 'disabled' : '' }
+							value="اضف المبلغ للتحصيل"
+							class="w-100 btn btn-success   
 								 font-weight-bold text-center"
-							onclick="this.disabled=true; this.parentNode.submit();">
+							onclick="return checkAmount();">
 
 					</form:form></li>
 			</ul>
@@ -60,6 +84,8 @@
 
 		<div class="row  my-4">
 			<div dir='rtl' class=" col-lg-12 col-md-8">
+
+				<input hidden="" id="draweFromJSP" value="${seller.getDrawee()}">
 
 				<div class="table-responsive">
 
@@ -71,7 +97,7 @@
 
 								<td colspan="10" class="font-weight-bold"
 									style="font-size: 22px">[ التحصيل ] - [ اسم البائع :
-									${seller.name} ]</td>
+									${seller.name} ] - [ الدين : ${seller.getDrawee()} ]</td>
 
 							</tr>
 

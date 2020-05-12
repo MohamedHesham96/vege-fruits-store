@@ -141,19 +141,15 @@
 							class="table table-bordered table-striped table-sm table-dark">
 							<thead class="thead-inverse">
 
-
 								<tr class="badge-success">
 
-									<td colspan="10">[ اسم العميل : ${headerTemp.clientName} ]
-										- [ الصنف : ${headerTemp.itemName} ] - [ اجمالي العدد :
-										${headerTemp.totalCount} ]</td>
+									<td class="font-weight-bold" colspan="10">[ اسم العميل :
+										${headerTemp.clientName} ] - [ الصنف : ${headerTemp.itemName}
+										] - [ اجمالي العدد : ${headerTemp.totalCount} ]</td>
 
 								</tr>
 
-
-
 								<tr>
-									<!-- 																		<th>الصنف</th> -->
 									<th>العدد</th>
 									<th>الوزن</th>
 									<th>سعر الكيلو</th>
@@ -170,7 +166,6 @@
 										test="${tempItem.client.name == headerTemp.clientName && tempItem.item.name == headerTemp.itemName }">
 
 										<tr>
-											<%-- 											<td>${tempItem.itemName}</td> --%>
 											<td>${tempItem.counter}</td>
 											<td>${tempItem.weight}</td>
 											<td>${tempItem.kiloPrice}</td>

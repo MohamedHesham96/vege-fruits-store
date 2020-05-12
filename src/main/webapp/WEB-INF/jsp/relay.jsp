@@ -54,7 +54,8 @@
 
 								<tr class="badge-success">
 
-									<td colspan="10">[ اسم البائع : ${headerTemp.sellerName} ]</td>
+									<td class="font-weight-bold" colspan="10">[ اسم البائع :
+										${headerTemp.sellerName} ]</td>
 
 								</tr>
 
