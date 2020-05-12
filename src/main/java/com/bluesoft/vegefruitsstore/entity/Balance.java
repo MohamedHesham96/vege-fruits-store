@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 
 @Entity
 @Table(name = "balance")
@@ -20,12 +21,15 @@ public class Balance {
 	int id;
 
 	@Column(name = "count")
+	@Min(value = 1, message = "اقل قيمة ممكنة 1")
 	int counter;
 
 	@Column(name = "weight")
+	@Min(value = 1, message = "اقل قيمة ممكنة 1")
 	float weight;
 
 	@Column(name = "kilo_price")
+	@Min(value = 1, message = "اقل قيمة ممكنة 1")
 	float kiloPrice;
 
 	@Column(name = "cash")

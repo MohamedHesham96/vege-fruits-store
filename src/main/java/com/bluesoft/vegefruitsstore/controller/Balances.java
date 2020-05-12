@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bluesoft.vegefruitsstore.entity.Balance;
+import com.bluesoft.vegefruitsstore.entity.Casher;
 import com.bluesoft.vegefruitsstore.entity.Client;
 import com.bluesoft.vegefruitsstore.entity.ClientBalance;
 import com.bluesoft.vegefruitsstore.entity.Collect;
@@ -75,23 +76,27 @@ public class Balances {
 
 		theBalance.setLater(theBalance.getWeight() * theBalance.getKiloPrice() - theBalance.getCash());
 
-		theBalance.setCasher(userService.getCasher(casherId));
+		Casher theCasher = userService.getCasher(casherId);
+
+		Seller theSeller = userService.getSeller(sellerId);
+
+		theBalance.setCasher(theCasher);
 		theBalance.setClient(userService.getClient(clientId));
-		theBalance.setSeller(userService.getSeller(sellerId));
-	
+		theBalance.setSeller(theSeller);
+
 		// جلب الايتم للبالانس
 		theBalance.setItem(userService.getItem(itemId));
 
 		userService.saveBalance(theBalance);
 
-		if (theBalance.getCash() != theBalance.getTotalAmount()) {
+		if (theBalance.getCash() != theBalance.getTotalAmount() && theBalance.getCash() != 0) {
 
 			userService.updateMaster(sellerId, theBalance.getDate(), theBalance.getTotalAmount(), "relay");
 
 			userService.updateMaster(sellerId, theBalance.getDate(), theBalance.getCash(), "collect");
 
-			userService.addCollect(
-					new Collect(userService.getSeller(sellerId), theBalance.getCash(), theBalance.getDate()));
+			userService.addCollect(new Collect(userService.getSeller(sellerId), theBalance.getCash(),
+					theBalance.getDate(), theCasher.getName()));
 
 		} else if (theBalance.getCash() == 0) {
 

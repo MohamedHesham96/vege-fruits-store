@@ -37,9 +37,10 @@ public class Collect {
 
 	}
 
-	public Collect(Seller seller, float amount, String date) {
+	public Collect(Seller seller, float amount, String date, String receiver) {
 
 		this.seller = seller;
+		this.receiver= receiver;
 		this.amount = amount;
 		this.date = date;
 	}
