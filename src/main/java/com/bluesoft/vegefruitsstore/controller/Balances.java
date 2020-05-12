@@ -33,17 +33,31 @@ public class Balances {
 	private HttpSession httpSession;
 
 	@RequestMapping("/balance")
-	public String getAllBalance(Model theModel) {
+	public String getAllBalance(@RequestParam(name = "clientId", required = false) Integer theClientID,
+			Model theModel) {
 
 		List<HeaderResult> theHeaderResult = userService.getBalanceHeader();
 		List<Item> itemList = new ArrayList<Item>();
 
-//		List<Item> itemList = userService.getAllItems();
 		List<Seller> sellerList = userService.getAllSeller();
 		List<Client> clientsList = userService.getAllClients();
 		List<Balance> balanceList = userService.getAllBalance();
+		Balance balance = new Balance();
+		Client client = new Client();
+		List<ClientBalance> clientBalances = new ArrayList<ClientBalance>();
+		
+		if (theClientID != null) {
 
-		List<ClientBalance> clientBalances = clientsList.get(0).getClientBalances();
+			client = userService.getClient(theClientID);
+			clientBalances = client.getClientBalances();
+			theModel.addAttribute("selectedClient", client);
+			System.out.println(client.getName());
+			balance.setClient(client);
+
+		} else {
+
+			clientBalances = clientsList.get(0).getClientBalances();
+		}
 
 		for (ClientBalance clientBalance : clientBalances) {
 
@@ -53,7 +67,7 @@ public class Balances {
 		httpSession.setAttribute("loginCasherName", "محمد عصام");
 		httpSession.setAttribute("loginCasherId", "1");
 
-		theModel.addAttribute("balance", new Balance());
+		theModel.addAttribute("balance", balance);
 		theModel.addAttribute("itemsList", itemList);
 		theModel.addAttribute("sellersList", sellerList);
 		theModel.addAttribute("clientsList", clientsList);
@@ -61,6 +75,7 @@ public class Balances {
 		theModel.addAttribute("headerResult", theHeaderResult);
 
 		return "balance";
+
 	}
 
 	@RequestMapping("/add-balance")

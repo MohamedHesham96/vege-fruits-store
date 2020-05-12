@@ -17,7 +17,11 @@
 
 <link href="webjars/bootstrap/4.4.1/css/bootstrap.min.css"
 	rel="stylesheet">
-
+<script type="text/javascript">
+	function go(value) {
+		location = "/balance?clientId=" + value;
+	}
+</script>
 </head>
 <body onunload="" background="images/wall1.jpg"
 	style="background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
@@ -47,12 +51,14 @@
 							<tbody>
 
 								<tr>
-									<td><select name="clientId" style="width: 175px;"
-										class="text-center form-control ">
+									<td><select onchange=go(this.value) name="clientId"
+										style="width: 175px;" class="text-center form-control ">
 
 											<c:forEach var="tempItem" items="${clientsList}">
 
-												<option value="${tempItem.id}">${tempItem.name}</option>
+												<option
+													${tempItem.id == selectedClient.id ? 'selected="selected"' : ''}
+													value="${tempItem.id}">${tempItem.name}</option>
 
 											</c:forEach>
 
