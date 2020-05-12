@@ -196,4 +196,12 @@ public class UserServiceImpl implements UserService {
 		return userDAO.getAllItems();
 	}
 
+	@Override
+	public Item getItem(int id) {
+		
+		return userDAO.getItem(id);
+	}
+
+	
+
 }

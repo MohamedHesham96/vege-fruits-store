@@ -1,6 +1,7 @@
 package com.bluesoft.vegefruitsstore.controller;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bluesoft.vegefruitsstore.entity.Balance;
 import com.bluesoft.vegefruitsstore.entity.Client;
+import com.bluesoft.vegefruitsstore.entity.ClientBalance;
 import com.bluesoft.vegefruitsstore.entity.Collect;
 import com.bluesoft.vegefruitsstore.entity.HeaderResult;
 import com.bluesoft.vegefruitsstore.entity.Item;
@@ -33,13 +35,19 @@ public class Balances {
 	public String getAllBalance(Model theModel) {
 
 		List<HeaderResult> theHeaderResult = userService.getBalanceHeader();
+		List<Item> itemList = new ArrayList<Item>();
 
+//		List<Item> itemList = userService.getAllItems();
 		List<Seller> sellerList = userService.getAllSeller();
 		List<Client> clientsList = userService.getAllClients();
-
 		List<Balance> balanceList = userService.getAllBalance();
 
-		List<Item> itemList = userService.getAllItems();
+		List<ClientBalance> clientBalances = clientsList.get(0).getClientBalances();
+
+		for (ClientBalance clientBalance : clientBalances) {
+
+			itemList.add(clientBalance.getItem());
+		}
 
 		httpSession.setAttribute("loginCasherName", "محمد عصام");
 		httpSession.setAttribute("loginCasherId", "1");
@@ -56,11 +64,10 @@ public class Balances {
 
 	@RequestMapping("/add-balance")
 	public String getAllBalance(@RequestParam("clientId") int clientId, @RequestParam("sellerId") int sellerId,
-			@ModelAttribute("balance") Balance theBalance) {
+			@RequestParam("itemId") int itemId, @ModelAttribute("balance") Balance theBalance) {
 
 		// get casher id from the session
 		int casherId = Integer.parseInt(httpSession.getAttribute("loginCasherId").toString());
-		System.out.println(">>>>> " + casherId);
 
 		theBalance.setDate(LocalDate.now().toString());
 
@@ -71,6 +78,9 @@ public class Balances {
 		theBalance.setCasher(userService.getCasher(casherId));
 		theBalance.setClient(userService.getClient(clientId));
 		theBalance.setSeller(userService.getSeller(sellerId));
+	
+		// جلب الايتم للبالانس
+		theBalance.setItem(userService.getItem(itemId));
 
 		userService.saveBalance(theBalance);
 
@@ -83,15 +93,7 @@ public class Balances {
 			userService.addCollect(
 					new Collect(userService.getSeller(sellerId), theBalance.getCash(), theBalance.getDate()));
 
-		} else if (theBalance.getCash() == theBalance.getTotalAmount()) {
-
-			// اسئله هل في تحصيل بيتسجل لو دفع المبلغ كله ولا لأ
-			// userService.addCollect(new Collect(userService.getSeller(sellerId),
-			// theBalance.getCash(), theBalance.getDate()));
-
-		}
-
-		else if (theBalance.getCash() == 0) {
+		} else if (theBalance.getCash() == 0) {
 
 			userService.updateMaster(sellerId, theBalance.getDate(), theBalance.getTotalAmount(), "relay");
 

@@ -407,12 +407,23 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public List<Item> getAllItems() {
+
 		Session session = entityManager.unwrap(Session.class);
 
 		List<Item> itemList = session.createQuery("from Item order by name").getResultList();
 
 		return itemList;
 
+	}
+
+	@Override
+	public Item getItem(int id) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		Item item = session.get(Item.class, id);
+
+		return item;
 	}
 
 }

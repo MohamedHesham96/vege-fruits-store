@@ -74,7 +74,7 @@
 									<c:if test="${tempItem.seller.name == headerTemp.sellerName}">
 
 										<tr>
-											<td>${tempItem.itemName}</td>
+											<td>${tempItem.item.name}</td>
 											<td>${tempItem.counter}</td>
 											<td>${tempItem.weight}</td>
 											<td>${tempItem.kiloPrice}</td>

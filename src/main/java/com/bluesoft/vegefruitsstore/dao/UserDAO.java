@@ -47,21 +47,21 @@ public interface UserDAO {
 	public List<Balance> getSellerRelay(String sellerName);
 
 	public HeaderResult getSellerRelayHeader(String sellerName);
-	
+
 	public List<Master> getAllMaster();
-	
+
 	public void updateMaster(int sellerId, String date, float amount, String operation);
-	
+
 	public MasterResult getMasterTotals();
-	
+
 	public List<Client> getAllClients();
-	
+
 	public Casher getCasher(int id);
 
 	public Client getClient(int id);
 
 	public Seller getSeller(int id);
-	
+
 	public List<Casher> getAllCasher();
 
 	public List<Client> searchForClientByName(String clientName);
@@ -71,5 +71,7 @@ public interface UserDAO {
 	public void saveClient(Client client);
 
 	public List<Item> getAllItems();
+
+	public Item getItem(int id);
 
 }

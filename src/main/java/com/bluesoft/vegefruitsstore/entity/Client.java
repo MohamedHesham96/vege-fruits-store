@@ -27,6 +27,9 @@ public class Client {
 	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
 	private List<Balance> balances;
 
+	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
+	private List<ClientBalance> clientBalances;
+
 	public int getId() {
 		return id;
 	}
@@ -41,6 +44,22 @@ public class Client {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public List<Balance> getBalances() {
+		return balances;
+	}
+
+	public void setBalances(List<Balance> balances) {
+		this.balances = balances;
+	}
+
+	public List<ClientBalance> getClientBalances() {
+		return clientBalances;
+	}
+
+	public void setClientBalances(List<ClientBalance> clientBalances) {
+		this.clientBalances = clientBalances;
 	}
 
 }

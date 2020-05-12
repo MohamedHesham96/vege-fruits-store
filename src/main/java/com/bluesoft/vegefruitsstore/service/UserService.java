@@ -72,4 +72,6 @@ public interface UserService {
 
 	public List<Item> getAllItems();
 
+	public Item getItem(int id);
+
 }

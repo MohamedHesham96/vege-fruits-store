@@ -69,7 +69,7 @@
 
 									</select></td>
 
-									<td><select name="sellerId" style="width: 175px;"
+									<td><select name="itemId" style="width: 175px;"
 										class="text-center form-control ">
 
 											<c:forEach var="tempItem" items="${itemsList}">
@@ -122,7 +122,7 @@
 		</form:form>
 
 
-		<!-- TABLE			TABLE			TABLE			TABLE -->
+		<!-- TABLE          TABLE          TABLE          TABLE -->
 
 		<div class="row  my-4">
 			<div dir='rtl' class=" col-lg-12 col-md-8">
@@ -147,7 +147,7 @@
 
 
 								<tr>
-									<!-- 									<th>الصنف</th> -->
+									<!-- 																		<th>الصنف</th> -->
 									<th>العدد</th>
 									<th>الوزن</th>
 									<th>سعر الكيلو</th>
@@ -161,7 +161,7 @@
 							<tbody>
 								<c:forEach var="tempItem" items="${balanceList}">
 									<c:if
-										test="${tempItem.client.name == headerTemp.clientName && tempItem.itemName == headerTemp.itemName }">
+										test="${tempItem.client.name == headerTemp.clientName && tempItem.item.name == headerTemp.itemName }">
 
 										<tr>
 											<%-- 											<td>${tempItem.itemName}</td> --%>
@@ -176,8 +176,7 @@
 
 											<td style="width: 160px"><a
 												style="height: 30px; font-size: 14px;"
-												class="btn btn-danger text-wight
-										font-weight-bold"
+												class="btn btn-danger text-wight font-weight-bold"
 												onclick="return confirm('هل انت متأكد من حذف هذا الصنف ؟')"
 												href="delete-balance?id=${tempItem.id}">حذف</a></td>
 										</tr>
@@ -208,13 +207,11 @@
 					</div>
 					<br>
 
-
 				</c:forEach>
 
 			</div>
 		</div>
 	</div>
-
 
 </body>
 </html>
