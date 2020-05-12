@@ -105,12 +105,12 @@
 
 									<td><a style="font-size: 12px"
 										href="seller-relay?sellerName=${tempItem.name}"
-										class=" btn btn-primary text-white font-weight-bold ">-----</a>
+										class=" btn btn-primary text-white font-weight-bold ">الميزان</a>
 
 										<a style="font-size: 12px"
 										href="seller-collect?id=${tempItem.id}"
 										class="btn 
-										text-white font-weight-bold btn-success	">-----</a>
+										text-white font-weight-bold btn-success	">الفواتير</a>
 										<a style="font-size: 12px"
 										href="seller-master?id=${tempItem.id}"
 										class="btn btn-danger text-white font-weight-bold ">-----</a>

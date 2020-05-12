@@ -35,12 +35,12 @@ public class ClientBalances {
 
 		List<Item> itemList = userService.getAllItems();
 		List<Client> clientsList = userService.getAllClients();
-		List<ClientBalance> clientBalanceList = userService.getAllClientBalance();
+	//	List<ClientBalance> clientBalanceList = userService.getAllClientBalance();
 
 		theModel.addAttribute("clientBalance", new ClientBalance());
 		theModel.addAttribute("itemsList", itemList);
 		theModel.addAttribute("clientsList", clientsList);
-		theModel.addAttribute("clientBalanceList", clientBalanceList);
+	//	theModel.addAttribute("clientBalanceList", clientBalanceList);
 
 		return "client-balance";
 

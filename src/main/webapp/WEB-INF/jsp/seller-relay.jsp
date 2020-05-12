@@ -41,8 +41,8 @@
 							<tr class="badge-success">
 
 								<td colspan="10" class="font-weight-bold"
-									style="font-size: 22px">[ الترحيل ] - [ اسم البائع : ${headerResult.sellerName} ]
-									</td>
+									style="font-size: 22px">[ الترحيل ] - [ اسم البائع :
+									${headerResult.sellerName} ]</td>
 
 							</tr>
 
@@ -61,7 +61,7 @@
 							<c:forEach var="tempItem" items="${relayList}">
 
 								<tr>
-									<td>${tempItem.itemName}</td>
+									<td>${tempItem.item.name}</td>
 									<td>${tempItem.counter}</td>
 									<td>${tempItem.weight}</td>
 									<td>${tempItem.kiloPrice}</td>

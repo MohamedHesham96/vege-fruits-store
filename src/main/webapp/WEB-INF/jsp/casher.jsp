@@ -38,8 +38,8 @@
 
 					<form method="GET" action="casher">
 
-						<input type="hidden" name="casherName"
-							value="<%=session.getAttribute("casherName")%>"> <input
+						<input type="hidden" name="casherId"
+							value="<%=session.getAttribute("loginCasherId")%>"> <input
 							type="date" name="date" value="${date}"
 							class="w-100 btn badge-info  font-weight-bold text-center">
 
