@@ -30,7 +30,7 @@
 
 	<div style="text-align: right;" class="container">
 
-		<form:form metho="POST" action="add-balance" modelAttribute="balance">
+		<form:form metho="get" action="add-balance" modelAttribute="balance">
 			<div class="row  my-4">
 				<div dir='rtl' class="col-lg-12 col-md-8">
 					<div class="table-responsive">
@@ -51,7 +51,7 @@
 							<tbody>
 
 								<tr>
-									<td><select onchange=go(this.value) name="clientId"
+									<td><select onchange="go(this.value)" name="clientId"
 										style="width: 175px;" class="text-center form-control ">
 
 											<c:forEach var="tempItem" items="${clientsList}">
@@ -76,7 +76,7 @@
 									</select></td>
 
 									<td><select name="itemId" style="width: 175px;"
-										class="text-center form-control ">
+										class="text-center form-control">
 
 											<c:forEach var="tempItem" items="${itemsList}">
 
@@ -89,22 +89,20 @@
 
 
 									<td style="width: 125px"><form:input type="text"
-											path="counter" class="text-center form-control  "
+											path="counter" class="text-center form-control"
 											placeholder="ادخل العدد"></form:input></td>
 
 									<td style="width: 125px"><form:input type="text"
-											path="weight" class="text-center form-control  "
+											path="weight" class="text-center form-control"
 											placeholder="ادخل الوزن"></form:input></td>
 
 									<td style="width: 125px"><form:input type="text"
-											path="kiloPrice" class="text-center form-control  "
+											path="kiloPrice" class="text-center form-control"
 											placeholder="ادخل سعر الكيلو"></form:input></td>
 
-									<td style="width: 125px" style="width:"><form:input
-											type="text" path="cash" class="text-center form-control  "
+									<td style="width: 125px"><form:input type="text"
+											path="cash" class="text-center form-control"
 											placeholder="ادخل النقدي"></form:input></td>
-
-
 
 								</tr>
 

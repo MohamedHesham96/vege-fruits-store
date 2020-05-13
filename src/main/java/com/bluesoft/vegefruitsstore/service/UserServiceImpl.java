@@ -217,4 +217,10 @@ public class UserServiceImpl implements UserService {
 		userDAO.saveClientBalance(clientBalance);
 	}
 
+	@Override
+	public void updateClientBalance(int itemId, int clientId, int count, float weight) {
+
+		userDAO.updateClientBalance(itemId, clientId, count, weight);
+	}
+
 }

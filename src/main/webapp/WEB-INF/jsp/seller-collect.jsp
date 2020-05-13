@@ -21,17 +21,18 @@
 	function checkAmount() {
 
 		var amountValue = document.getElementById("a");
-		var draweFromJSP = document.getElementById("draweeFromJSP");
+		var drweeTotal = document.getElementById("drweeTotal");
 
-		if (amountValue.value > draweFromJSP.value) {
+		var alert = document.getElementById("alert");
 
-			alert("المبلغ اكبر من الدين");
+		if (amountValue.value < drweeTotal.value) {
 
-			return false;
+			return true;
 
 		} else {
 
-			return true;
+			alert.style.display = "block"
+			return false;
 
 		}
 
@@ -43,11 +44,11 @@
 
 	<%@ include file="header.jsp"%>
 
-
-
 	<div style="text-align: right;" class="container">
 
-		<input id="draweeFromJSP" value="${seller.getDrawee()}">
+		<div style="display: none;" id="alert" class="alert alert-danger"
+			role="alert">هذا المبلغ اكبر من حجم الدين</div>
+
 
 		<div class="card bg-success  text-white"
 			style="width: 18rem; margin-left: 820px;">
@@ -55,10 +56,11 @@
 				style="color: #c4c4c4">[ التحصيل ]</div>
 			<ul class="list-group list-group-flush">
 
-				<li class="bg-dark list-group-item"><form:form id="form"
+				<li class="bg-dark list-group-item"><form:form id="myform"
 						metho="POST" action="add-collect" modelAttribute="collect">
 
 						<input type="hidden" name="sellerId" value="${seller.id}">
+						<input type="hidden" id="drweeTotal" value="${drweeTotal}">
 
 						<form:input id="a" type="text" path="amount"
 							class="text-center form-control mb-2 col-xs-3"
@@ -70,22 +72,21 @@
 							placeholder="ادخل اسم المستلم"></form:input>
 
 
-						<input type="submit" ${seller.getDrawee() == 0 ? 'disabled' : '' }
+						<input type="submit" ${drweeTotal == 0 ? 'disabled' : '' }
 							value="اضف المبلغ للتحصيل"
 							class="w-100 btn btn-success   
 								 font-weight-bold text-center"
-							onclick="return checkAmount();">
+							onClick="return checkAmount();">
 
 					</form:form></li>
 			</ul>
 
 		</div>
 
-
 		<div class="row  my-4">
 			<div dir='rtl' class=" col-lg-12 col-md-8">
 
-				<input hidden="" id="draweFromJSP" value="${seller.getDrawee()}">
+				<input id="draweFromJSP" value="${seller.getDrawee()}">
 
 				<div class="table-responsive">
 
@@ -125,7 +126,6 @@
 					</table>
 
 				</div>
-				<br>
 
 			</div>
 		</div>

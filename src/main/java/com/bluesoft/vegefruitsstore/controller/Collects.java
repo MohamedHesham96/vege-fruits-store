@@ -49,6 +49,7 @@ public class Collects {
 		Seller theSeller = userService.getSellerById(id);
 
 		theModel.addAttribute("seller", theSeller);
+		theModel.addAttribute("drweeTotal", theSeller.getDrawee());
 		theModel.addAttribute("collect", new Collect());
 
 		return "seller-collect";

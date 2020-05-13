@@ -42,7 +42,7 @@ public class Balances {
 		List<Seller> sellerList = userService.getAllSeller();
 		List<Client> clientsList = userService.getAllClients();
 		List<Balance> balanceList = userService.getAllBalance();
-	
+
 		Client client = new Client();
 		Balance balance = new Balance();
 
@@ -85,11 +85,13 @@ public class Balances {
 	}
 
 	@RequestMapping("/add-balance")
-	public String getAllBalance(@RequestParam("clientId") int clientId, @RequestParam("sellerId") int sellerId,
-			@RequestParam("itemId") int itemId, @ModelAttribute("balance") Balance theBalance) {
+	public String getAllBalance(@RequestParam("itemId") int itemId, @RequestParam("clientId") int clientId,
+			@RequestParam("sellerId") int sellerId, @ModelAttribute("balance") Balance theBalance) {
 
 		// get casher id from the session
 		int casherId = Integer.parseInt(httpSession.getAttribute("loginCasherId").toString());
+
+		userService.updateClientBalance(itemId, clientId, theBalance.getCounter(), theBalance.getWeight());
 
 		theBalance.setDate(LocalDate.now().toString());
 

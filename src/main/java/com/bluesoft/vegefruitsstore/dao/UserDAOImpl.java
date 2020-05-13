@@ -446,4 +446,20 @@ public class UserDAOImpl implements UserDAO {
 		session.saveOrUpdate(clientBalance);
 	}
 
+	@Override
+	public void updateClientBalance(int itemId, int clientId, int count, float weight) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		ClientBalance theClientBalance = (ClientBalance) session
+				.createQuery("from ClientBalance CB where CB.item.id = :theItemId and CB.client.id = :theClientId")
+				.setMaxResults(1).setParameter("theItemId", itemId).setParameter("theClientId", clientId)
+				.uniqueResult();
+
+		theClientBalance.setCounter(theClientBalance.getCounter() - count);
+		theClientBalance.setWeight(theClientBalance.getWeight() - weight);
+
+		session.saveOrUpdate(theClientBalance);
+	}
+
 }

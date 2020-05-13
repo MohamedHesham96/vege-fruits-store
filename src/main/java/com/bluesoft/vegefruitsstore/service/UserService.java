@@ -79,4 +79,6 @@ public interface UserService {
 
 	public void saveClientBalance(ClientBalance theClientBalance);
 
+	public void updateClientBalance(int itemId, int clientId, int count, float weight);
+
 }
