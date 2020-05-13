@@ -42,9 +42,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void deleteBalance(int id) {
+	public void deleteBalance(Balance balance) {
 
-		userDAO.deleteBalance(id);
+		userDAO.deleteBalance(balance);
 	}
 
 	@Override
@@ -221,6 +221,12 @@ public class UserServiceImpl implements UserService {
 	public void updateClientBalance(int itemId, int clientId, int count, float weight) {
 
 		userDAO.updateClientBalance(itemId, clientId, count, weight);
+	}
+
+	@Override
+	public Balance getBalanceById(int id) {
+
+		return userDAO.getBalanceById(id);
 	}
 
 }

@@ -21,7 +21,7 @@ public interface UserService {
 
 	public List<HeaderResult> getBalanceHeader();
 
-	public void deleteBalance(int id);
+	public void deleteBalance(Balance balance);
 
 	public List<HeaderResult> getRelayHeader();
 
@@ -80,5 +80,7 @@ public interface UserService {
 	public void saveClientBalance(ClientBalance theClientBalance);
 
 	public void updateClientBalance(int itemId, int clientId, int count, float weight);
+
+	public Balance getBalanceById(int id);
 
 }

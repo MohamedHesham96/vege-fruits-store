@@ -132,7 +132,12 @@ public class Balances {
 	@RequestMapping("/delete-balance")
 	public String getAllBalance(@RequestParam(name = "id") int id) {
 
-		userService.deleteBalance(id);
+		Balance theBalance = userService.getBalanceById(id);
+
+		userService.updateClientBalance(theBalance.getItem().getId(), theBalance.getClient().getId(),
+				theBalance.getCounter() * -1, theBalance.getWeight() * -1);
+
+		userService.deleteBalance(theBalance);
 
 		return "redirect:/balance";
 	}

@@ -15,13 +15,15 @@ import com.bluesoft.vegefruitsstore.entity.Seller;
 
 public interface UserDAO {
 
+	public Balance getBalanceById(int id);
+	
 	public List<Balance> getAllBalance();
 
 	public void saveBalance(Balance theBalance);
 
 	public List<HeaderResult> getBalanceHeader();
 
-	public void deleteBalance(int id);
+	public void deleteBalance(Balance balance);
 
 	public List<HeaderResult> getRelayHeader();
 

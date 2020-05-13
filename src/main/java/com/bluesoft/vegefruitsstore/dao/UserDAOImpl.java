@@ -64,11 +64,12 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	@Transactional
-	public void deleteBalance(int id) {
+	public void deleteBalance(Balance balance) {
 
 		Session session = entityManager.unwrap(Session.class);
-		Balance theBalance = session.get(Balance.class, id);
-		session.delete(theBalance);
+
+		session.delete(balance);
+
 	}
 
 	@Override
@@ -460,6 +461,17 @@ public class UserDAOImpl implements UserDAO {
 		theClientBalance.setWeight(theClientBalance.getWeight() - weight);
 
 		session.saveOrUpdate(theClientBalance);
+	}
+
+	@Override
+	public Balance getBalanceById(int id) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		Balance balance = session.get(Balance.class, id);
+
+		return balance;
+
 	}
 
 }
