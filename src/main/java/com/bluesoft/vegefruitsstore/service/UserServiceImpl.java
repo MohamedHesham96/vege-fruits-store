@@ -235,4 +235,11 @@ public class UserServiceImpl implements UserService {
 		userDAO.saveCasher(casher);
 	}
 
+	@Override
+	public void saveItem(Item item) {
+		
+		userDAO.saveItem(item);
+		
+	}
+
 }

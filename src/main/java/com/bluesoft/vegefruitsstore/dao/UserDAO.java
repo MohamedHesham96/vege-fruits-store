@@ -85,4 +85,6 @@ public interface UserDAO {
 
 	public void saveCasher(Casher casher);
 
+	public void saveItem(Item item);
+
 }

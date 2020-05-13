@@ -85,4 +85,6 @@ public interface UserService {
 
 	public void saveCasher(Casher casher);
 
+	public void saveItem(Item item);
+
 }

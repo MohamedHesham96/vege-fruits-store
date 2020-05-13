@@ -112,9 +112,8 @@
 
 									<button onclick="showForm()"
 										style="height: 30px; font-size: 12px"
-										class="btn btn-dark text-wight font-weight-bold"
-										href="casher-clients?casherId=${tempItem.id}">+ اضافة
-										كاشير جديد</button>
+										class="btn btn-dark text-wight font-weight-bold">+
+										اضافة كاشير جديد</button>
 								</td>
 
 							</tr>

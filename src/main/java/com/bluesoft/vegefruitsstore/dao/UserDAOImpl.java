@@ -486,4 +486,13 @@ public class UserDAOImpl implements UserDAO {
 
 	}
 
+	@Override
+	public void saveItem(Item item) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		session.saveOrUpdate(item);
+
+	}
+
 }

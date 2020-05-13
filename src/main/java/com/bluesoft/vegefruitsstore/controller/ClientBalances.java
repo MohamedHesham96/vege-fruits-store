@@ -40,6 +40,7 @@ public class ClientBalances {
 		theModel.addAttribute("clientBalance", new ClientBalance());
 		theModel.addAttribute("itemsList", itemList);
 		theModel.addAttribute("clientsList", clientsList);
+		theModel.addAttribute("item", new Item());
 		// theModel.addAttribute("clientBalanceList", clientBalanceList);
 
 		return "client-balance";

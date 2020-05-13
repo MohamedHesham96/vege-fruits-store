@@ -18,6 +18,18 @@
 <link href="webjars/bootstrap/4.4.1/css/bootstrap.min.css"
 	rel="stylesheet">
 
+<script type="text/javascript">
+	function showForm() {
+
+		var form = document.getElementById("form");
+
+		if (form.style.display === "block")
+			form.style.display = "none";
+		else
+			form.style.display = "block";
+	}
+</script>
+
 </head>
 <body onunload="" background="images/wall1.jpg"
 	style="background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
@@ -25,6 +37,31 @@
 	<%@ include file="header.jsp"%>
 
 	<div style="text-align: right;" class="container">
+
+		<div id="form" class="card bg-success"
+			style="display: none; width: 18rem; margin-left: 820px;">
+
+			<div class="card-header text-white font-weight-bold text-center"
+				style="color: #c4c4c4">اضافة صنف</div>
+
+			<ul class="list-group list-group-flush">
+
+				<li class="bg-dark list-group-item"><form:form
+						modelAttribute="item" method="POST" action="add-item">
+
+						<form:input type="text" path="name"
+							class="text-center form-control mb-2 col-xs-3"
+							placeholder="ادخل اسم الصنف"></form:input>
+
+						<input type="submit" value="اضافة صنف جديد"
+							class="w-100 btn btn-success font-weight-bold text-center"
+							onclick="return confirm('هل انت متأكد من اضافة هذا الصنف ؟')">
+
+					</form:form></li>
+			</ul>
+
+		</div>
+
 
 		<form:form metho="POST" action="add-client-balance"
 			modelAttribute="clientBalance">
@@ -35,7 +72,12 @@
 							<thead class="thead-inverse">
 								<tr>
 									<th>اسم العميل</th>
-									<th>الصنف</th>
+									<th>الصنف
+										<button type="button" onclick="showForm()"
+											style="height: 30px; font-size: 12px"
+											class="btn btn-success text-wight font-weight-bold">+
+											اضافة صنف جديد</button>
+									</th>
 									<th>العدد</th>
 									<th>الوزن</th>
 
