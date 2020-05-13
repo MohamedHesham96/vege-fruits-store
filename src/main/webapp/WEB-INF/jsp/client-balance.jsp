@@ -38,6 +38,7 @@
 									<th>الصنف</th>
 									<th>العدد</th>
 									<th>الوزن</th>
+
 								</tr>
 							</thead>
 
@@ -116,7 +117,8 @@
 
 								<tr class="badge-success">
 
-									<td class="font-weight-bold" colspan="10">[ اسم العميل : ${itemTemp.name} ]</td>
+									<td class="font-weight-bold" colspan="10">[ اسم العميل :
+										${itemTemp.name} ]</td>
 
 								</tr>
 
@@ -124,8 +126,8 @@
 
 								<tr>
 									<th>الصنف</th>
-									<th>العدد</th>
-									<th>الوزن</th>
+									<th>العدد الحالي</th>
+									<th>الوزن الحالي</th>
 									<th>الكاشير</th>
 									<th>التاريخ</th>
 								</tr>
@@ -135,8 +137,11 @@
 
 									<tr>
 										<td>${tempItem.item.name}</td>
-										<td>${tempItem.counter}</td>
-										<td>${tempItem.weight}</td>
+										<td><h5 style="display: inline;">${tempItem.currentCounter}</h5>
+											- (من ${tempItem.counter})</td>
+										<td><h5 style="display: inline;">
+												${tempItem.currentWeight}</h5> (من ${tempItem.weight})</td>
+
 										<td>${tempItem.casher.name}</td>
 										<td>${tempItem.date}</td>
 
@@ -150,20 +155,6 @@
 								</c:forEach>
 
 							</tbody>
-
-
-							<!-- 							<tr class="bg-primary"> -->
-
-							<%-- 								<td>${headerTemp.totalCount}</td> --%>
-							<%-- 								<td>${headerTemp.totalWeight}</td> --%>
-							<!-- 								<td></td> -->
-							<%-- 																<td>${headerTemp.totalCash}</td> --%>
-							<%-- 								<td>${headerTemp.totalLater}</td> --%>
-							<%-- 								<td>${headerTemp.totalAmount}</td> --%>
-							<!-- 								<td colspan="6"></td> -->
-
-							<!-- 							</tr> -->
-
 
 						</table>
 

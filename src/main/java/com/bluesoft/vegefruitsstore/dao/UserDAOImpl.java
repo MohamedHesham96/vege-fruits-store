@@ -448,7 +448,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public void updateClientBalance(int itemId, int clientId, int count, float weight) {
+	public void updateClientBalance(int itemId, int clientId, int count, float weight) throws Exception {
 
 		Session session = entityManager.unwrap(Session.class);
 
@@ -457,8 +457,11 @@ public class UserDAOImpl implements UserDAO {
 				.setMaxResults(1).setParameter("theItemId", itemId).setParameter("theClientId", clientId)
 				.uniqueResult();
 
-		theClientBalance.setCounter(theClientBalance.getCounter() - count);
-		theClientBalance.setWeight(theClientBalance.getWeight() - weight);
+//		if (theClientBalance.getCounter() < count || theClientBalance.getWeight() < weight)
+//			throw new Exception("Errorrrrrrrrrrrrr");
+
+		theClientBalance.setCurrentCounter(theClientBalance.getCurrentCounter() - count);
+		theClientBalance.setCurrentWeight(theClientBalance.getCurrentWeight() - weight);
 
 		session.saveOrUpdate(theClientBalance);
 	}
@@ -471,6 +474,15 @@ public class UserDAOImpl implements UserDAO {
 		Balance balance = session.get(Balance.class, id);
 
 		return balance;
+
+	}
+
+	@Override
+	public void saveCasher(Casher casher) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		session.saveOrUpdate(casher);
 
 	}
 

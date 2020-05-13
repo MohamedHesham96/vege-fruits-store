@@ -218,7 +218,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void updateClientBalance(int itemId, int clientId, int count, float weight) {
+	public void updateClientBalance(int itemId, int clientId, int count, float weight) throws Exception {
 
 		userDAO.updateClientBalance(itemId, clientId, count, weight);
 	}
@@ -227,6 +227,12 @@ public class UserServiceImpl implements UserService {
 	public Balance getBalanceById(int id) {
 
 		return userDAO.getBalanceById(id);
+	}
+
+	@Override
+	public void saveCasher(Casher casher) {
+		
+		userDAO.saveCasher(casher);
 	}
 
 }

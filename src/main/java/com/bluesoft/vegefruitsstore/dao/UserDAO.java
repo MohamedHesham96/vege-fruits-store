@@ -81,6 +81,8 @@ public interface UserDAO {
 
 	public void saveClientBalance(ClientBalance clientBalance);
 
-	public void updateClientBalance(int itemId, int clientId, int count, float weight);
+	public void updateClientBalance(int itemId, int clientId, int count, float weight) throws Exception;
+
+	public void saveCasher(Casher casher);
 
 }

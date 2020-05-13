@@ -26,10 +26,13 @@ public class Casher {
 	@Pattern(regexp = "[ ء-ي]+", message = "ادخل الاسم بشكل صحيح")
 	String name;
 
+	@Column(name = "password")
+	String password;
+
 	@OneToMany(mappedBy = "casher", fetch = FetchType.LAZY)
 	private List<Balance> balances;
 
-	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "casher", fetch = FetchType.LAZY)
 	@Where(clause = "count > 0")
 	private List<ClientBalance> clientBalances;
 
@@ -47,6 +50,14 @@ public class Casher {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public List<Balance> getBalances() {

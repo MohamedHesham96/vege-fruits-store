@@ -79,8 +79,10 @@ public interface UserService {
 
 	public void saveClientBalance(ClientBalance theClientBalance);
 
-	public void updateClientBalance(int itemId, int clientId, int count, float weight);
+	public void updateClientBalance(int itemId, int clientId, int count, float weight) throws Exception;
 
 	public Balance getBalanceById(int id);
+
+	public void saveCasher(Casher casher);
 
 }

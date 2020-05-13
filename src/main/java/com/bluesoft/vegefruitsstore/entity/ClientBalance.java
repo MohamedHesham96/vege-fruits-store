@@ -22,12 +22,18 @@ public class ClientBalance {
 	int id;
 
 	@Column(name = "count")
-	@Where(clause = "count > 0")
 	int counter;
 
 	@Column(name = "weight")
-	@Where(clause = "count > 0")
 	float weight;
+
+	@Column(name = "current_count")
+	@Where(clause = "current_count > 0")
+	int currentCounter;
+
+	@Column(name = "current_weight")
+	@Where(clause = "current_weight > 0")
+	float currentWeight;
 
 	@ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.DETACH, CascadeType.PERSIST, CascadeType.MERGE,
 			CascadeType.REFRESH })
@@ -77,6 +83,22 @@ public class ClientBalance {
 
 	public void setCounter(int counter) {
 		this.counter = counter;
+	}
+
+	public int getCurrentCounter() {
+		return currentCounter;
+	}
+
+	public void setCurrentCounter(int currentCounter) {
+		this.currentCounter = currentCounter;
+	}
+
+	public float getCurrentWeight() {
+		return currentWeight;
+	}
+
+	public void setCurrentWeight(float currentWeight) {
+		this.currentWeight = currentWeight;
 	}
 
 	public float getWeight() {

@@ -86,7 +86,7 @@ public class Balances {
 
 	@RequestMapping("/add-balance")
 	public String getAllBalance(@RequestParam("itemId") int itemId, @RequestParam("clientId") int clientId,
-			@RequestParam("sellerId") int sellerId, @ModelAttribute("balance") Balance theBalance) {
+			@RequestParam("sellerId") int sellerId, @ModelAttribute("balance") Balance theBalance) throws Exception {
 
 		// get casher id from the session
 		int casherId = Integer.parseInt(httpSession.getAttribute("loginCasherId").toString());
@@ -130,7 +130,7 @@ public class Balances {
 	}
 
 	@RequestMapping("/delete-balance")
-	public String getAllBalance(@RequestParam(name = "id") int id) {
+	public String getAllBalance(@RequestParam(name = "id") int id) throws Exception {
 
 		Balance theBalance = userService.getBalanceById(id);
 

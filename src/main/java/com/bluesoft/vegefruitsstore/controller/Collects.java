@@ -37,8 +37,16 @@ public class Collects {
 
 		}
 
+		int collectTotal = 0;
+
+		for (Collect collect : collectList) {
+
+			collectTotal += collect.getAmount();
+		}
+
 		theModel.addAttribute("date", theDate);
 		theModel.addAttribute("collectList", collectList);
+		theModel.addAttribute("collectTotal", collectTotal);
 
 		return "collect";
 	}
