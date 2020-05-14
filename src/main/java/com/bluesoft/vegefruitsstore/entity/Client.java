@@ -30,7 +30,7 @@ public class Client {
 	private List<Balance> balances;
 
 	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
-	@Where(clause = "count > 0")
+	@Where(clause = "current_count > 0")
 	private List<ClientBalance> clientBalances;
 
 	public int getId() {
@@ -64,6 +64,5 @@ public class Client {
 	public void setClientBalances(List<ClientBalance> clientBalances) {
 		this.clientBalances = clientBalances;
 	}
-	
-	
+
 }

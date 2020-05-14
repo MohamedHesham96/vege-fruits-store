@@ -231,15 +231,21 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void saveCasher(Casher casher) {
-		
+
 		userDAO.saveCasher(casher);
 	}
 
 	@Override
 	public void saveItem(Item item) {
-		
+
 		userDAO.saveItem(item);
-		
+
+	}
+
+	@Override
+	public List<Client> getAllClientsHaveItems() {
+
+		return userDAO.getAllClientsHaveItems();
 	}
 
 }

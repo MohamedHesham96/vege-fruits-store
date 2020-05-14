@@ -152,57 +152,58 @@
 
 					<div class="table-responsive">
 
-						<table
-							class="table table-bordered table-striped table-sm table-dark">
-							<thead class="thead-inverse">
+						<c:if test="${itemTemp.clientBalances.size() > 0}">
+
+							<table
+								class="table table-bordered table-striped table-sm table-dark">
+								<thead class="thead-inverse">
 
 
-								<tr class="badge-success">
+									<tr class="badge-success">
 
-									<td class="font-weight-bold" colspan="10">[ اسم العميل :
-										${itemTemp.name} ]</td>
+										<td class="font-weight-bold" colspan="10">[ اسم العميل :
+											${itemTemp.name} ]</td>
 
-								</tr>
-
-
-
-								<tr>
-									<th>الصنف</th>
-									<th>العدد الحالي</th>
-									<th>الوزن الحالي</th>
-									<th>الكاشير</th>
-									<th>التاريخ</th>
-								</tr>
-							</thead>
-							<tbody>
-								<c:forEach var="tempItem" items="${itemTemp.clientBalances}">
-
-									<tr>
-										<td>${tempItem.item.name}</td>
-										<td><h5 style="display: inline;">${tempItem.currentCounter}</h5>
-											- (من ${tempItem.counter})</td>
-										<td><h5 style="display: inline;">
-												${tempItem.currentWeight}</h5> (من ${tempItem.weight})</td>
-
-										<td>${tempItem.casher.name}</td>
-										<td>${tempItem.date}</td>
-
-										<!-- 										<td style="width: 160px"><a -->
-										<!-- 											style="height: 30px; font-size: 14px;" -->
-										<!-- 											class="btn btn-danger text-wight font-weight-bold" -->
-										<!-- 											onclick="return confirm('هل انت متأكد من حذف هذا الصنف ؟')" -->
-										<%-- 											href="delete-balance?id=${tempItem.id}">حذف</a></td> --%>
 									</tr>
 
-								</c:forEach>
+									<tr>
+										<th>الصنف</th>
+										<th>العدد الحالي</th>
+										<th>الوزن الحالي</th>
+										<th>الكاشير</th>
+										<th>التاريخ</th>
+									</tr>
+								</thead>
 
-							</tbody>
+								<tbody>
+									<c:forEach var="tempItem" items="${itemTemp.clientBalances}">
 
-						</table>
+										<tr>
+											<td>${tempItem.item.name}</td>
+											<td><h5 style="display: inline;">${tempItem.currentCounter}</h5>
+												- (من ${tempItem.counter})</td>
+											<td><h5 style="display: inline;">
+													${tempItem.currentWeight}</h5> (من ${tempItem.weight})</td>
 
+											<td>${tempItem.casher.name}</td>
+											<td>${tempItem.date}</td>
+
+											<!-- 										<td style="width: 160px"><a -->
+											<!-- 											style="height: 30px; font-size: 14px;" -->
+											<!-- 											class="btn btn-danger text-wight font-weight-bold" -->
+											<!-- 											onclick="return confirm('هل انت متأكد من حذف هذا الصنف ؟')" -->
+											<%-- 											href="delete-balance?id=${tempItem.id}">حذف</a></td> --%>
+										</tr>
+
+									</c:forEach>
+
+								</tbody>
+
+							</table>
 					</div>
 					<br>
 
+					</c:if>
 
 				</c:forEach>
 

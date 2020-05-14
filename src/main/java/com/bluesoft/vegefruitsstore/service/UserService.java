@@ -87,4 +87,6 @@ public interface UserService {
 
 	public void saveItem(Item item);
 
+	public List<Client> getAllClientsHaveItems();
+
 }

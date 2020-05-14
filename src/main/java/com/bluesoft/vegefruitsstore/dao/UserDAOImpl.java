@@ -495,4 +495,15 @@ public class UserDAOImpl implements UserDAO {
 
 	}
 
+	@Override
+	public List<Client> getAllClientsHaveItems() {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		List<Client> clientList = session.createQuery("from Client C where C.ClientBalance.currentCounter > 0 order by id").getResultList();
+
+		return clientList;
+
+	}
+
 }
