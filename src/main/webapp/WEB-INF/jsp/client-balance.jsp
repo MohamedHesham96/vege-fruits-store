@@ -19,14 +19,28 @@
 	rel="stylesheet">
 
 <script type="text/javascript">
-	function showForm() {
+	function showForm(btn) {
 
-		var form = document.getElementById("form");
+		if (btn.id === "clientBTN") {
 
-		if (form.style.display === "block")
-			form.style.display = "none";
-		else
-			form.style.display = "block";
+			var form = document.getElementById("clientForm");
+
+			if (form.style.display === "block")
+				form.style.display = "none";
+			else
+				form.style.display = "block";
+
+		}
+
+		else {
+			var form = document.getElementById("itemForm");
+
+			if (form.style.display === "block")
+				form.style.display = "none";
+			else
+				form.style.display = "block";
+
+		}
 	}
 </script>
 
@@ -38,7 +52,31 @@
 
 	<div style="text-align: right;" class="container">
 
-		<div id="form" class="card bg-success"
+		<div id="clientForm" class="card bg-success"
+			style="display: none; width: 18rem; margin-left: 820px;">
+
+			<div class="card-header text-white font-weight-bold text-center"
+				style="color: #c4c4c4">اضافة عميل</div>
+
+			<ul class="list-group list-group-flush">
+
+				<li class="bg-dark list-group-item"><form:form
+						modelAttribute="client" method="POST" action="add-client">
+
+						<form:input type="text" path="name"
+							class="text-center form-control mb-2 col-xs-3"
+							placeholder="ادخل اسم العميل"></form:input>
+
+						<input type="submit" value="اضافة عميل جديد"
+							class="w-100 btn btn-success font-weight-bold text-center"
+							onclick="return confirm('هل انت متأكد من اضافة هذا العميل ؟')">
+					</form:form></li>
+			</ul>
+
+		</div>
+
+
+		<div id="itemForm" class="card bg-success"
 			style="display: none; width: 18rem; margin-left: 820px;">
 
 			<div class="card-header text-white font-weight-bold text-center"
@@ -71,12 +109,17 @@
 						<table class=" table table-striped table-dark">
 							<thead class="thead-inverse">
 								<tr>
-									<th>اسم العميل</th>
+									<th>اسم العميل
+										<button id="clientBTN" type="button" onclick="showForm(this)"
+											style="height: 30px; font-size: 11px"
+											class="btn btn-success text-wight font-weight-bold">اضافة
+											عميل جديد</button>
+									</th>
 									<th>الصنف
-										<button type="button" onclick="showForm()"
-											style="height: 30px; font-size: 12px"
-											class="btn btn-success text-wight font-weight-bold">+
-											اضافة صنف جديد</button>
+										<button id="itemBTN" type="button" onclick="showForm(this)"
+											style="height: 30px; font-size: 11px"
+											class="btn btn-success text-wight font-weight-bold">اضافة
+											صنف جديد</button>
 									</th>
 									<th>العدد</th>
 									<th>الوزن</th>

@@ -34,19 +34,6 @@
 
 			<ul class="list-group list-group-flush">
 
-				<li class="bg-dark list-group-item">
-
-					<form method="GET" action="search-for-clients">
-
-						<input type="text" name="clientName"
-							class="text-center form-control mb-2 col-xs-3"
-							placeholder="ادخل اسم العميل"> <input type="submit"
-							value="ابحث عن الاسم"
-							class="w-100 btn btn-success font-weight-bold text-center"
-							onclick="this.disabled=true; this.parentNode.submit();">
-
-					</form>
-				</li>
 
 
 				<li class="bg-dark list-group-item"><form:form
