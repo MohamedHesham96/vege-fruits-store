@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 
 import org.hibernate.annotations.Where;
 
@@ -22,9 +23,11 @@ public class ClientBalance {
 	int id;
 
 	@Column(name = "count")
+	@Min(value = 1)
 	int counter;
 
 	@Column(name = "weight")
+	@Min(value = 1)
 	float weight;
 
 	@Column(name = "current_count")
