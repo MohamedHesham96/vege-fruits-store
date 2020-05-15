@@ -21,24 +21,36 @@
 <script type="text/javascript">
 	function showForm(btn) {
 
+		var clientForm = document.getElementById("clientForm");
+		var itemForm = document.getElementById("itemForm");
+
 		if (btn.id === "clientBTN") {
 
-			var form = document.getElementById("clientForm");
+			if (clientForm.style.display === "none") {
 
-			if (form.style.display === "block")
-				form.style.display = "none";
-			else
-				form.style.display = "block";
+				clientForm.style.display = "block";
+				itemForm.style.display = "none";
+
+			} else {
+
+				clientForm.style.display = "none";
+
+			}
 
 		}
 
 		else {
-			var form = document.getElementById("itemForm");
 
-			if (form.style.display === "block")
-				form.style.display = "none";
-			else
-				form.style.display = "block";
+			if (itemForm.style.display === "none") {
+
+				itemForm.style.display = "block";
+				clientForm.style.display = "none";
+
+			} else {
+
+				itemForm.style.display = "none";
+
+			}
 
 		}
 	}

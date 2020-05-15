@@ -45,7 +45,7 @@ public class Clients {
 
 		userService.saveClient(client);
 
-		return "redirect:/clients";
+		return "redirect:/client-balance";
 	}
 
 	@RequestMapping("/client-profile")
