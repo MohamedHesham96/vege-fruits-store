@@ -117,6 +117,12 @@
 									<td>${tempItem.amount}</td>
 									<td>${tempItem.receiver}</td>
 									<td>${tempItem.date}</td>
+									<td style="width: 160px"><a
+										${tempItem.date == today ? '' : 'hidden'}
+										style="height: 30px; font-size: 14px;"
+										class="btn btn-danger text-wight font-weight-bold"
+										onclick="return confirm('هل انت متأكد من حذف هذا التحصيل ؟')"
+										href="delete-collect?id=${tempItem.id}">حذف</a></td>
 								</tr>
 
 							</c:forEach>

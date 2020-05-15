@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.bluesoft.vegefruitsstore.entity.Balance;
 import com.bluesoft.vegefruitsstore.entity.Collect;
 import com.bluesoft.vegefruitsstore.entity.Seller;
 import com.bluesoft.vegefruitsstore.service.UserService;
@@ -56,6 +57,7 @@ public class Collects {
 
 		Seller theSeller = userService.getSellerById(id);
 
+		theModel.addAttribute("today", LocalDate.now().toString());
 		theModel.addAttribute("seller", theSeller);
 		theModel.addAttribute("drweeTotal", theSeller.getDrawee());
 		theModel.addAttribute("collect", new Collect());
@@ -81,4 +83,17 @@ public class Collects {
 
 		return "seller-collect";
 	}
+
+	@RequestMapping("/delete-collect")
+	public String deleteCollect(@RequestParam(name = "id") int id) throws Exception {
+
+		Collect theCollect = userService.getCollect(id);
+
+		userService.updateMaster(theCollect.getSeller().getId(), theCollect.getDate(), theCollect.getAmount(), "relay");
+
+		userService.deletCollect(theCollect);
+
+		return "redirect:/seller-collect?id=" + theCollect.getSeller().getId();
+	}
+
 }

@@ -95,4 +95,8 @@ public interface UserDAO {
 	
 	public List<ClientBalance> getClientBalanceByCasherIdAndDate(int casherId, String theDate);
 
+	public Collect getCollect(int id);
+
+	public void deletCollect(Collect theCollect);
+
 }

@@ -266,4 +266,17 @@ public class UserServiceImpl implements UserService {
 		return userDAO.getClientBalanceByCasherIdAndDate(casherId, theDate);
 	}
 
+	@Override
+	public Collect getCollect(int id) {
+
+		return userDAO.getCollect(id);
+	}
+
+	@Override
+	public void deletCollect(Collect theCollect) {
+		
+		userDAO.deletCollect(theCollect); 
+		
+	}
+
 }

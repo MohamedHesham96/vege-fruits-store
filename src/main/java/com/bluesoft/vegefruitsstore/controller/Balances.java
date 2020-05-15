@@ -131,7 +131,7 @@ public class Balances {
 	}
 
 	@RequestMapping("/delete-balance")
-	public String getAllBalance(@RequestParam(name = "id") int id) throws Exception {
+	public String deleteBalance(@RequestParam(name = "id") int id) throws Exception {
 
 		Balance theBalance = userService.getBalanceById(id);
 

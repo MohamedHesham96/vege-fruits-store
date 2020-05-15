@@ -548,4 +548,24 @@ public class UserDAOImpl implements UserDAO {
 		return casherList;
 	}
 
+	@Override
+	public Collect getCollect(int id) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		Collect collect = session.get(Collect.class, id);
+
+		return collect;
+
+	}
+
+	@Override
+	@Transactional
+	public void deletCollect(Collect theCollect) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		session.delete(theCollect);
+	}
+
 }
