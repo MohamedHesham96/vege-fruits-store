@@ -173,16 +173,13 @@
 											<td>${tempItem.casher.name}</td>
 											<td>${tempItem.date}</td>
 
-<%-- 											<c:if test="${tempItem.date == today} "> --%>
-										
-												<td style="width: 160px"><a
-													style="height: 30px; font-size: 14px;"
-													class="btn btn-danger text-wight font-weight-bold"
-													onclick="return confirm('هل انت متأكد من حذف هذا الصنف ؟')"
-													href="delete-balance?id=${tempItem.id}">حذف</a></td>
+											<td style="width: 160px"><a
+												${tempItem.date == today ? '' : 'hidden'}
+												style="height: 30px; font-size: 14px;"
+												class="btn btn-danger text-wight font-weight-bold"
+												onclick="return confirm('هل انت متأكد من حذف هذا الصنف ؟')"
+												href="delete-balance?id=${tempItem.id}">حذف</a></td>
 
-										
-<%-- 											</c:if> --%>
 
 										</tr>
 
