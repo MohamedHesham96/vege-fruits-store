@@ -93,4 +93,6 @@ public interface UserService {
 	
 	public List<Balance> getAllRelay();
 
+	public List<ClientBalance> getClientBalanceByCasherIdAndDate(int casherId, String theDate);
+
 }

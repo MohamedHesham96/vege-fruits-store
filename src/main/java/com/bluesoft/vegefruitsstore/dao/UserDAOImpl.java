@@ -535,4 +535,17 @@ public class UserDAOImpl implements UserDAO {
 		}
 	}
 
+	@Override
+	public List<ClientBalance> getClientBalanceByCasherIdAndDate(int casherId, String theDate) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		List<ClientBalance> casherList = session
+				.createQuery(
+						"from ClientBalance CB where CB.casher.id = :theCasherId and date = :theDate order by date")
+				.setParameter("theCasherId", casherId).setParameter("theDate", theDate).getResultList();
+
+		return casherList;
+	}
+
 }

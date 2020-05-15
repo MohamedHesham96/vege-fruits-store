@@ -260,4 +260,10 @@ public class UserServiceImpl implements UserService {
 		return userDAO.getAllRelay();
 	}
 
+	@Override
+	public List<ClientBalance> getClientBalanceByCasherIdAndDate(int casherId, String theDate) {
+
+		return userDAO.getClientBalanceByCasherIdAndDate(casherId, theDate);
+	}
+
 }

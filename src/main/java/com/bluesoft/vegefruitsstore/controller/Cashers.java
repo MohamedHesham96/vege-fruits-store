@@ -80,7 +80,7 @@ public class Cashers {
 
 		} else {
 
-			// casherList = userService.getBalanceByCasherIdAndDate(casherId, theDate);
+			casherList = userService.getClientBalanceByCasherIdAndDate(casherId, theDate);
 
 		}
 

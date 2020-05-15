@@ -92,4 +92,7 @@ public interface UserDAO {
 	public void deleteCollectByInfo(String date, int sellerId, float cash);
 
 	public List<Balance> getAllRelay();
+	
+	public List<ClientBalance> getClientBalanceByCasherIdAndDate(int casherId, String theDate);
+
 }
