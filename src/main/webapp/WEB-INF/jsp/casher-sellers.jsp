@@ -36,7 +36,7 @@
 
 				<li class="bg-dark list-group-item">
 
-					<form method="GET" action="casher">
+					<form method="GET" action="casher-sellers">
 
 						<input type="hidden" name="casherId"
 							value="<%=session.getAttribute("loginCasherId")%>"> <input

@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bluesoft.vegefruitsstore.entity.Balance;
 import com.bluesoft.vegefruitsstore.entity.Casher;
-import com.bluesoft.vegefruitsstore.entity.Client;
 import com.bluesoft.vegefruitsstore.entity.ClientBalance;
 import com.bluesoft.vegefruitsstore.entity.HeaderResult;
 import com.bluesoft.vegefruitsstore.service.UserService;

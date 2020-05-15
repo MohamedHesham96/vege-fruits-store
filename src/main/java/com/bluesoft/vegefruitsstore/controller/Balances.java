@@ -73,6 +73,7 @@ public class Balances {
 		httpSession.setAttribute("loginCasherName", "محمد عصام");
 		httpSession.setAttribute("loginCasherId", "1");
 
+		theModel.addAttribute("today", LocalDate.now().toString());
 		theModel.addAttribute("balance", balance);
 		theModel.addAttribute("itemsList", itemList);
 		theModel.addAttribute("sellersList", sellerList);
@@ -136,6 +137,11 @@ public class Balances {
 
 		userService.updateClientBalance(theBalance.getItem().getId(), theBalance.getClient().getId(),
 				theBalance.getCounter() * -1, theBalance.getWeight() * -1);
+
+		userService.updateMaster(theBalance.getSeller().getId(), theBalance.getDate(),
+				theBalance.getTotalAmount() - theBalance.getCash(), "collect");
+
+		userService.deleteCollectByInfo(theBalance.getDate(), theBalance.getSeller().getId(), theBalance.getCash());
 
 		userService.deleteBalance(theBalance);
 

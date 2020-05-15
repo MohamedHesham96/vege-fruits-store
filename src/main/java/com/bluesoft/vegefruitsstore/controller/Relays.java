@@ -24,7 +24,7 @@ public class Relays {
 
 		List<HeaderResult> theHeaderResult = userService.getRelayHeader();
 
-		List<Balance> relayList = userService.getAllBalance();
+		List<Balance> relayList = userService.getAllRelay();
 
 		List<Casher> casherList = userService.getAllCasher();
 

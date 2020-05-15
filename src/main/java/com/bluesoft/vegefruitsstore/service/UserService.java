@@ -89,4 +89,8 @@ public interface UserService {
 
 	public List<Client> getAllClientsHaveItems();
 
+	public void deleteCollectByInfo(String date, int sellerId, float cash);
+	
+	public List<Balance> getAllRelay();
+
 }

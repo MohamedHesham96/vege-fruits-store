@@ -173,13 +173,18 @@
 											<td>${tempItem.casher.name}</td>
 											<td>${tempItem.date}</td>
 
-											<td style="width: 160px"><a
-												style="height: 30px; font-size: 14px;"
-												class="btn btn-danger text-wight font-weight-bold"
-												onclick="return confirm('هل انت متأكد من حذف هذا الصنف ؟')"
-												href="delete-balance?id=${tempItem.id}">حذف</a></td>
-										</tr>
+<%-- 											<c:if test="${tempItem.date == today} "> --%>
+										
+												<td style="width: 160px"><a
+													style="height: 30px; font-size: 14px;"
+													class="btn btn-danger text-wight font-weight-bold"
+													onclick="return confirm('هل انت متأكد من حذف هذا الصنف ؟')"
+													href="delete-balance?id=${tempItem.id}">حذف</a></td>
 
+										
+<%-- 											</c:if> --%>
+
+										</tr>
 
 									</c:if>
 
@@ -193,7 +198,6 @@
 								<td>${headerTemp.totalCount}</td>
 								<td>${headerTemp.totalWeight}</td>
 								<td></td>
-								<%-- 								<td>${headerTemp.totalCash}</td> --%>
 								<td>${headerTemp.totalLater}</td>
 								<td>${headerTemp.totalAmount}</td>
 								<td colspan="6"></td>

@@ -181,9 +181,16 @@
 										<tr>
 											<td>${tempItem.item.name}</td>
 											<td><h5 style="display: inline;">${tempItem.currentCounter}</h5>
-												- (من ${tempItem.counter})</td>
-											<td><h5 style="display: inline;">
-													${tempItem.currentWeight}</h5> (من ${tempItem.weight})</td>
+												-
+												<h6 class="font-weight-bold"
+													style="display: inline; font-size: 14px;">(من
+													${tempItem.counter})</h6>
+											<td><h5 style="display: inline;">${tempItem.currentWeight}</h5>
+												-
+												<h6 class="font-weight-bold"
+													style="display: inline; font-size: 14px;">(من
+													${tempItem.weight})</h6></td>
+
 
 											<td>${tempItem.casher.name}</td>
 											<td>${tempItem.date}</td>
@@ -200,10 +207,11 @@
 								</tbody>
 
 							</table>
+
+						</c:if>
 					</div>
 					<br>
 
-					</c:if>
 
 				</c:forEach>
 

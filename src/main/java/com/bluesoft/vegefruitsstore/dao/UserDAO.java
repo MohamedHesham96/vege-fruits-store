@@ -16,7 +16,7 @@ import com.bluesoft.vegefruitsstore.entity.Seller;
 public interface UserDAO {
 
 	public Balance getBalanceById(int id);
-	
+
 	public List<Balance> getAllBalance();
 
 	public void saveBalance(Balance theBalance);
@@ -28,10 +28,10 @@ public interface UserDAO {
 	public List<HeaderResult> getRelayHeader();
 
 	public HeaderResult getCasherHeader(int casherId);
-	
+
 	public HeaderResult getCasherHeaderByDate(int casherId, String date);
 
-	//public List<Balance> getBalanceByCasherId(int casherId);
+	// public List<Balance> getBalanceByCasherId(int casherId);
 
 	public List<Balance> getBalanceByCasherIdAndDate(int casherId, String date);
 
@@ -86,8 +86,10 @@ public interface UserDAO {
 	public void saveCasher(Casher casher);
 
 	public void saveItem(Item item);
-	
+
 	public List<Client> getAllClientsHaveItems();
 
+	public void deleteCollectByInfo(String date, int sellerId, float cash);
 
+	public List<Balance> getAllRelay();
 }

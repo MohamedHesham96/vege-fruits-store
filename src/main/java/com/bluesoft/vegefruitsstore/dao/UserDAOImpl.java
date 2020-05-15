@@ -39,6 +39,18 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
+	public List<Balance> getAllRelay() {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		List<Balance> sellerRelayList = session
+				.createQuery("from Balance B where B.cash != B.totalAmount order by date").getResultList();
+
+		return sellerRelayList;
+
+	}
+
+	@Override
 	public void saveBalance(Balance theBalance) {
 
 		Session session = entityManager.unwrap(Session.class);
@@ -500,10 +512,27 @@ public class UserDAOImpl implements UserDAO {
 
 		Session session = entityManager.unwrap(Session.class);
 
-		List<Client> clientList = session.createQuery("from Client C where C.ClientBalance.currentCounter > 0 order by id").getResultList();
+		List<Client> clientList = session
+				.createQuery("from Client C where C.ClientBalance.currentCounter > 0 order by id").getResultList();
 
 		return clientList;
 
+	}
+
+	@Override
+	public void deleteCollectByInfo(String date, int sellerId, float cash) {
+
+		Session session = entityManager.unwrap(Session.class);
+		List<Collect> collectList = session.createQuery(
+				"from Collect C where C.date = :theDate and C.seller.id = :theSellerId and C.amount = :theCash order by id desc")
+				.setParameter("theDate", date).setParameter("theSellerId", sellerId).setParameter("theCash", cash)
+				.getResultList();
+
+		if (!collectList.isEmpty()) {
+
+			session.delete(collectList.get(0));
+
+		}
 	}
 
 }

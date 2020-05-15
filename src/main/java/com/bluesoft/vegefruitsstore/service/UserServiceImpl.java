@@ -248,4 +248,16 @@ public class UserServiceImpl implements UserService {
 		return userDAO.getAllClientsHaveItems();
 	}
 
+	@Override
+	public void deleteCollectByInfo(String date, int sellerId, float cash) {
+
+		userDAO.deleteCollectByInfo(date, sellerId, cash);
+	}
+
+	@Override
+	public List<Balance> getAllRelay() {
+
+		return userDAO.getAllRelay();
+	}
+
 }
