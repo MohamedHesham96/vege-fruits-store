@@ -23,6 +23,8 @@ import com.bluesoft.vegefruitsstore.entity.Item;
 import com.bluesoft.vegefruitsstore.entity.Seller;
 import com.bluesoft.vegefruitsstore.service.UserService;
 
+import javassist.expr.NewArray;
+
 @Controller
 public class Balances {
 
@@ -74,6 +76,7 @@ public class Balances {
 		httpSession.setAttribute("loginCasherId", "1");
 
 		theModel.addAttribute("today", LocalDate.now().toString());
+		theModel.addAttribute("seller", new Seller());
 		theModel.addAttribute("balance", balance);
 		theModel.addAttribute("itemsList", itemList);
 		theModel.addAttribute("sellersList", sellerList);

@@ -65,7 +65,7 @@ public class Sellers {
 
 		userService.saveSeller(theSeller);
 
-		return "redirect:/sellers";
+		return "redirect:/balance";
 	}
 
 	@RequestMapping("/delete-seller")

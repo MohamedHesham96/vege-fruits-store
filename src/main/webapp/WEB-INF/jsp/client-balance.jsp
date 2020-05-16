@@ -200,7 +200,7 @@
 
 		<!-- TABLE			TABLE			TABLE			TABLE -->
 
-		<div class="row  my-4">
+		<div class="row">
 			<div dir='rtl' class=" col-lg-12 col-md-8">
 
 				<c:forEach var="itemTemp" items="${clientsList}">

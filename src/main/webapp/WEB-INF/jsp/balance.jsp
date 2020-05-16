@@ -21,7 +21,25 @@
 	function go(value) {
 		location = "/balance?clientId=" + value;
 	}
+
+	function showForm(btn) {
+
+		var sellerForm = document.getElementById("sellerForm");
+
+		if (sellerForm.style.display === "none") {
+
+			sellerForm.style.display = "block";
+
+		} else {
+
+			sellerForm.style.display = "none";
+
+		}
+
+	}
 </script>
+
+
 </head>
 <body onunload="" background="images/wall1.jpg"
 	style="background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
@@ -29,6 +47,30 @@
 	<%@ include file="header.jsp"%>
 
 	<div style="text-align: right;" class="container">
+		<div id="sellerForm" class="card bg-success"
+			style="display: none; width: 18rem; margin-left: 820px;">
+
+			<div class="card-header text-white font-weight-bold text-center"
+				style="color: #c4c4c4">اضافة عميل</div>
+
+			<ul class="list-group list-group-flush">
+
+
+				<li class="bg-dark list-group-item"><form:form
+						modelAttribute="seller" method="POST" action="add-seller">
+
+						<form:input type="text" path="name"
+							class="text-center form-control mb-2 col-xs-3"
+							placeholder="ادخل اسم البائع"></form:input>
+
+						<input type="submit" value="اضافة بائع جديد"
+							class="w-100 btn btn-success font-weight-bold text-center"
+							onclick="return confirm('هل انت متأكد من اضافة هذا البائع ؟')">
+
+					</form:form></li>
+			</ul>
+
+		</div>
 
 		<form:form metho="get" action="add-balance" modelAttribute="balance">
 			<div class="row  my-4">
@@ -38,7 +80,12 @@
 							<thead class="thead-inverse">
 								<tr>
 									<th>اسم العميل</th>
-									<th>اسم البائع</th>
+									<th>اسم البائع
+										<button id="clientBTN" type="button" onclick="showForm(this)"
+											style="height: 30px; font-size: 11px"
+											class="btn btn-success text-wight font-weight-bold">اضافة
+											بائع جديد</button>
+									</th>
 									<th>الصنف</th>
 									<th>العدد</th>
 									<th>الوزن</th>
