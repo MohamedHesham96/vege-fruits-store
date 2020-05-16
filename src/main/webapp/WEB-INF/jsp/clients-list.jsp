@@ -34,20 +34,20 @@
 
 			<ul class="list-group list-group-flush">
 
+				<li class="bg-dark list-group-item">
 
+					<form method="GET" action="search-for-clients">
 
-				<li class="bg-dark list-group-item"><form:form
-						modelAttribute="client" method="POST" action="add-client">
-
-						<form:input type="text" path="name"
+						<input type="text" name="clientName"
 							class="text-center form-control mb-2 col-xs-3"
-							placeholder="ادخل اسم العميل"></form:input>
-
-						<input type="submit" value="اضافة عميل جديد"
+							placeholder="ادخل اسم العميل"> <input type="submit"
+							value="ابحث عن الاسم"
 							class="w-100 btn btn-success font-weight-bold text-center"
-							onclick="return confirm('هل انت متأكد من اضافة هذا العميل ؟')">
+							onclick="this.disabled=true; this.parentNode.submit();">
 
-					</form:form></li>
+					</form>
+				</li>
+
 			</ul>
 
 		</div>
@@ -93,9 +93,10 @@
 										class=" btn btn-primary text-white font-weight-bold ">الميزان</a>
 
 										<a style="font-size: 12px"
-										href="seller-collect?id=${tempItem.id}"
+										href="client-bills?id=${tempItem.id}"
 										class="btn 
 										text-white font-weight-bold btn-success	">الفواتير</a>
+										
 										<a style="font-size: 12px"
 										href="seller-master?id=${tempItem.id}"
 										class="btn btn-danger text-white font-weight-bold ">-----</a>

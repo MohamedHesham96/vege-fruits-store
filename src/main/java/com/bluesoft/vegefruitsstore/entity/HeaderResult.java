@@ -3,10 +3,13 @@ package com.bluesoft.vegefruitsstore.entity;
 public class HeaderResult {
 
 	Long totalCount;
+	Double kiloPriceAvg;
 	Double totalWeight;
 	Double totalCash;
 	Double totalLater;
 	Double totalAmount;
+
+	String maxDate;
 
 	String itemName;
 	String clientName;
@@ -92,6 +95,22 @@ public class HeaderResult {
 
 	public void setTotalAmount(Double totalAmount) {
 		this.totalAmount = totalAmount;
+	}
+
+	public Double getKiloPriceAvg() {
+		return kiloPriceAvg;
+	}
+
+	public void setKiloPriceAvg(Double kiloPriceAvg) {
+		this.kiloPriceAvg = kiloPriceAvg;
+	}
+
+	public String getMaxDate() {
+		return maxDate;
+	}
+
+	public void setMaxDate(String maxDate) {
+		this.maxDate = maxDate;
 	}
 
 }

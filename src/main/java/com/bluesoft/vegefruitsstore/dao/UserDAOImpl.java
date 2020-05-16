@@ -568,4 +568,48 @@ public class UserDAOImpl implements UserDAO {
 		session.delete(theCollect);
 	}
 
+	@Override
+	public double getAvgKiloPrice(int itemId, int clientId, String date) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		HeaderResult theHeaderResult = (HeaderResult) session
+				.createQuery("select Avg(B.kiloPrice) as kiloPriceAvg from Balance B "
+						+ "where B.item.id = :theItemId and B.client.id = :theClientId and B.date >= :theDate")
+
+				.setParameter("theItemId", itemId).setParameter("theClientId", clientId)
+				.setParameter("theDate", "'" + date + "'")
+				.setResultTransformer(new AliasToBeanResultTransformer(HeaderResult.class)).setMaxResults(1)
+				.uniqueResult();
+
+		return theHeaderResult.getKiloPriceAvg();
+	}
+
+	@Override
+	public String getMaxDateForItem(int clientId, int itemId) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		HeaderResult theHeaderResult = (HeaderResult) session
+				.createQuery("select max(CB.date) as maxDate from ClientBalance CB "
+						+ "where CB.item.id = :theItemId and CB.client.id = :theClientId")
+				.setParameter("theItemId", clientId).setParameter("theClientId", itemId)
+				.setResultTransformer(new AliasToBeanResultTransformer(HeaderResult.class)).setMaxResults(1)
+				.uniqueResult();
+
+		return theHeaderResult.getMaxDate();
+	}
+
+	@Override
+	public List<ClientBalance> getClientBalancesWithCountZero(int clientId) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		List<ClientBalance> clientList = session
+				.createQuery("from ClientBalance CB where CB.client.id = :theClientId and CB.currentCounter = 0")
+				.setParameter("theClientId", clientId).getResultList();
+
+		return clientList;
+	}
+
 }

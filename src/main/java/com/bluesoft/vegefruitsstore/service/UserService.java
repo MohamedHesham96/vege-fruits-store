@@ -90,7 +90,7 @@ public interface UserService {
 	public List<Client> getAllClientsHaveItems();
 
 	public void deleteCollectByInfo(String date, int sellerId, float cash);
-	
+
 	public List<Balance> getAllRelay();
 
 	public List<ClientBalance> getClientBalanceByCasherIdAndDate(int casherId, String theDate);
@@ -99,4 +99,9 @@ public interface UserService {
 
 	public void deletCollect(Collect theCollect);
 
+	public double getAvgKiloPrice(int itemId, int clientId, String date);
+
+	public String getMaxDateForItem(int clientId, int itemId);
+
+	public List<ClientBalance> getClientBalancesWithCountZero(int clientId);
 }
