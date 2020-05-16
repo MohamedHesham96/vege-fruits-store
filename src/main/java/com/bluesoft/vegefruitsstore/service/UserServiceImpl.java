@@ -279,4 +279,22 @@ public class UserServiceImpl implements UserService {
 		
 	}
 
+	@Override
+	public double getAvgKiloPrice(int itemId, int clientId, String date) {
+		
+		return userDAO.getAvgKiloPrice(itemId, clientId, date);
+	}
+
+	@Override
+	public List<ClientBalance> getClientBalancesWithCountZero(int clientId) {
+
+		return userDAO.getClientBalancesWithCountZero(clientId);
+	}
+
+	@Override
+	public String getMaxDateForItem(int clientId, int itemId) {
+
+		return userDAO.getMaxDateForItem(clientId, itemId);
+	}
+
 }
