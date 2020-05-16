@@ -60,8 +60,8 @@
 
 								<tr>
 									<td>${tempItem.item.name}</td>
-									<td>${tempItem.counter}</td>
-									<td>${tempItem.weight}</td>
+									<td>${tempItem.currentCounter}</td>
+									<td>${tempItem.currentWeight}</td>
 									<td>${tempItem.casher.name}</td>
 									<td>${tempItem.date}</td>
 
