@@ -37,10 +37,9 @@
 
 				<div class="table-responsive">
 
-<<<<<<< HEAD
 					<table style="font-size: 18px"
 						class="table table-bordered table-striped table-sm table-dark">
-						<thead class="thead-inverse" >
+						<thead class="thead-inverse">
 
 
 							<tr class="badge-success">
@@ -49,9 +48,10 @@
 
 										[ اسم العميل : ${client.name} ] - [ رقم العميل : ${client.id}
 										] - [ التاريخ :
-										<h4 style="display: inline;"><%=LocalDate.now().toString()%> ]
+										<h4 style="display: inline;"><%=LocalDate.now().toString()%>
+											]
 										</h4>
-										
+
 									</h4></td>
 
 							</tr>
@@ -60,7 +60,7 @@
 								<th>المبلغ</th>
 								<th>العدد</th>
 								<th>الوزن</th>
-								<th style="width: 350px" >سعر الكيلو</th>
+								<th style="width: 350px">سعر الكيلو</th>
 								<th style="width: 350px">الصنف</th>
 							</tr>
 						</thead>
@@ -77,45 +77,6 @@
 									<td>${tempItem.weight}</td>
 									<td>${avgKiloes.get(i)}</td>
 									<td>${tempItem.item.name}</td>
-=======
-					<table
-						class="table table-bordered table-striped table-sm table-dark">
-						<thead class="thead-inverse">
-
-
-							<tr class="badge-success">
-								<td colspan="10" class="font-weight-bold"
-									style="font-size: 22px">[ الميزان ] - [ اسم العميل :
-									${client.name} ]</td>
-
-							</tr>
-
-							<tr>
-								<th>المبلغ</th>
-								<th>العدد</th>
-								<th>الوزن</th>
-								<th>سعر الكيلو</th>
-								<th>الصنف</th>
-								<th>التاريخ</th>
-							</tr>
-						</thead>
-						<tbody>
-
-
-
-							<c:set var="i" value="0" scope="page" />
-
-
-							<c:forEach var="tempItem" items="${clientBalances}">
-
-								<tr>
-									<td>${tempItem.weight * avgKiloes.get(i)}</td>
-									<td>${tempItem.counter}</td>
-									<td>${tempItem.weight}</td>
-									<td>${avgKiloes.get(i)}</td>
-									<td>${tempItem.item.name}</td>
-									<td>${tempItem.date}</td>
->>>>>>> refs/remotes/origin/master
 
 								</tr>
 
