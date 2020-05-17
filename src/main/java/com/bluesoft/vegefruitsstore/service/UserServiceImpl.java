@@ -297,4 +297,16 @@ public class UserServiceImpl implements UserService {
 		return userDAO.getMaxDateForItem(clientId, itemId);
 	}
 
+	@Override
+	public List<Collect> getSellerCollectByDate(String theDate) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Collect> getSellerCollectByDate(int id, String date) {
+		
+		return userDAO.getSellerCollectByDate(id, date);
+	}
+
 }

@@ -52,10 +52,23 @@ public class Collects {
 	}
 
 	@RequestMapping("/seller-collect")
-	public String showSellerCollect(@RequestParam("id") int id, Model theModel) {
+	public String showSellerCollect(@RequestParam("id") int id,
+			@RequestParam(name = "date", required = false) String theDate, Model theModel) {
 
 		Seller theSeller = userService.getSellerById(id);
 
+		if (theDate == null) {
+
+			theDate = LocalDate.now().toString();
+
+		} else {
+
+			List<Collect> collectList = userService.getSellerCollectByDate(id, theDate);
+
+			theSeller.setCollects(collectList);
+		}
+
+		theModel.addAttribute("date", theDate);
 		theModel.addAttribute("today", LocalDate.now().toString());
 		theModel.addAttribute("seller", theSeller);
 		theModel.addAttribute("drweeTotal", theSeller.getDrawee());

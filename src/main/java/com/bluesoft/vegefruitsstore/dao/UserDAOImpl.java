@@ -638,4 +638,16 @@ public class UserDAOImpl implements UserDAO {
 		return clientList;
 	}
 
+	@Override
+	public List<Collect> getSellerCollectByDate(int id, String date) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		List<Collect> collectList = session
+				.createQuery("from Collect C where C.seller.id = :theSellerId and C.date = :thedate")
+				.setParameter("theSellerId", id).setParameter("thedate", date).getResultList();
+
+		return collectList;
+	}
+
 }

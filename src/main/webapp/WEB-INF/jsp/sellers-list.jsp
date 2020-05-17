@@ -30,7 +30,7 @@
 		<div class="card bg-success" style="width: 18rem; margin-left: 820px;">
 
 			<div class="card-header text-white font-weight-bold text-center"
-				style="color: #c4c4c4">البحث والاضافة</div>
+				style="color: #c4c4c4">البحث</div>
 
 
 			<ul class="list-group list-group-flush">
@@ -49,19 +49,6 @@
 					</form>
 				</li>
 
-
-				<li class="bg-dark list-group-item"><form:form
-						modelAttribute="seller" method="POST" action="add-seller">
-
-						<form:input type="text" path="name"
-							class="text-center form-control mb-2 col-xs-3"
-							placeholder="ادخل اسم البائع"></form:input>
-
-						<input type="submit" value="اضافة بائع جديد"
-							class="w-100 btn btn-success font-weight-bold text-center"
-							onclick="return confirm('هل انت متأكد من اضافة هذا البائع ؟')">
-
-					</form:form></li>
 			</ul>
 
 		</div>
@@ -102,9 +89,7 @@
 
 											${tempItem.name} </a></td>
 
-									<td>
-									
-										<a style="font-size: 12px"
+									<td><a style="font-size: 12px"
 										href="seller-relay?sellerName=${tempItem.name}"
 										class=" btn btn-primary text-white font-weight-bold ${ tempItem.balances.size() == 0 ? 'disabled' : ''}">الترحيل</a>
 

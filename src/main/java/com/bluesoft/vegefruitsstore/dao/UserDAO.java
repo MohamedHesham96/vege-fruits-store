@@ -105,4 +105,6 @@ public interface UserDAO {
 
 	public List<ClientBalance> getClientBalancesWithCountZero(int clientId);
 
+	public List<Collect> getSellerCollectByDate(int id, String date);
+
 }

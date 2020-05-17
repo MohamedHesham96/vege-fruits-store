@@ -39,12 +39,13 @@
 	}
 </script>
 </head>
-<body onunload="" background="images/wall1.jpg"
+<body background="images/wall1.jpg"
 	style="background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
 
 	<%@ include file="header.jsp"%>
 
 	<div style="text-align: right;" class="container">
+
 
 		<div style="display: none;" id="alert" class="alert alert-danger"
 			role="alert">هذا المبلغ اكبر من حجم الدين</div>
@@ -62,7 +63,7 @@
 						<input type="hidden" name="sellerId" value="${seller.id}">
 						<input type="hidden" id="drweeTotal" value="${drweeTotal}">
 
-						<form:input id="a" type="text" path="amount"
+						<form:input id="myForm" type="text" path="amount"
 							class="text-center form-control mb-2 col-xs-3"
 							placeholder="ادخل المبلغ"></form:input>
 
@@ -79,6 +80,22 @@
 							onClick="return checkAmount();">
 
 					</form:form></li>
+
+				<li class="bg-dark list-group-item">
+
+
+
+					<form method="GET" action="seller-collect">
+						<input type="hidden" name="id" value="${seller.id}"> <input
+							type="date" name="date" value="${date}"
+							class="w-100 btn badge-light font-weight-bold text-center">
+
+						<input type="submit" style="margin-top: 10px;"
+							class="w-100 btn badge-success font-weight-bold text-center"
+							value="اذهب لهذا اليوم" />
+
+					</form>
+				</li>
 			</ul>
 
 		</div>

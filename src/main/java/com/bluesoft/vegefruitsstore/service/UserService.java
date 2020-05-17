@@ -104,4 +104,8 @@ public interface UserService {
 	public String getMaxDateForItem(int clientId, int itemId);
 
 	public List<ClientBalance> getClientBalancesWithCountZero(int clientId);
+
+	public List<Collect> getSellerCollectByDate(String theDate);
+
+	public List<Collect> getSellerCollectByDate(int id, String date);
 }

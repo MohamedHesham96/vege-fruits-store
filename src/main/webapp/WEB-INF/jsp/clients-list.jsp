@@ -30,7 +30,7 @@
 		<div class="card bg-success" style="width: 18rem; margin-left: 820px;">
 
 			<div class="card-header text-white font-weight-bold text-center"
-				style="color: #c4c4c4">البحث والاضافة</div>
+				style="color: #c4c4c4">البحث</div>
 
 			<ul class="list-group list-group-flush">
 
@@ -96,7 +96,7 @@
 										href="client-bills?id=${tempItem.id}"
 										class="btn 
 										text-white font-weight-bold btn-success	">الفواتير</a>
-										
+
 										<a style="font-size: 12px"
 										href="seller-master?id=${tempItem.id}"
 										class="btn btn-danger text-white font-weight-bold ">-----</a>
