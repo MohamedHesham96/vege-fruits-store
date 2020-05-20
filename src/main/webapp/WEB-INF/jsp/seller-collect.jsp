@@ -17,30 +17,7 @@
 
 <link href="webjars/bootstrap/4.4.1/css/bootstrap.min.css"
 	rel="stylesheet">
-<script type="text/javascript">
-	function checkAmount() {
 
-		var amountValue = document.getElementById("amount");
-		var drweeTotal = document.getElementById("drweeTotal");
-
-		var alert = document.getElementById("alert");
-
-		if (amountValue.value < drweeTotal.value) {
-
-			alert.style.display = "none"
-
-			return true;
-
-		} else {
-
-			alert.style.display = "block"
-
-			return false;
-
-		}
-
-	}
-</script>
 </head>
 <body background="images/wall1.jpg"
 	style="background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
@@ -82,7 +59,7 @@
 							value="اضف المبلغ للتحصيل"
 							class="w-100 btn btn-success   
 								 font-weight-bold text-center"
-							onsubmit="return checkAmount();">
+							onclick="return checkAmount();">
 
 					</form:form></li>
 

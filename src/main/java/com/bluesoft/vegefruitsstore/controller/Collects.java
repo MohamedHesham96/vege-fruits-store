@@ -21,7 +21,7 @@ public class Collects {
 	UserService userService;
 
 	@RequestMapping("/collect")
-	public String getAllBalance(@RequestParam(name = "date", required = false) String theDate, Model theModel) {
+	public String getAllCollect(@RequestParam(name = "date", required = false) String theDate, Model theModel) {
 
 		List<Collect> collectList;
 
@@ -91,7 +91,11 @@ public class Collects {
 
 		userService.updateMaster(sellerId, collect.getDate(), collect.getAmount(), "collect");
 
+		theModel.addAttribute("date", LocalDate.now().toString());
+		theModel.addAttribute("today", LocalDate.now().toString());
 		theModel.addAttribute("seller", theSeller);
+		theModel.addAttribute("drweeTotal", theSeller.getDrawee());
+		theModel.addAttribute("collect", new Collect());
 
 		return "seller-collect";
 	}
