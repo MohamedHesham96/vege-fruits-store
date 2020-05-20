@@ -108,4 +108,6 @@ public interface UserService {
 	public List<Collect> getSellerCollectByDate(String theDate);
 
 	public List<Collect> getSellerCollectByDate(int id, String date);
+
+	public Casher getLoginCasher(String username, String password);
 }

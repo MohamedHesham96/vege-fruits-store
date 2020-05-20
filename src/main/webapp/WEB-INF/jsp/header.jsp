@@ -58,7 +58,7 @@
 			<li style="margin: 5px;" class=""><a
 				class="btn bg-success text-white font-weight-bold"
 				style="font-family: Amiri, sans-serif; padding: 5px; width: 110px"
-				href="relay"> الترحيـل <img
+				href="relay">الترحيـل <img
 					style="margin-right: 10px; width: 35px; display: inline"
 					src="icons/fruits.png">
 			</a></li>
@@ -104,11 +104,14 @@
 			</li>
 
 
-			<li style="margin: 5px;" class=""><a
-				class="btn bg-danger text-white font-weight-bold"
-				style="font-family: Amiri, sans-serif; padding: 10px;"> <%=session.getAttribute("loginCasherName")%>
-					| خروج
-			</a></li>
+			<li style="margin: 5px;" class=""><span
+				class="btn bg-light text-dark font-weight-bold"
+				style="font-size: 18px; font-family: Amiri, sans-serif; padding: 0px; padding-right: 7px; padding-top: 7px">
+					كاشير/ <%=session.getAttribute("loginCasherName")%> <a
+					class="text-white font-weight-bold" href="logout"> <img
+						style="margin-right: 0px; width: 35px; display: inline"
+						src="icons/buildings.png"></a>
+			</span></li>
 
 
 		</ul>

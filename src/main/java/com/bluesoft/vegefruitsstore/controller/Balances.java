@@ -70,9 +70,6 @@ public class Balances {
 			itemList.add(clientBalance.getItem());
 		}
 
-		httpSession.setAttribute("loginCasherName", "محمد عصام");
-		httpSession.setAttribute("loginCasherId", "1");
-
 		theModel.addAttribute("today", LocalDate.now().toString());
 		theModel.addAttribute("seller", new Seller());
 		theModel.addAttribute("balance", balance);

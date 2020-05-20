@@ -107,4 +107,6 @@ public interface UserDAO {
 
 	public List<Collect> getSellerCollectByDate(int id, String date);
 
+	public Casher getLoginCasher(String username, String password);
+
 }

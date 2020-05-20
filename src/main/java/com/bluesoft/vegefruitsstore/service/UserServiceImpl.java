@@ -274,14 +274,14 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void deletCollect(Collect theCollect) {
-		
-		userDAO.deletCollect(theCollect); 
-		
+
+		userDAO.deletCollect(theCollect);
+
 	}
 
 	@Override
 	public double getAvgKiloPrice(int itemId, int clientId, String date) {
-		
+
 		return userDAO.getAvgKiloPrice(itemId, clientId, date);
 	}
 
@@ -305,8 +305,14 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<Collect> getSellerCollectByDate(int id, String date) {
-		
+
 		return userDAO.getSellerCollectByDate(id, date);
+	}
+
+	@Override
+	public Casher getLoginCasher(String username, String password) {
+
+		return userDAO.getLoginCasher(username, password);
 	}
 
 }

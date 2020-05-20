@@ -658,4 +658,20 @@ public class UserDAOImpl implements UserDAO {
 		return collectList;
 	}
 
+	@Override
+	public Casher getLoginCasher(String username, String password) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		List<Casher> casherList = session
+				.createQuery("from Casher C where C.name = :theCasherName and C.password = :theCasherPass")
+				.setParameter("theCasherName", username).setParameter("theCasherPass", password).getResultList();
+
+		if (!casherList.isEmpty())
+			return casherList.get(0);
+		else
+			return new Casher();
+
+	}
+
 }
