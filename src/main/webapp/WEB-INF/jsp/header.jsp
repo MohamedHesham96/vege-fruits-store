@@ -22,13 +22,12 @@
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
 
+
 			<li style="margin: 5px;" class=""><a
-				class="btn bg-warning text-dark  font-weight-bold"
-				style="font-size: 20px; font-family: Amiri, sans-serif; padding: 5px;"
-<%-- 				href="casher?casherId=<%=session.getAttribute("loginCasherId")%>" --%>
-				>
+				class="btn bg-primary text-white "
+				style="font-size: 20px; font-family: Amiri, sans-serif; padding: 5px;">
 					<img style="margin-left: 5px; width: 35px; display: inline"
-					src="icons/casher.png"> <%=session.getAttribute("loginCasherName")%>
+					src="icons/icons8-bell-48.png">[ 5 ]
 			</a></li>
 
 
@@ -107,7 +106,9 @@
 
 			<li style="margin: 5px;" class=""><a
 				class="btn bg-danger text-white font-weight-bold"
-				style="font-family: Amiri, sans-serif; padding: 10px;">خروج</a></li>
+				style="font-family: Amiri, sans-serif; padding: 10px;"> <%=session.getAttribute("loginCasherName")%>
+					| خروج
+			</a></li>
 
 
 		</ul>

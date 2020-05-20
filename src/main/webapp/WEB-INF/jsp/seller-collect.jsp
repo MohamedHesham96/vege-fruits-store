@@ -24,9 +24,6 @@
 
 	<%@ include file="header.jsp"%>
 
-	<input id="drweeTotal" value="${seller.getDrawee()}">
-
-
 	<div style="text-align: right;" class="container">
 
 

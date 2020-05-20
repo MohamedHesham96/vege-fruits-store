@@ -57,16 +57,17 @@
 							</tr>
 
 							<tr>
-								<th>المبلغ</th>
-								<th>العدد</th>
-								<th>الوزن</th>
-								<th style="width: 350px">سعر الكيلو</th>
-								<th style="width: 350px">الصنف</th>
+								<th style="width: 150px">المبلغ</th>
+								<th style="width: 150px">العدد</th>
+								<th style="width: 150px">الوزن</th>
+								<th style="width: 150px">سعر الكيلو</th>
+								<th style="width: 200px">الصنف</th>
 							</tr>
 						</thead>
 						<tbody style="font-size: 18px">
 
 							<c:set var="i" value="0" scope="page" />
+							<c:set var="total" value="0" scope="page" />
 
 
 							<c:forEach var="tempItem" items="${clientBalances}">
@@ -80,11 +81,20 @@
 
 								</tr>
 
+								<c:set var="total"
+									value="${total + tempItem.weight * avgKiloes.get(i)}"
+									scope="page" />
 								<c:set var="i" value="${i + 1}" scope="page" />
 
 							</c:forEach>
 
+							<tr class="badge-primary">
+								<td colspan="10" class=" badge-primary font-weight-bold"><h4
+										style="display: inline;">[ أجمالي المبلغ : ${total} ]</h4></td>
+							</tr>
 						</tbody>
+
+
 
 
 					</table>
