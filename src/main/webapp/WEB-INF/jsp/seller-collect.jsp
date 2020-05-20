@@ -20,18 +20,21 @@
 <script type="text/javascript">
 	function checkAmount() {
 
-		var amountValue = document.getElementById("a");
+		var amountValue = document.getElementById("amount");
 		var drweeTotal = document.getElementById("drweeTotal");
 
 		var alert = document.getElementById("alert");
 
 		if (amountValue.value < drweeTotal.value) {
 
+			alert.style.display = "none"
+
 			return true;
 
 		} else {
 
 			alert.style.display = "block"
+
 			return false;
 
 		}
@@ -43,6 +46,9 @@
 	style="background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
 
 	<%@ include file="header.jsp"%>
+
+	<input id="drweeTotal" value="${seller.getDrawee()}">
+
 
 	<div style="text-align: right;" class="container">
 
@@ -61,9 +67,8 @@
 						metho="POST" action="add-collect" modelAttribute="collect">
 
 						<input type="hidden" name="sellerId" value="${seller.id}">
-						<input type="hidden" id="drweeTotal" value="${drweeTotal}">
 
-						<form:input id="myForm" type="text" path="amount"
+						<form:input id="amount" type="text" path="amount"
 							class="text-center form-control mb-2 col-xs-3"
 							placeholder="ادخل المبلغ"></form:input>
 
@@ -77,7 +82,7 @@
 							value="اضف المبلغ للتحصيل"
 							class="w-100 btn btn-success   
 								 font-weight-bold text-center"
-							onClick="return checkAmount();">
+							onsubmit="return checkAmount();">
 
 					</form:form></li>
 
@@ -102,8 +107,6 @@
 
 		<div class="row  my-4">
 			<div dir='rtl' class=" col-lg-12 col-md-8">
-
-				<input id="draweFromJSP" value="${seller.getDrawee()}">
 
 				<div class="table-responsive">
 

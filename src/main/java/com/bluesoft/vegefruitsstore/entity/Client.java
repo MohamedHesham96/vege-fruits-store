@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import javax.validation.constraints.Pattern;
 
@@ -31,6 +32,7 @@ public class Client {
 
 	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
 	@Where(clause = "current_count > 0")
+	@OrderBy("item.id")
 	private List<ClientBalance> clientBalances;
 
 	public int getId() {

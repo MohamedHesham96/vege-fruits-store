@@ -457,32 +457,40 @@ public class UserDAOImpl implements UserDAO {
 
 		Session session = entityManager.unwrap(Session.class);
 
-		List<ClientBalance> clientBalances = session.createQuery(
-				"from ClientBalance CB where CB.item.id = :theItemId and CB.client.id = :theClientId and CB.currentCounter > 0")
-				.setParameter("theItemId", clientBalance.getItem().getId())
-				.setParameter("theClientId", clientBalance.getClient().getId()).getResultList();
+		session.save(clientBalance);
 
-		if (!clientBalances.isEmpty()) {
-
-			ClientBalance theClientBalance = clientBalances.get(0);
-
-			theClientBalance.setCounter(theClientBalance.getCounter() + clientBalance.getCounter());
-
-			theClientBalance.setWeight(theClientBalance.getWeight() + clientBalance.getWeight());
-
-			theClientBalance
-					.setCurrentCounter(theClientBalance.getCurrentCounter() + clientBalance.getCurrentCounter());
-
-			theClientBalance.setCurrentWeight(theClientBalance.getCurrentWeight() + clientBalance.getCurrentWeight());
-
-			session.saveOrUpdate(theClientBalance);
-
-		} else {
-
-			session.saveOrUpdate(clientBalance);
-
-		}
-
+		/*
+		 * List<ClientBalance> clientBalances = session.createQuery(
+		 * "from ClientBalance CB where CB.item.id = :theItemId and CB.client.id = :theClientId and CB.currentCounter > 0"
+		 * ) .setParameter("theItemId", clientBalance.getItem().getId())
+		 * .setParameter("theClientId",
+		 * clientBalance.getClient().getId()).getResultList();
+		 * 
+		 * if (!clientBalances.isEmpty()) {
+		 * 
+		 * ClientBalance theClientBalance = clientBalances.get(clientBalances.size() -
+		 * 1);
+		 * 
+		 * theClientBalance.setCounter(theClientBalance.getCounter() +
+		 * clientBalance.getCounter());
+		 * 
+		 * theClientBalance.setWeight(theClientBalance.getWeight() +
+		 * clientBalance.getWeight());
+		 * 
+		 * theClientBalance .setCurrentCounter(theClientBalance.getCurrentCounter() +
+		 * clientBalance.getCurrentCounter());
+		 * 
+		 * theClientBalance.setCurrentWeight(theClientBalance.getCurrentWeight() +
+		 * clientBalance.getCurrentWeight());
+		 * 
+		 * session.saveOrUpdate(theClientBalance);
+		 * 
+		 * } else {
+		 * 
+		 * session.saveOrUpdate(clientBalance);
+		 * 
+		 * }
+		 */
 	}
 
 	@Override

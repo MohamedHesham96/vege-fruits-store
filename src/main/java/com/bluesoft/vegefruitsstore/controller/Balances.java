@@ -23,8 +23,6 @@ import com.bluesoft.vegefruitsstore.entity.Item;
 import com.bluesoft.vegefruitsstore.entity.Seller;
 import com.bluesoft.vegefruitsstore.service.UserService;
 
-import javassist.expr.NewArray;
-
 @Controller
 public class Balances {
 

@@ -115,6 +115,8 @@
 
 		<form:form metho="POST" action="add-client-balance"
 			modelAttribute="clientBalance">
+			
+			
 			<div class="row  my-4">
 				<div dir='rtl' class="col-lg-12 col-md-8">
 					<div class="table-responsive">
@@ -209,7 +211,7 @@
 
 						<c:if test="${itemTemp.clientBalances.size() > 0}">
 
-							<table
+							<table style="margin-top: 25px"
 								class="table table-bordered table-striped table-sm table-dark">
 								<thead class="thead-inverse">
 
@@ -265,7 +267,6 @@
 
 						</c:if>
 					</div>
-					<br>
 
 
 				</c:forEach>
