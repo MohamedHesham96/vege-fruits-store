@@ -97,12 +97,11 @@
 										class="btn 
 										text-white font-weight-bold btn-success	">الفواتير</a>
 
-										<a style="font-size: 12px"
-										href="seller-master?id=${tempItem.id}"
-										class="btn btn-danger text-white font-weight-bold ">-----</a>
-
-									</td>
-
+										| <a style="font-size: 12px"
+										onclick="return confirm('هل انت متأكد من حذف هذا البائع ؟')"
+										href="delete-client?id=${tempItem.id}"
+										class="btn btn-danger text-white font-weight-bold 
+										${ tempItem.clientBalances.size() == 0 ? '' : 'disabled'}">حذف</a>
 								</tr>
 
 							</c:forEach>
