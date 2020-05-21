@@ -29,6 +29,9 @@ public class Casher {
 	@Column(name = "password")
 	String password;
 
+	@Column(name = "admin")
+	boolean admin;
+
 	@OneToMany(mappedBy = "casher", fetch = FetchType.LAZY)
 	private List<Balance> balances;
 
@@ -74,6 +77,14 @@ public class Casher {
 
 	public void setClientBalances(List<ClientBalance> clientBalances) {
 		this.clientBalances = clientBalances;
+	}
+
+	public boolean isAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
 	}
 
 }

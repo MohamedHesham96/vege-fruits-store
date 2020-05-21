@@ -115,8 +115,8 @@
 
 		<form:form metho="POST" action="add-client-balance"
 			modelAttribute="clientBalance">
-			
-			
+
+
 			<div class="row  my-4">
 				<div dir='rtl' class="col-lg-12 col-md-8">
 					<div class="table-responsive">
@@ -134,6 +134,11 @@
 											style="height: 30px; font-size: 11px"
 											class="btn btn-success text-wight font-weight-bold">اضافة
 											صنف جديد</button>
+																											
+										<a id="itemBTN" type="button" href="items"
+											style="height: 30px; font-size: 11px"
+											class="btn btn-success text-wight font-weight-bold">
+											الاصناف</a	>
 									</th>
 									<th>العدد</th>
 									<th>الوزن</th>

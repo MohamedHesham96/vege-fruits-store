@@ -69,11 +69,11 @@ public class Sellers {
 	}
 
 	@RequestMapping("/delete-seller")
-	public String getAllBalance(@RequestParam(name = "id") int id) {
+	public String deleteSeller(@RequestParam(name = "id") int id) {
 
-//		userService.deleteSeller(id);
+		userService.deleteSeller(id);
 
-		return "redirect:/master";
+		return "redirect:/sellers";
 	}
 
 }

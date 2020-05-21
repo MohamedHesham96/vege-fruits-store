@@ -98,9 +98,9 @@ public class Clients {
 	@RequestMapping("/delete-client")
 	public String deleteClient(@RequestParam(name = "id") int id) {
 
-		// userService.deleteSeller(id);
+		userService.deleteClient(id);
 
-		return "redirect:/master";
+		return "redirect:/clients";
 	}
 
 }

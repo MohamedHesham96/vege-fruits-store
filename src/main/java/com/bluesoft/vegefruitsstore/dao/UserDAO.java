@@ -109,4 +109,12 @@ public interface UserDAO {
 
 	public Casher getLoginCasher(String username, String password);
 
+	public List<Item> getAllItem();
+
+	public void deleteItem(int id);
+
+	public void deleteSeller(int id);
+
+	public void deleteClient(int id);
+
 }

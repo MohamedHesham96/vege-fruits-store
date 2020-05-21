@@ -674,4 +674,49 @@ public class UserDAOImpl implements UserDAO {
 
 	}
 
+	@Override
+	public List<Item> getAllItem() {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		List<Item> itemsList = session.createQuery("from Item order by id").getResultList();
+
+		return itemsList;
+	}
+
+	@Override
+	@Transactional
+	public void deleteItem(int id) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		Item item = session.get(Item.class, id);
+
+		session.delete(item);
+	}
+
+	@Override
+	@Transactional
+	public void deleteSeller(int id) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		Seller seller = session.get(Seller.class, id);
+
+		session.delete(seller);
+
+	}
+
+	@Override
+	@Transactional
+	public void deleteClient(int id) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		Client client = session.get(Client.class, id);
+
+		session.delete(client);
+
+	}
+
 }

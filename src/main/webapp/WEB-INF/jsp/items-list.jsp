@@ -26,34 +26,6 @@
 
 	<div style="text-align: right;" class="container">
 
-
-		<div class="card bg-success" style="width: 18rem; margin-left: 820px;">
-
-			<div class="card-header text-white font-weight-bold text-center"
-				style="color: #c4c4c4">البحث</div>
-
-
-			<ul class="list-group list-group-flush">
-
-				<li class="bg-dark list-group-item">
-
-					<form method="GET" action="search-for-seller">
-
-						<input type="text" name="sellerName"
-							class="text-center form-control mb-2 col-xs-3"
-							placeholder="ادخل اسم البائع"> <input type="submit"
-							value="ابحث عن الاسم"
-							class="w-100 btn btn-success font-weight-bold text-center"
-							onclick="this.disabled=true; this.parentNode.submit();">
-
-					</form>
-				</li>
-
-			</ul>
-
-		</div>
-
-
 		<div class="row  my-4">
 			<div dir='rtl' class=" col-lg-12 col-md-8">
 
@@ -66,19 +38,19 @@
 							<tr class="badge-success">
 
 								<td colspan="10" class="font-weight-bold"
-									style="font-size: 22px">[ كشف اسماء البائعين ]</td>
+									style="font-size: 22px">[ كشف الاصناف ]</td>
 
 							</tr>
 
 							<tr style="font-size: 18px">
-								<th>رقم البائع</th>
-								<th>اسم البائع</th>
+								<th>رقم الصنف</th>
+								<th>اسم الصنف</th>
 							</tr>
 
 						</thead>
 						<tbody>
 
-							<c:forEach var="tempItem" items="${sellerList}">
+							<c:forEach var="tempItem" items="${itemsList}">
 
 								<tr>
 									<td style="width: 300px; padding-top: 8px; font-size: 16px"
@@ -90,25 +62,8 @@
 											${tempItem.name} </a></td>
 
 									<td><a style="font-size: 12px"
-										href="seller-relay?sellerName=${tempItem.name}"
-										class=" btn btn-primary text-white font-weight-bold ${ tempItem.balances.size() == 0 ? 'disabled' : ''}">الترحيل</a>
-
-										<a style="font-size: 12px"
-										href="seller-collect?id=${tempItem.id}"
-										class="btn 
-										text-white font-weight-bold btn-success	${ tempItem.masters.size() == 0 ? 'disabled' : ''}">التحصيل</a>
-
-
-										<a style="font-size: 12px"
-										href="seller-master?id=${tempItem.id}"
-										class="btn btn-warning text-white font-weight-bold ${ tempItem.masters.size() == 0 ? 'disabled' : ''}">الاستاذ</a>
-| 
-
-
-										<a style="font-size: 12px"
-										onclick="return confirm('هل انت متأكد من حذف هذا البائع ؟')"
-										href="delete-seller?id=${tempItem.id}"
-										class="btn btn-danger text-white font-weight-bold ${ tempItem.masters.size() == 0 ? '' : 'disabled'}">حذف</a>
+										href="delete-item?id=${tempItem.id}"
+										class=" btn btn-primary text-white font-weight-bold ">حذف</a>
 
 									</td>
 

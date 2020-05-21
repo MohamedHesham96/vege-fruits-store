@@ -315,4 +315,28 @@ public class UserServiceImpl implements UserService {
 		return userDAO.getLoginCasher(username, password);
 	}
 
+	@Override
+	public List<Item> getAllItem() {
+
+		return userDAO.getAllItem();
+	}
+
+	@Override
+	public void deleteItem(int id) {
+		
+		userDAO.deleteItem(id);
+	}
+
+	@Override
+	public void deleteSeller(int id) {
+
+		userDAO.deleteSeller(id);		
+	}
+
+	@Override
+	public void deleteClient(int id) {
+		
+		userDAO.deleteClient(id);
+	}
+
 }

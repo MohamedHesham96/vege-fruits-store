@@ -4,15 +4,15 @@
 
 
 
-<%-- <%
-	if (session.getAttribute("username") == null) {
+<%
+	if (session.getAttribute("loginCasherName") == null) {
 %>
 
 <jsp:forward page="login.jsp" />
 
 <%
 	}
-%> --%>
+%>
 
 
 <nav style="box-shadow: 0 6px 10px -1px rgba(0, 0, 0, 0.9);" dir="rtl"
@@ -106,11 +106,11 @@
 
 			<li style="margin: 5px;" class=""><span
 				class="btn bg-light text-dark font-weight-bold"
-				style="font-size: 18px; font-family: Amiri, sans-serif; padding: 0px; padding-right: 7px; padding-top: 7px">
-					كاشير/ <%=session.getAttribute("loginCasherName")%> <a
+				style="font-size: 18px; font-family: Amiri, sans-serif; padding-left: 5px; padding-right: 7px; padding-top: 7px">
+					ك/ <%=session.getAttribute("loginCasherName")%> <a
 					class="text-white font-weight-bold" href="logout"> <img
-						style="margin-right: 0px; width: 35px; display: inline"
-						src="icons/buildings.png"></a>
+						style="margin-right: 0px; width: 30px; display: inline"
+						src="icons/logout.png"></a>
 			</span></li>
 
 

@@ -30,6 +30,8 @@ public class Navigator {
 
 		httpSession.removeAttribute("loginCasherName");
 		httpSession.removeAttribute("loginCasherPassword");
+		httpSession.removeAttribute("loginCasherId");
+		httpSession.removeAttribute("loginCasherIsAdmin");
 
 		return "login";
 
@@ -41,10 +43,11 @@ public class Navigator {
 		Casher casher = userService.getLoginCasher(username, password);
 
 		if (casher.getName().equals(username)) {
-
+			System.out.println("is >> " + casher.isAdmin());
 			httpSession.setAttribute("loginCasherName", casher.getName());
 			httpSession.setAttribute("loginCasherPassword", casher.getPassword());
 			httpSession.setAttribute("loginCasherId", casher.getId());
+			httpSession.setAttribute("loginCasherIsAdmin", casher.isAdmin());
 
 			return "redirect:/balance";
 
