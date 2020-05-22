@@ -69,12 +69,12 @@ public class ClientBalances {
 
 	}
 
-//	@RequestMapping("/delete-balance")
-//	public String getAllBalance(@RequestParam(name = "id") int id) {
-//
-//		userService.deleteBalance(id);
-//
-//		return "redirect:/balance";
-//	}
+	@RequestMapping("/delete-client-balance")
+	public String deleteClientBalance(@RequestParam(name = "id") int id) {
+
+		userService.deleteClientBalance(id);
+
+		return "redirect:/client-balance";
+	}
 
 }

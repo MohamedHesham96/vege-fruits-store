@@ -63,7 +63,7 @@
 
 									<td><a style="font-size: 12px"
 										href="delete-item?id=${tempItem.id}"
-										class=" btn btn-primary text-white font-weight-bold 
+										class=" btn btn-danger text-white font-weight-bold 
 										${ tempItem.clientBalances.size() == 0 ? '' : 'disabled'}">حذف</a>
 
 									</td>

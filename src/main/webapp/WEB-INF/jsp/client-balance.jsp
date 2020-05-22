@@ -133,12 +133,10 @@
 										<button id="itemBTN" type="button" onclick="showForm(this)"
 											style="height: 30px; font-size: 11px"
 											class="btn btn-success text-wight font-weight-bold">اضافة
-											صنف جديد</button>
-																											
-										<a id="itemBTN" type="button" href="items"
-											style="height: 30px; font-size: 11px"
-											class="btn btn-success text-wight font-weight-bold">
-											الاصناف</a	>
+											صنف جديد</button> <a id="itemBTN" type="button" href="items"
+										style="height: 30px; font-size: 11px"
+										class="btn btn-success text-wight font-weight-bold">
+											الاصناف</a>
 									</th>
 									<th>العدد</th>
 									<th>الوزن</th>
@@ -256,6 +254,14 @@
 
 											<td>${tempItem.casher.name}</td>
 											<td>${tempItem.date}</td>
+
+											<td><a style="font-size: 12px"
+												href="delete-client-balance?id=${tempItem.id}"
+												class=" btn btn-danger text-white font-weight-bold  ${ tempItem.currentCounter ==  tempItem.counter ? '' : 'disabled'}"
+												onclick="return confirm('هل انت متأكد من حذف هذا الصنف ؟')">
+												حذف</a>
+
+											</td>
 
 											<!-- 										<td style="width: 160px"><a -->
 											<!-- 											style="height: 30px; font-size: 14px;" -->

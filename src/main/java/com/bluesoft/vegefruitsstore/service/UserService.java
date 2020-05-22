@@ -120,7 +120,9 @@ public interface UserService {
 	public void deleteClient(int id);
 
 	public List<HeaderResult> getMaxDatesForBalance();
-	
+
 	public List<HeaderResult> getMaxDatesForCollect();
+
+	public void deleteClientBalance(int id);
 
 }

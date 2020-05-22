@@ -745,4 +745,15 @@ public class UserDAOImpl implements UserDAO {
 		return headerResultList;
 	}
 
+	@Override
+	public void deleteClientBalance(int id) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		ClientBalance clientBalance = session.get(ClientBalance.class, id);
+
+		session.delete(clientBalance);
+
+	}
+
 }

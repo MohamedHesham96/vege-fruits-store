@@ -351,4 +351,11 @@ public class UserServiceImpl implements UserService {
 		return userDAO.getMaxDatesForCollect();
 	}
 
+	@Override
+	public void deleteClientBalance(int id) {
+
+
+		userDAO.deleteClientBalance(id);
+	}
+
 }

@@ -97,9 +97,6 @@ public class Balances {
 		theModel.addAttribute("balanceList", balanceList);
 		theModel.addAttribute("headerResult", theHeaderResult);
 
-		System.out.println("The Diff Days >>> ");
-		sellerList.get(1).checkSeller();
-
 		return "balance";
 
 	}

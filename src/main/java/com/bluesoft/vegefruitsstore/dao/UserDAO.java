@@ -121,4 +121,6 @@ public interface UserDAO {
 
 	public List<HeaderResult> getMaxDatesForCollect();
 
+	public void deleteClientBalance(int id);
+
 }
