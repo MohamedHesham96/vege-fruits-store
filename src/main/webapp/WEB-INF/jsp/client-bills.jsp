@@ -66,8 +66,23 @@
 										style="display: inline;">
 
 										[ اسم العميل : ${client.name} ] - [ رقم العميل : ${client.id}
-										] - [ التاريخ :
-										<h4 style="display: inline;"><%=LocalDate.now().toString()%>
+										] - [ تاريخ النزول :
+
+										<h4 style="display: inline;">
+
+
+											<%=clientBalances.get(j).getDate()%>
+
+											]
+
+										</h4>
+
+
+
+										<h4 style="display: inline;">
+											- [ تاريخ اليوم :
+
+											<%=LocalDate.now().toString()%>
 											]
 										</h4>
 
