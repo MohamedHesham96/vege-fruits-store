@@ -1,3 +1,5 @@
+<%@page import="java.util.List"%>
+<%@page import="com.bluesoft.vegefruitsstore.entity.ClientBalance"%>
 <%@page import="javax.management.StringValueExp"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="org.apache.taglibs.standard.tag.common.xml.IfTag"%>
@@ -34,13 +36,24 @@
 		<div class="row  my-4">
 			<div dir='rtl' class=" col-lg-12 col-md-8">
 
+				<c:set var="i" value="0" scope="page" />
+				<c:set var="total" value="0" scope="page" />
+
+				<%
+					double total = 0;
+					List<ClientBalance> clientBalances = (ArrayList) request.getAttribute("clientBalances");
+					List<Double> avgKiloes = (ArrayList) request.getAttribute("avgKiloes");
+
+					for (int j = 0; j < clientBalances.size(); j++) {
+				%>
 
 				<div class="table-responsive">
+
+
 
 					<table style="font-size: 18px"
 						class="table table-bordered table-striped table-sm table-dark">
 						<thead class="thead-inverse">
-
 
 							<tr class="badge-success">
 								<td colspan="10" class="font-weight-bold"><h4
@@ -66,42 +79,56 @@
 						</thead>
 						<tbody style="font-size: 18px">
 
-							<c:set var="i" value="0" scope="page" />
-							<c:set var="total" value="0" scope="page" />
+							<%
+								for (int j2 = 0; j2 < clientBalances.size(); j2++) {
+
+										if (clientBalances.get(j).getDate().equals(clientBalances.get(j2).getDate())) {
+											j = j2;
+							%>
 
 
-							<c:forEach var="tempItem" items="${clientBalances}">
+							<tr>
+								<td><%=clientBalances.get(j2).getWeight() * avgKiloes.get(j)%></td>
+								<td><%=clientBalances.get(j2).getCounter()%></td>
+								<td><%=clientBalances.get(j2).getWeight()%></td>
+								<td><%=avgKiloes.get(j)%></td>
+								<td><%=clientBalances.get(j2).getItem().getName()%></td>
 
-								<tr>
-									<td>${tempItem.weight * avgKiloes.get(i)}</td>
-									<td>${tempItem.counter}</td>
-									<td>${tempItem.weight}</td>
-									<td>${avgKiloes.get(i)}</td>
-									<td>${tempItem.item.name}</td>
+							</tr>
 
-								</tr>
+							<c:set var="total"
+								value="${total + tempItem.weight * avgKiloes.get(i)}"
+								scope="page" />
 
-								<c:set var="total"
-									value="${total + tempItem.weight * avgKiloes.get(i)}"
-									scope="page" />
-								<c:set var="i" value="${i + 1}" scope="page" />
 
-							</c:forEach>
 
+
+							<%
+								total += clientBalances.get(j).getWeight() * avgKiloes.get(j);
+										}
+									}
+							%>
 							<tr class="badge-primary">
 								<td colspan="10" class=" badge-primary font-weight-bold"><h4
-										style="display: inline;">[ أجمالي المبلغ : ${total} ]</h4></td>
+										style="display: inline;">
+										[ أجمالي المبلغ :
+										<%=total%>]
+									</h4></td>
 							</tr>
 						</tbody>
 
-
-
-
 					</table>
+					<%
+						total = 0;
+					%>
+
 
 				</div>
 				<br>
 
+				<%
+					}
+				%>
 			</div>
 		</div>
 	</div>

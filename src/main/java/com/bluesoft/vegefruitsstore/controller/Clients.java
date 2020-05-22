@@ -76,11 +76,7 @@ public class Clients {
 
 			int itemId = clientBalance.getItem().getId();
 
-			System.out.println(">>>> ItemId: " + itemId);
-
 			theMaxDate = userService.getMaxDateForItem(id, itemId);
-
-			System.out.println(">>>> Max Date: " + theMaxDate);
 
 			theKiloPriceAvg = userService.getAvgKiloPrice(itemId, id, theMaxDate);
 
