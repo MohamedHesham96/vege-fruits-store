@@ -663,9 +663,8 @@ public class UserDAOImpl implements UserDAO {
 
 		Session session = entityManager.unwrap(Session.class);
 
-		List<Casher> casherList = session
-				.createQuery("from Casher C where C.name = :theCasherName and C.password = :theCasherPass")
-				.setParameter("theCasherName", username).setParameter("theCasherPass", password).getResultList();
+		List<Casher> casherList = session.createQuery("from Casher C where C.name = :theCasherName")
+				.setParameter("theCasherName", username).getResultList();
 
 		if (!casherList.isEmpty())
 			return casherList.get(0);
@@ -717,6 +716,33 @@ public class UserDAOImpl implements UserDAO {
 
 		session.delete(client);
 
+	}
+
+	@Override
+	public List<HeaderResult> getMaxDatesForBalance() {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		List<HeaderResult> headerResultList = session
+				.createQuery(
+						"select B.seller.id as SellerId, max(B.date) as maxDate from Balance B group by B.seller.id")
+				.setResultTransformer(new AliasToBeanResultTransformer(HeaderResult.class)).getResultList();
+
+		return headerResultList;
+
+	}
+
+	@Override
+	public List<HeaderResult> getMaxDatesForCollect() {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		List<HeaderResult> headerResultList = session
+				.createQuery(
+						"select C.seller.id as SellerId, max(C.date) as maxDate from Collect C group by C.seller.id")
+				.setResultTransformer(new AliasToBeanResultTransformer(HeaderResult.class)).getResultList();
+
+		return headerResultList;
 	}
 
 }

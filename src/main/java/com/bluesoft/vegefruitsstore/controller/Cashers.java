@@ -7,6 +7,8 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -95,6 +97,11 @@ public class Cashers {
 	@RequestMapping("/add-casher")
 	public String addClient(@ModelAttribute(name = "casher") Casher casher) {
 
+		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String hashedPassword = passwordEncoder.encode(casher.getPassword());
+		
+		casher.setPassword(hashedPassword);
+		
 		userService.saveCasher(casher);
 
 		return "redirect:/relay";

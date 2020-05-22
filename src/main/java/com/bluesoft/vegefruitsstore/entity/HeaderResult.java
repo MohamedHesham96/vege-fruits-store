@@ -15,6 +15,7 @@ public class HeaderResult {
 	String clientName;
 	String sellerName;
 	String sellerid;
+	int SellerId;
 	String casherName;
 
 	public Long getTotalCount() {
@@ -111,6 +112,14 @@ public class HeaderResult {
 
 	public void setMaxDate(String maxDate) {
 		this.maxDate = maxDate;
+	}
+
+	public int getSellerId() {
+		return SellerId;
+	}
+
+	public void setSellerId(int sellerId) {
+		SellerId = sellerId;
 	}
 
 }

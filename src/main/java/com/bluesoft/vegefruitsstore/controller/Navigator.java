@@ -1,13 +1,18 @@
 package com.bluesoft.vegefruitsstore.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bluesoft.vegefruitsstore.entity.Casher;
+import com.bluesoft.vegefruitsstore.entity.Seller;
 import com.bluesoft.vegefruitsstore.service.UserService;
 
 @Controller
@@ -42,8 +47,8 @@ public class Navigator {
 
 		Casher casher = userService.getLoginCasher(username, password);
 
-		if (casher.getName().equals(username)) {
-			System.out.println("is >> " + casher.isAdmin());
+		if (new BCryptPasswordEncoder().matches(password, casher.getPassword())) {
+
 			httpSession.setAttribute("loginCasherName", casher.getName());
 			httpSession.setAttribute("loginCasherPassword", casher.getPassword());
 			httpSession.setAttribute("loginCasherId", casher.getId());
@@ -57,6 +62,16 @@ public class Navigator {
 
 		}
 
+	}
+
+	@RequestMapping("/messages")
+	public String showwMessages(Model theModel) {
+
+		List<Seller> sellerList = userService.getAllSeller();
+
+		theModel.addAttribute("sellerList", sellerList);
+
+		return "messages";
 	}
 
 }

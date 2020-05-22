@@ -23,7 +23,7 @@
 		<ul class="navbar-nav mr-auto">
 
 
-			<li style="margin: 5px;" class=""><a
+			<li style="margin: 5px;" class=""><a href="messages"
 				class="btn bg-primary text-white "
 				style="font-size: 20px; font-family: Amiri, sans-serif; padding: 5px;">
 					<img style="margin-left: 5px; width: 35px; display: inline"

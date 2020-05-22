@@ -117,4 +117,8 @@ public interface UserDAO {
 
 	public void deleteClient(int id);
 
+	public List<HeaderResult> getMaxDatesForBalance();
+
+	public List<HeaderResult> getMaxDatesForCollect();
+
 }

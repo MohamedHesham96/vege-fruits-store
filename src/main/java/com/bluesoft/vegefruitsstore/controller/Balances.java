@@ -36,6 +36,24 @@ public class Balances {
 	public String getAllBalance(@RequestParam(name = "clientId", required = false) Integer theClientID,
 			Model theModel) {
 
+//		List<HeaderResult> theHeaderResult2 = userService.getMaxDatesForBalance();
+//
+//		for (HeaderResult headerResult : theHeaderResult2) {
+//
+//			System.out.println(
+//					"Seller id >> " + headerResult.getSellerId() + " || " + "MaxDate >> " + headerResult.getMaxDate());
+//		}
+//
+//		List<HeaderResult> theHeaderResult3 = userService.getMaxDatesForCollect();
+//
+//		System.out.println("\n----------------------------------------------------------------------");
+//
+//		for (HeaderResult headerResult : theHeaderResult3) {
+//
+//			System.out.println(
+//					"Seller id >> " + headerResult.getSellerId() + " || " + "MaxDate >> " + headerResult.getMaxDate());
+//		}
+
 		List<HeaderResult> theHeaderResult = userService.getBalanceHeader();
 		List<Item> itemList = new ArrayList<Item>();
 
@@ -78,6 +96,9 @@ public class Balances {
 		theModel.addAttribute("clientsList", clientsList);
 		theModel.addAttribute("balanceList", balanceList);
 		theModel.addAttribute("headerResult", theHeaderResult);
+
+		System.out.println("The Diff Days >>> ");
+		sellerList.get(1).checkSeller();
 
 		return "balance";
 

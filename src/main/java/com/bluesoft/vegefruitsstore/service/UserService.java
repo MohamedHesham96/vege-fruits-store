@@ -118,4 +118,9 @@ public interface UserService {
 	public void deleteSeller(int id);
 
 	public void deleteClient(int id);
+
+	public List<HeaderResult> getMaxDatesForBalance();
+	
+	public List<HeaderResult> getMaxDatesForCollect();
+
 }

@@ -30,9 +30,6 @@ public class ClientBalances {
 	public String getAllBalance(@RequestParam(name = "clientId", required = false) Integer theClientID,
 			Model theModel) {
 
-		httpSession.setAttribute("loginCasherName", "محمد عصام");
-		httpSession.setAttribute("loginCasherId", "1");
-
 		List<Item> itemList = userService.getAllItems();
 		List<Client> clientsList = userService.getAllClients();
 		// List<ClientBalance> clientBalanceList = userService.getAllClientBalance();

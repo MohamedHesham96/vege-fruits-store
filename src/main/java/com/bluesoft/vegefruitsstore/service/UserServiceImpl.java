@@ -323,20 +323,32 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void deleteItem(int id) {
-		
+
 		userDAO.deleteItem(id);
 	}
 
 	@Override
 	public void deleteSeller(int id) {
 
-		userDAO.deleteSeller(id);		
+		userDAO.deleteSeller(id);
 	}
 
 	@Override
 	public void deleteClient(int id) {
-		
+
 		userDAO.deleteClient(id);
+	}
+
+	@Override
+	public List<HeaderResult> getMaxDatesForBalance() {
+
+		return userDAO.getMaxDatesForBalance();
+	}
+
+	@Override
+	public List<HeaderResult> getMaxDatesForCollect() {
+
+		return userDAO.getMaxDatesForCollect();
 	}
 
 }
