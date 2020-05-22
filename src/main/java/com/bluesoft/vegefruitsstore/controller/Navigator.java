@@ -1,5 +1,6 @@
 package com.bluesoft.vegefruitsstore.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -37,6 +38,7 @@ public class Navigator {
 		httpSession.removeAttribute("loginCasherPassword");
 		httpSession.removeAttribute("loginCasherId");
 		httpSession.removeAttribute("loginCasherIsAdmin");
+		httpSession.removeAttribute("messagesCount");
 
 		return "login";
 
@@ -54,6 +56,18 @@ public class Navigator {
 			httpSession.setAttribute("loginCasherId", casher.getId());
 			httpSession.setAttribute("loginCasherIsAdmin", casher.isAdmin());
 
+			List<Seller> sellerList = userService.getAllSeller();
+
+			List<Seller> newSellerList = new ArrayList<Seller>();
+
+			for (Seller seller : sellerList) {
+
+				if (!seller.checkSeller())
+					newSellerList.add(seller);
+			}
+
+			httpSession.setAttribute("messagesCount", newSellerList.size());
+
 			return "redirect:/balance";
 
 		} else {
@@ -69,7 +83,17 @@ public class Navigator {
 
 		List<Seller> sellerList = userService.getAllSeller();
 
-		theModel.addAttribute("sellerList", sellerList);
+		List<Seller> newSellerList = new ArrayList<Seller>();
+
+		for (Seller seller : sellerList) {
+
+			if (!seller.checkSeller())
+				newSellerList.add(seller);
+		}
+
+		httpSession.setAttribute("messagesCount", newSellerList.size());
+
+		theModel.addAttribute("sellerList", newSellerList);
 
 		return "messages";
 	}

@@ -38,7 +38,12 @@
 							<tr class="badge-success">
 
 								<td colspan="10" class="font-weight-bold"
-									style="font-size: 22px">[ الرسائل ] - [ عدد الرسائل - 5 ]</td>
+									style="font-size: 22px">[ الرسائل ] - [ عدد الرسائل - 
+									
+									
+														<%=session.getAttribute("messagesCount")%>
+									
+									 ]</td>
 
 							</tr>
 
@@ -50,10 +55,9 @@
 
 						</thead>
 						<tbody>
+							<c:if test="${sellerList.size() > 0}">
 
-							<c:forEach var="tempItem" items="${sellerList}">
-								<c:if test="${!tempItem.checkSeller()}">
-
+								<c:forEach var="tempItem" items="${sellerList}">
 									<tr>
 										<td style="width: 300px; padding-top: 8px; font-size: 16px"
 											class="text-white font-weight-bold">${tempItem.id}</td>
@@ -64,14 +68,15 @@
 												${tempItem.name} </a></td>
 
 										<td class="badge-warning">هذا البائع لم يدفع اي تحصيل من
-											يوم [ ${tempItem.balances.get(0).date} ]</td>
+											يوم <span class="font-weight-bold" style="display: inline;">[
+												${tempItem.balances.get(0).date} ]</span>
+										</td>
 
 									</tr>
 
-								</c:if>
+								</c:forEach>
 
-							</c:forEach>
-
+							</c:if>
 						</tbody>
 
 					</table>

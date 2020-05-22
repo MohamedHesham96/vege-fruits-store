@@ -62,31 +62,30 @@
 						<thead class="thead-inverse">
 
 							<tr class="badge-success">
-								<td colspan="10" class="font-weight-bold"><h4
-										style="display: inline;">
+								<td colspan="10" class="font-weight-bold">
+
+
+									<div  style="font-size: 22px; display: inline;">
 
 										[ اسم العميل : ${client.name} ] - [ رقم العميل : ${client.id}
 										] - [ تاريخ النزول :
 
-										<h4 style="display: inline;">
-
+										<div style="display: inline;">
 
 											<%=clientBalances.get(j).getDate()%>
 
 											]
+										</div>
 
-										</h4>
-
-
-
-										<h4 style="display: inline;">
-											- [ تاريخ اليوم :
-
+										- [ تاريخ اليوم :
+										<div style="display: inline;">
 											<%=LocalDate.now().toString()%>
 											]
-										</h4>
+										</div>
+									</div>
 
-									</h4></td>
+
+								</td>
 
 							</tr>
 

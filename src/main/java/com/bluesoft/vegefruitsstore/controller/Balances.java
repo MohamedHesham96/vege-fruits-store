@@ -54,6 +54,7 @@ public class Balances {
 //					"Seller id >> " + headerResult.getSellerId() + " || " + "MaxDate >> " + headerResult.getMaxDate());
 //		}
 
+		
 		List<HeaderResult> theHeaderResult = userService.getBalanceHeader();
 		List<Item> itemList = new ArrayList<Item>();
 
@@ -88,6 +89,18 @@ public class Balances {
 			itemList.add(clientBalance.getItem());
 		}
 
+		// Get Messages Count
+		List<Seller> newSellerList = new ArrayList<Seller>();
+
+		for (Seller seller : sellerList) {
+
+			if (!seller.checkSeller())
+				newSellerList.add(seller);
+		}
+
+		httpSession.setAttribute("messagesCount", newSellerList.size());
+
+		
 		theModel.addAttribute("today", LocalDate.now().toString());
 		theModel.addAttribute("seller", new Seller());
 		theModel.addAttribute("balance", balance);
