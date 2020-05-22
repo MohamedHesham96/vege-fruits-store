@@ -31,6 +31,12 @@
 	<div style="text-align: right;" class="container">
 
 
+		<c:if test="${clientBalances.size() == 0}">
+
+			<div style="font-size: 22px" class="alert alert-danger" role="alert">...لا
+				يوجد فواتير حاليا لهذا العميل</div>
+
+		</c:if>
 		<!-- TABLE			TABLE			TABLE			TABLE -->
 
 		<div class="row  my-4">
