@@ -35,6 +35,7 @@ public class Relays {
 		theModel.addAttribute("relayList", relayList);
 
 		return "relay";
+
 	}
 
 	@RequestMapping("/seller-relay")

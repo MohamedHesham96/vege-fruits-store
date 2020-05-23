@@ -95,14 +95,29 @@ public class Cashers {
 	}
 
 	@RequestMapping("/add-casher")
-	public String addClient(@ModelAttribute(name = "casher") Casher casher) {
+	public String addCasher(@ModelAttribute(name = "casher") Casher casher) {
 
 		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		String hashedPassword = passwordEncoder.encode(casher.getPassword());
-		
+
 		casher.setPassword(hashedPassword);
-		
+
 		userService.saveCasher(casher);
+
+		return "redirect:/relay";
+	}
+
+	@RequestMapping("/update-casher-password")
+	public String updateCasher(@ModelAttribute(name = "casher") Casher casher) {
+
+		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String hashedPassword = passwordEncoder.encode(casher.getPassword());
+
+		Casher theCasher = userService.getCasher(casher.getId());
+
+		theCasher.setPassword(hashedPassword);
+
+		userService.saveCasher(theCasher);
 
 		return "redirect:/relay";
 	}

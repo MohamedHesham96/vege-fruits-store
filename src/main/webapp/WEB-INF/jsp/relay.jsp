@@ -19,14 +19,37 @@
 	rel="stylesheet">
 
 <script type="text/javascript">
-	function showForm() {
+	function showForm(btn, id, name) {
 
 		var form = document.getElementById("casherForm");
+		var updateForm = document.getElementById("casherUpdateForm");
+		var casherId = document.getElementById("casherId");
+		var casherName = document.getElementById("casherName");
 
-		if (form.style.display === "block")
-			form.style.display = "none";
-		else
-			form.style.display = "block";
+		if (btn.id === "addBtn") {
+
+			if (form.style.display === "block")
+				form.style.display = "none";
+			else {
+				form.style.display = "block";
+				updateForm.style.display = "none";
+			}
+
+		}
+
+		else {
+
+			casherId.value = id;
+			casherName.value = name;
+
+			if (updateForm.style.display === "none") {
+
+				updateForm.style.display = "block";
+				form.style.display = "none";
+			}
+
+		}
+
 	}
 </script>
 </head>
@@ -93,7 +116,37 @@
 		</div>
 
 
+		<div id="casherUpdateForm" class="card bg-success"
+			style="display: none; width: 18rem; margin-left: 820px;">
 
+			<div class="card-header text-white font-weight-bold text-center"
+				style="color: #c4c4c4">تعديل كاشير</div>
+
+			<ul class="list-group list-group-flush">
+
+				<li class="bg-dark list-group-item"><form:form
+						modelAttribute="casher" method="POST"
+						action="update-casher-password">
+
+						<form:hidden id="casherId" path="id"></form:hidden>
+
+						<input
+							class="w-100 btn btn-warning font-weight-bold text-center form-control mb-2 col-xs-3"
+							id="casherName"></input>
+
+
+						<form:password path="password"
+							class="text-center form-control mb-2 col-xs-3"
+							placeholder="ادخل الرقم السري الجديد"></form:password>
+
+						<input type="submit" value="تعديل"
+							class="w-100 btn btn-success font-weight-bold text-center"
+							onclick="return confirm('هل انت متأكد من تعديل هذا الكاشير ؟')">
+
+					</form:form></li>
+			</ul>
+
+		</div>
 
 		<div class="row my-4">
 			<div dir='rtl' class=" col-lg-12 col-md-8">
@@ -113,7 +166,7 @@
 									الكاشير ]
 
 
-									<button onclick="showForm()"
+									<button id="addBtn" onclick="showForm(this)"
 										style="height: 30px; font-size: 12px"
 										class="btn btn-dark text-wight font-weight-bold">+
 										اضافة كاشير جديد</button>
@@ -141,7 +194,14 @@
 											البائعين</a> <a style="height: 30px; font-size: 12px"
 										class="btn btn-success text-wight font-weight-bold"
 										href="casher-clients?casherId=${tempItem.id}">يومية
-											العملاء</a></td>
+											العملاء</a> |
+
+
+										<button id="updateBtn"
+											onclick="showForm( this , '${tempItem.id}' , '${tempItem.name}' )"
+											style="height: 30px; font-size: 12px"
+											class="btn btn-warning text-wight font-weight-bold">تغيير
+											الرقم السري</button></td>
 								</tr>
 
 

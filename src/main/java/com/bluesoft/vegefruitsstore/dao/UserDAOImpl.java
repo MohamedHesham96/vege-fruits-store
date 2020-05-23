@@ -524,6 +524,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
+	@Transactional
 	public void saveCasher(Casher casher) {
 
 		Session session = entityManager.unwrap(Session.class);
