@@ -102,10 +102,7 @@
 										<a style="font-size: 12px"
 										href="seller-master?id=${tempItem.id}"
 										class="btn btn-warning text-white font-weight-bold ${ tempItem.masters.size() == 0 ? 'disabled' : ''}">الاستاذ</a>
-| 
-
-
-										<a style="font-size: 12px"
+										| <a style="font-size: 12px"
 										onclick="return confirm('هل انت متأكد من حذف هذا البائع ؟')"
 										href="delete-seller?id=${tempItem.id}"
 										class="btn btn-danger text-white font-weight-bold ${ tempItem.masters.size() == 0 ? '' : 'disabled'}">حذف</a>
@@ -124,5 +121,8 @@
 			</div>
 		</div>
 	</div>
+
+	<%@ include file="footer.jsp"%>
+
 </body>
 </html>

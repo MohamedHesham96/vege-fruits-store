@@ -65,7 +65,7 @@
 								<td colspan="10" class="font-weight-bold">
 
 
-									<div  style="font-size: 22px; display: inline;">
+									<div style="font-size: 22px; display: inline;">
 
 										[ اسم العميل : ${client.name} ] - [ رقم العميل : ${client.id}
 										] - [ تاريخ النزول :
@@ -152,6 +152,9 @@
 			</div>
 		</div>
 	</div>
+
+
+	<%@ include file="footer.jsp"%>
 
 
 </body>

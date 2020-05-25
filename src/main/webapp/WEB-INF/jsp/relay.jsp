@@ -182,6 +182,7 @@
 
 						</thead>
 						<tbody>
+
 							<c:forEach var="tempItem" items="${casherList}">
 
 								<tr>
@@ -195,7 +196,6 @@
 										class="btn btn-success text-wight font-weight-bold"
 										href="casher-clients?casherId=${tempItem.id}">يومية
 											العملاء</a> |
-
 
 										<button id="updateBtn"
 											onclick="showForm( this , '${tempItem.id}' , '${tempItem.name}' )"
@@ -229,7 +229,8 @@
 
 								<tr class="badge-success">
 
-									<td class="font-weight-bold" colspan="10">[ اسم البائع :
+									<td style="font-size: 20px" class="font-weight-bold"
+										colspan="10">[ ترحيل ] - [ اسم البائع :
 										${headerTemp.sellerName} ]</td>
 
 								</tr>
@@ -288,6 +289,7 @@
 		</div>
 	</div>
 
+	<%@ include file="footer.jsp"%>
 
 </body>
 </html>

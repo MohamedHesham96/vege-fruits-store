@@ -222,9 +222,9 @@
 											<td>${tempItem.date}</td>
 
 											<td style="width: 160px"><a
-												${tempItem.date == today ? '' : 'hidden'}
+												
 												style="height: 30px; font-size: 14px;"
-												class="btn btn-danger text-wight font-weight-bold"
+												class="btn btn-danger text-wight font-weight-bold ${tempItem.date == today ? '' : 'disabled'}"
 												onclick="return confirm('هل انت متأكد من حذف هذا الصنف ؟')"
 												href="delete-balance?id=${tempItem.id}">حذف</a></td>
 
@@ -260,6 +260,8 @@
 			</div>
 		</div>
 	</div>
+
+	<%@ include file="footer.jsp"%>
 
 </body>
 </html>

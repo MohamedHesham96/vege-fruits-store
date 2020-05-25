@@ -56,7 +56,8 @@
 						</div>
 					</li>
 
-					<li class="bg-dark list-group-item"><input style="height: 60px" type="submit"
+					<li class="bg-dark list-group-item"><input
+						style="height: 60px" type="submit"
 						class="btn badge-success font-weight-bold form-control"
 						value="تسجيل الدخول" /></li>
 				</ul>
@@ -64,4 +65,8 @@
 			</form>
 		</div>
 	</div>
+	
+		<%@ include file="footer.jsp"%>
+	
 </body>
+</html>
