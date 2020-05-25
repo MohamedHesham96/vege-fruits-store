@@ -97,9 +97,9 @@
 							</tr>
 
 							<tr style="font-size: 18px">
-								<th>المبلغ</th>
-								<th>اسم المستلم</th>
-								<th>التاريخ</th>
+								<th style="width: 300px">المبلغ</th>
+								<th style="width: 300px">اسم المستلم</th>
+								<th colspan="2" style="width: 250px">التاريخ</th>
 							</tr>
 
 						</thead>
@@ -111,10 +111,9 @@
 									<td>${tempItem.amount}</td>
 									<td>${tempItem.receiver}</td>
 									<td>${tempItem.date}</td>
-									<td style="width: 160px"><a
-										${tempItem.date == today ? '' : 'hidden'}
+									<td style="width: 250px"><a
 										style="height: 30px; font-size: 14px;"
-										class="btn btn-danger text-wight font-weight-bold"
+										class="btn btn-danger text-wight font-weight-bold ${tempItem.date == today ? '' : 'disabled'}"
 										onclick="return confirm('هل انت متأكد من حذف هذا التحصيل ؟')"
 										href="delete-collect?id=${tempItem.id}">حذف</a></td>
 								</tr>
@@ -130,7 +129,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<%@ include file="footer.jsp"%>
 
 </body>

@@ -71,7 +71,7 @@
 
 							<tr style="font-size: 18px">
 								<th>رقم العميل</th>
-								<th>اسم العميل</th>
+								<th colspan="2">اسم العميل</th>
 							</tr>
 
 						</thead>
@@ -114,8 +114,8 @@
 			</div>
 		</div>
 	</div>
-	
-		<%@ include file="footer.jsp"%>
-	
+
+	<%@ include file="footer.jsp"%>
+
 </body>
 </html>

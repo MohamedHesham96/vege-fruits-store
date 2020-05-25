@@ -72,7 +72,7 @@
 
 							<tr style="font-size: 18px">
 								<th>رقم البائع</th>
-								<th>اسم البائع</th>
+								<th colspan="2">اسم البائع</th>
 							</tr>
 
 						</thead>

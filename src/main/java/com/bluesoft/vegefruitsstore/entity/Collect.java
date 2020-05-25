@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 
 @Entity
 @Table(name = "collect")
@@ -25,6 +26,7 @@ public class Collect {
 	private Seller seller;
 
 	@Column(name = "amount")
+	@Min(value = 1)
 	float amount;
 
 	@Column(name = "receiver")
@@ -40,7 +42,7 @@ public class Collect {
 	public Collect(Seller seller, float amount, String date, String receiver) {
 
 		this.seller = seller;
-		this.receiver= receiver;
+		this.receiver = receiver;
 		this.amount = amount;
 		this.date = date;
 	}

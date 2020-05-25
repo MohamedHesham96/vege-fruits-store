@@ -231,7 +231,7 @@
 										<th>العدد الحالي</th>
 										<th>الوزن الحالي</th>
 										<th>الكاشير</th>
-										<th>التاريخ</th>
+										<th colspan="2">التاريخ</th>
 									</tr>
 								</thead>
 
@@ -259,9 +259,7 @@
 												href="delete-client-balance?id=${tempItem.id}"
 												class=" btn btn-danger text-white font-weight-bold  ${ tempItem.currentCounter ==  tempItem.counter ? '' : 'disabled'}"
 												onclick="return confirm('هل انت متأكد من حذف هذا الصنف ؟')">
-												حذف</a>
-
-											</td>
+													حذف</a></td>
 
 											<!-- 										<td style="width: 160px"><a -->
 											<!-- 											style="height: 30px; font-size: 14px;" -->
