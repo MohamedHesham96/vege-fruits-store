@@ -292,6 +292,10 @@ public class UserDAOImpl implements UserDAO {
 				.createQuery("from Master m where m.seller.id = :theSellerId and m.date = :thedate")
 				.setParameter("thedate", date).setParameter("theSellerId", sellerId).getResultList();
 
+		List<Master> sellerMasterList = session
+				.createQuery("from Master m where m.seller.id = :theSellerId order by date desc")
+				.setParameter("theSellerId", sellerId).getResultList();
+
 		if (!masterList.isEmpty()) {
 
 			master = masterList.get(0);
@@ -299,6 +303,14 @@ public class UserDAOImpl implements UserDAO {
 			master.setAmount(master.getAmount() + amount);
 
 			session.saveOrUpdate(master);
+
+			if (sellerMasterList.size() > 1)
+				if (sellerMasterList.get(1).getAmount() == sellerMasterList.get(0).getAmount()) {
+
+					session.delete(sellerMasterList.get(0));
+					System.out.println("Date >> " + sellerMasterList.get(0).getDate() + " ------ " + "Amount >> "
+							+ sellerMasterList.get(0).getAmount());
+				}
 
 		} else {
 

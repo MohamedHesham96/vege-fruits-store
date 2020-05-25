@@ -354,7 +354,6 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void deleteClientBalance(int id) {
 
-
 		userDAO.deleteClientBalance(id);
 	}
 
