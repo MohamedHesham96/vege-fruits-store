@@ -747,6 +747,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
+	@Transactional
 	public void deleteClientBalance(int id) {
 
 		Session session = entityManager.unwrap(Session.class);

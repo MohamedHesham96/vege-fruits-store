@@ -73,7 +73,7 @@ public class ClientBalances {
 	public String deleteClientBalance(@RequestParam(name = "id") int id) {
 
 		userService.deleteClientBalance(id);
-
+		
 		return "redirect:/client-balance";
 	}
 
