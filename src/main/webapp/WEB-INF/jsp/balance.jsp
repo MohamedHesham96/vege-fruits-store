@@ -109,11 +109,11 @@
 										style="width: 175px;" class="text-center form-control ">
 
 											<c:forEach var="tempItem" items="${clientsList}">
-
-												<option
-													${tempItem.id == selectedClientId ? 'selected="selected"' : ''}
-													value="${tempItem.id}">${tempItem.name}</option>
-
+												<c:if test="${tempItem.clientBalances.size() != 0}">
+													<option
+														${tempItem.id == selectedClientId ? 'selected="selected"' : ''}
+														value="${tempItem.id}">${tempItem.name}</option>
+												</c:if>
 											</c:forEach>
 
 									</select></td>
