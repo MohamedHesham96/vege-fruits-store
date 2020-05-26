@@ -469,7 +469,28 @@ public class UserDAOImpl implements UserDAO {
 
 		Session session = entityManager.unwrap(Session.class);
 
-		session.save(clientBalance);
+		List<ClientBalance> balances = session
+				.createQuery("from ClientBalance CB "
+						+ "where CB.item.id = :theItemId and CB.client.id = :theClientId and CB.date = :theDate")
+				.setParameter("theItemId", clientBalance.getItem().getId())
+				.setParameter("theClientId", clientBalance.getClient().getId())
+				.setParameter("theDate", clientBalance.getDate()).getResultList();
+
+		if (!balances.isEmpty()) {
+
+			ClientBalance cb = balances.get(0);
+			cb.setCounter(cb.getCounter() + clientBalance.getCounter());
+			cb.setWeight(cb.getWeight() + clientBalance.getWeight());
+			cb.setCurrentCounter(cb.getCurrentCounter() + clientBalance.getCurrentCounter());
+			cb.setCurrentWeight(cb.getCurrentWeight() + clientBalance.getCurrentWeight());
+
+			session.saveOrUpdate(cb);
+
+		} else {
+
+			session.save(clientBalance);
+
+		}
 
 		/*
 		 * List<ClientBalance> clientBalances = session.createQuery(

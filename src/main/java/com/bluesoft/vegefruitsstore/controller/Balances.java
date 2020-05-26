@@ -2,6 +2,7 @@ package com.bluesoft.vegefruitsstore.controller;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -67,11 +68,18 @@ public class Balances {
 			}
 		}
 
-		for (ClientBalance clientBalance : clientBalances) {
-
-			itemList.add(clientBalance.getItem());
-		}
-
+//		ClientBalance tempCB = new ClientBalance();
+//		
+//		for (Iterator iterator = clientBalances.iterator(); iterator.hasNext();) {
+//
+//			if (tempCB.getItem().equals(((ClientBalance) iterator.next()).getItem())) {
+//
+//				tempCB = (ClientBalance) iterator.next();
+//				tempCB.getItem().setName(tempCB.getItem().getName() + "[ " + tempCB.getDate() + " ]");
+//
+//			}
+//
+//		}
 		// Get Messages Count
 		List<Seller> newSellerList = new ArrayList<Seller>();
 

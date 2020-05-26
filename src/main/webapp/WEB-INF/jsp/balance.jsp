@@ -135,7 +135,8 @@
 
 											<c:forEach var="tempItem" items="${clientBalances}">
 
-												<option value="${tempItem.id}">${tempItem.item.name}</option>
+												<option value="${tempItem.id}">${tempItem.item.name}
+													[${tempItem.date}]</option>
 
 											</c:forEach>
 
