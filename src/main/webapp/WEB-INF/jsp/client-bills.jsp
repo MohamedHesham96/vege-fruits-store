@@ -47,7 +47,7 @@
 				<c:set var="total" value="0" scope="page" />
 
 				<%
-					int total = 0;
+					double total = 0;
 					List<ClientBalance> clientBalances = (ArrayList) request.getAttribute("clientBalances");
 					List<Double> avgKiloes = (ArrayList) request.getAttribute("avgKiloes");
 
@@ -112,17 +112,11 @@
 								<td><%=new DecimalFormat("##.##")
 								.format(clientBalances.get(j2).getWeight() * avgKiloes.get(j))%></td>
 								<td><%=clientBalances.get(j2).getCounter()%></td>
-								<td><%=new DecimalFormat("##.##").format(clientBalances.get(j2).getWeight())%></td>
+								<td><%=clientBalances.get(j2).getWeight()%></td>
 								<td><%=new DecimalFormat("##.##").format(avgKiloes.get(j))%></td>
 								<td><%=clientBalances.get(j2).getItem().getName()%></td>
 
 							</tr>
-
-							<c:set var="total"
-								value="${total + tempItem.weight * avgKiloes.get(i)}"
-								scope="page" />
-
-
 
 
 							<%
@@ -130,11 +124,14 @@
 										}
 									}
 							%>
+
 							<tr class="badge-primary">
 								<td colspan="10" class=" badge-primary font-weight-bold"><h4
 										style="display: inline;">
 										[ أجمالي المبلغ :
+
 										<%=new DecimalFormat("##.##").format(total)%>
+
 										]
 									</h4></td>
 							</tr>
@@ -144,7 +141,6 @@
 					<%
 						total = 0;
 					%>
-
 
 				</div>
 				<br>

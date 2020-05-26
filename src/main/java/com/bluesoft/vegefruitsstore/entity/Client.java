@@ -35,6 +35,9 @@ public class Client {
 	@OrderBy("item.id")
 	private List<ClientBalance> clientBalances;
 
+	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
+	private List<ClientBalance> allClientBalances;
+
 	public int getId() {
 		return id;
 	}
@@ -67,4 +70,9 @@ public class Client {
 		this.clientBalances = clientBalances;
 	}
 
+	public boolean haveBalances() {
+
+		return !allClientBalances.isEmpty() ? true : false;
+
+	}
 }

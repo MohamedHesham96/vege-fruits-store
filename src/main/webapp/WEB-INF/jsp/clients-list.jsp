@@ -101,7 +101,7 @@
 										onclick="return confirm('هل انت متأكد من حذف هذا البائع ؟')"
 										href="delete-client?id=${tempItem.id}"
 										class="btn btn-danger text-white font-weight-bold 
-										${ tempItem.clientBalances.size() == 0 ? '' : 'disabled'}">حذف</a>
+										${ tempItem.haveBalances() ? 'disabled' : ''}">حذف</a>
 								</tr>
 
 							</c:forEach>

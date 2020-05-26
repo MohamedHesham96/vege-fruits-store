@@ -99,9 +99,7 @@ public interface UserService {
 
 	public void deletCollect(Collect theCollect);
 
-	public double getAvgKiloPrice(int itemId, int clientId, String date);
-
-	public String getMaxDateForItem(int clientId, int itemId);
+	public double getAvgKiloPrice(int clientBalanceId);
 
 	public List<ClientBalance> getClientBalancesWithCountZero(int clientId);
 

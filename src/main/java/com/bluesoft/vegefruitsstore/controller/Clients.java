@@ -61,24 +61,23 @@ public class Clients {
 	}
 
 	@RequestMapping("/client-bills")
-	public String showClientBills(@RequestParam("id") int id, Model theModel) {
+	public String showClientBills(@RequestParam("id") int clientId, Model theModel) {
 
-		List<ClientBalance> clientBalancesList = userService.getClientBalancesWithCountZero(id);
+		List<ClientBalance> clientBalancesList = userService.getClientBalancesWithCountZero(clientId);
 
-		Client theClient = userService.getClient(id);
+		Client theClient = userService.getClient(clientId);
 
 		List<Double> avgKiloes = new ArrayList<Double>();
 
-		String theMaxDate;
 		Double theKiloPriceAvg;
 
 		for (ClientBalance clientBalance : clientBalancesList) {
 
-			int itemId = clientBalance.getItem().getId();
+			int clientBalanceId = clientBalance.getId();
 
-			theMaxDate = userService.getMaxDateForItem(id, itemId);
+			// theMaxDate = userService.getMaxDateForItem(clientId, clientBalance);
 
-			theKiloPriceAvg = userService.getAvgKiloPrice(itemId, id, theMaxDate);
+			theKiloPriceAvg = userService.getAvgKiloPrice(clientBalanceId);
 
 			avgKiloes.add(theKiloPriceAvg);
 
