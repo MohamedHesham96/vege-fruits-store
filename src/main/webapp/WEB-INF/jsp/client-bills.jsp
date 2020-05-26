@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="java.util.List"%>
 <%@page import="com.bluesoft.vegefruitsstore.entity.ClientBalance"%>
 <%@page import="javax.management.StringValueExp"%>
@@ -46,7 +47,7 @@
 				<c:set var="total" value="0" scope="page" />
 
 				<%
-					double total = 0;
+					int total = 0;
 					List<ClientBalance> clientBalances = (ArrayList) request.getAttribute("clientBalances");
 					List<Double> avgKiloes = (ArrayList) request.getAttribute("avgKiloes");
 
@@ -108,10 +109,11 @@
 
 
 							<tr>
-								<td><%=clientBalances.get(j2).getWeight() * avgKiloes.get(j)%></td>
+								<td><%=new DecimalFormat("##.##")
+								.format(clientBalances.get(j2).getWeight() * avgKiloes.get(j))%></td>
 								<td><%=clientBalances.get(j2).getCounter()%></td>
-								<td><%=clientBalances.get(j2).getWeight()%></td>
-								<td><%=avgKiloes.get(j)%></td>
+								<td><%=new DecimalFormat("##.##").format(clientBalances.get(j2).getWeight())%></td>
+								<td><%=new DecimalFormat("##.##").format(avgKiloes.get(j))%></td>
 								<td><%=clientBalances.get(j2).getItem().getName()%></td>
 
 							</tr>
@@ -132,7 +134,8 @@
 								<td colspan="10" class=" badge-primary font-weight-bold"><h4
 										style="display: inline;">
 										[ أجمالي المبلغ :
-										<%=total%>]
+										<%=new DecimalFormat("##.##").format(total)%>
+										]
 									</h4></td>
 							</tr>
 						</tbody>
