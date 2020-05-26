@@ -64,6 +64,11 @@ public class Balance {
 	@Column(name = "date")
 	String date;
 
+	@ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.DETACH, CascadeType.PERSIST, CascadeType.MERGE,
+			CascadeType.REFRESH })
+	@JoinColumn(name = "client_balance_id")
+	private ClientBalance clientBalance;
+
 	public int getId() {
 		return id;
 	}
@@ -158,6 +163,14 @@ public class Balance {
 
 	public void setDate(String date) {
 		this.date = date;
+	}
+
+	public ClientBalance getClientBalance() {
+		return clientBalance;
+	}
+
+	public void setClientBalance(ClientBalance clientBalance) {
+		this.clientBalance = clientBalance;
 	}
 
 }

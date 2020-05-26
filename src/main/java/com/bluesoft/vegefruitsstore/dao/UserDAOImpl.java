@@ -506,22 +506,26 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public void updateClientBalance(int itemId, int clientId, int count, float weight) throws Exception {
+	public boolean updateClientBalance(int clientBalanceId, int count, float weight) throws Exception {
 
 		Session session = entityManager.unwrap(Session.class);
 
-		ClientBalance theClientBalance = (ClientBalance) session
-				.createQuery("from ClientBalance CB where CB.item.id = :theItemId and CB.client.id = :theClientId")
-				.setMaxResults(1).setParameter("theItemId", itemId).setParameter("theClientId", clientId)
-				.uniqueResult();
+		ClientBalance theClientBalance = getClientBalance(clientBalanceId);
 
-//		if (theClientBalance.getCounter() < count || theClientBalance.getWeight() < weight)
-//			throw new Exception("Errorrrrrrrrrrrrr");
+		if (theClientBalance.getCurrentCounter() >= count && theClientBalance.getCurrentWeight() >= weight) {
 
-		theClientBalance.setCurrentCounter(theClientBalance.getCurrentCounter() - count);
-		theClientBalance.setCurrentWeight(theClientBalance.getCurrentWeight() - weight);
+			theClientBalance.setCurrentCounter(theClientBalance.getCurrentCounter() - count);
+			theClientBalance.setCurrentWeight(theClientBalance.getCurrentWeight() - weight);
 
-		session.saveOrUpdate(theClientBalance);
+			session.saveOrUpdate(theClientBalance);
+
+			return true;
+
+		} else {
+
+			return false;
+
+		}
 	}
 
 	@Override
@@ -768,6 +772,16 @@ public class UserDAOImpl implements UserDAO {
 
 		session.delete(clientBalance);
 
+	}
+
+	@Override
+	public ClientBalance getClientBalance(int id) {
+
+		Session session = entityManager.unwrap(Session.class);
+
+		ClientBalance clientBalance = session.get(ClientBalance.class, id);
+
+		return clientBalance;
 	}
 
 }

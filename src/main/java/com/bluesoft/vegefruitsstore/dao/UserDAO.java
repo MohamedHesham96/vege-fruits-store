@@ -81,7 +81,7 @@ public interface UserDAO {
 
 	public void saveClientBalance(ClientBalance clientBalance);
 
-	public void updateClientBalance(int itemId, int clientId, int count, float weight) throws Exception;
+	public boolean updateClientBalance(int clientBalanceId, int count, float weight) throws Exception;
 
 	public void saveCasher(Casher casher);
 
@@ -122,5 +122,7 @@ public interface UserDAO {
 	public List<HeaderResult> getMaxDatesForCollect();
 
 	public void deleteClientBalance(int id);
+
+	public ClientBalance getClientBalance(int clientBalanceId);
 
 }

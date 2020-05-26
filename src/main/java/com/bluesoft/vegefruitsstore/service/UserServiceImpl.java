@@ -218,9 +218,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void updateClientBalance(int itemId, int clientId, int count, float weight) throws Exception {
+	public boolean updateClientBalance(int clientBalanceId, int count, float weight) throws Exception {
 
-		userDAO.updateClientBalance(itemId, clientId, count, weight);
+		return userDAO.updateClientBalance(clientBalanceId, count, weight);
 	}
 
 	@Override
@@ -357,4 +357,10 @@ public class UserServiceImpl implements UserService {
 		userDAO.deleteClientBalance(id);
 	}
 
+	@Override
+	public ClientBalance getClientBalance(int id) {
+
+		return userDAO.getClientBalance(id);
+
+	}
 }

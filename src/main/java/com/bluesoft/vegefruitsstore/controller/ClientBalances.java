@@ -48,7 +48,6 @@ public class ClientBalances {
 	@RequestMapping("/add-client-balance")
 	public String getAllBalance(@RequestParam("clientId") int clientId, @RequestParam("itemId") int itemId,
 			@ModelAttribute("clientBalance") ClientBalance theClientBalance) {
-
 		// get casher id from the session
 		int casherId = Integer.parseInt(httpSession.getAttribute("loginCasherId").toString());
 

@@ -9,7 +9,9 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -32,29 +34,10 @@ public class Balances {
 	@Autowired
 	private HttpSession httpSession;
 
-	@RequestMapping("/balance")
+	@GetMapping("/balance")
 	public String getAllBalance(@RequestParam(name = "clientId", required = false) Integer theClientID,
 			Model theModel) {
 
-//		List<HeaderResult> theHeaderResult2 = userService.getMaxDatesForBalance();
-//
-//		for (HeaderResult headerResult : theHeaderResult2) {
-//
-//			System.out.println(
-//					"Seller id >> " + headerResult.getSellerId() + " || " + "MaxDate >> " + headerResult.getMaxDate());
-//		}
-//
-//		List<HeaderResult> theHeaderResult3 = userService.getMaxDatesForCollect();
-//
-//		System.out.println("\n----------------------------------------------------------------------");
-//
-//		for (HeaderResult headerResult : theHeaderResult3) {
-//
-//			System.out.println(
-//					"Seller id >> " + headerResult.getSellerId() + " || " + "MaxDate >> " + headerResult.getMaxDate());
-//		}
-
-		
 		List<HeaderResult> theHeaderResult = userService.getBalanceHeader();
 		List<Item> itemList = new ArrayList<Item>();
 
@@ -100,11 +83,10 @@ public class Balances {
 
 		httpSession.setAttribute("messagesCount", newSellerList.size());
 
-		
 		theModel.addAttribute("today", LocalDate.now().toString());
 		theModel.addAttribute("seller", new Seller());
 		theModel.addAttribute("balance", balance);
-		theModel.addAttribute("itemsList", itemList);
+		theModel.addAttribute("clientBalances", clientBalances);
 		theModel.addAttribute("sellersList", sellerList);
 		theModel.addAttribute("clientsList", clientsList);
 		theModel.addAttribute("balanceList", balanceList);
@@ -114,58 +96,73 @@ public class Balances {
 
 	}
 
-	@RequestMapping("/add-balance")
-	public String getAllBalance(@RequestParam("itemId") int itemId, @RequestParam("clientId") int clientId,
-			@RequestParam("sellerId") int sellerId, @ModelAttribute("balance") Balance theBalance) throws Exception {
+	@PostMapping("/add-balance")
+	public String getAllBalance(@RequestParam("clientBalanceId") int clientBalanceId,
+			@RequestParam("clientId") int clientId, @RequestParam("sellerId") int sellerId,
+			@ModelAttribute("balance") Balance theBalance) throws Exception {
+
+		boolean updateFlage = false;
+
+		System.out.println("Refresh >> add-balance");
 
 		// get casher id from the session
 		int casherId = Integer.parseInt(httpSession.getAttribute("loginCasherId").toString());
 
-		userService.updateClientBalance(itemId, clientId, theBalance.getCounter(), theBalance.getWeight());
+		updateFlage = userService.updateClientBalance(clientBalanceId, theBalance.getCounter(), theBalance.getWeight());
 
-		theBalance.setDate(LocalDate.now().toString());
+		System.out.println(">>>>>>>>>> updateFlage >>>>>>>>> " + updateFlage);
 
-		theBalance.setTotalAmount(theBalance.getWeight() * theBalance.getKiloPrice());
+		if (updateFlage) {
 
-		theBalance.setLater(theBalance.getWeight() * theBalance.getKiloPrice() - theBalance.getCash());
+			theBalance.setDate(LocalDate.now().toString());
 
-		Casher theCasher = userService.getCasher(casherId);
-		Seller theSeller = userService.getSeller(sellerId);
+			theBalance.setTotalAmount(theBalance.getWeight() * theBalance.getKiloPrice());
 
-		theBalance.setCasher(theCasher);
-		theBalance.setClient(userService.getClient(clientId));
-		theBalance.setSeller(theSeller);
+			theBalance.setLater(theBalance.getWeight() * theBalance.getKiloPrice() - theBalance.getCash());
 
-		// جلب الايتم للبالانس
-		theBalance.setItem(userService.getItem(itemId));
+			Casher theCasher = userService.getCasher(casherId);
+			Seller theSeller = userService.getSeller(sellerId);
 
-		userService.saveBalance(theBalance);
+			theBalance.setCasher(theCasher);
+			theBalance.setClient(userService.getClient(clientId));
+			theBalance.setSeller(theSeller);
 
-		if (theBalance.getCash() != theBalance.getTotalAmount() && theBalance.getCash() != 0) {
+			// جلب الايتم للبالانس
+			theBalance.setItem(userService.getClientBalance(clientBalanceId).getItem());
 
-			userService.updateMaster(sellerId, theBalance.getDate(), theBalance.getTotalAmount(), "relay");
+			// جلب الكلاينت بالانس للبالانس
+			theBalance.setClientBalance(userService.getClientBalance(clientBalanceId));
 
-			userService.updateMaster(sellerId, theBalance.getDate(), theBalance.getCash(), "collect");
+			userService.saveBalance(theBalance);
 
-			userService.addCollect(new Collect(userService.getSeller(sellerId), theBalance.getCash(),
-					theBalance.getDate(), theCasher.getName()));
+			if (theBalance.getCash() != theBalance.getTotalAmount() && theBalance.getCash() != 0) {
 
-		} else if (theBalance.getCash() == 0) {
+				userService.updateMaster(sellerId, theBalance.getDate(), theBalance.getTotalAmount(), "relay");
 
-			userService.updateMaster(sellerId, theBalance.getDate(), theBalance.getTotalAmount(), "relay");
+				userService.updateMaster(sellerId, theBalance.getDate(), theBalance.getCash(), "collect");
 
-		}
+				userService.addCollect(new Collect(userService.getSeller(sellerId), theBalance.getCash(),
+						theBalance.getDate(), theCasher.getName()));
+
+			} else if (theBalance.getCash() == 0) {
+
+				userService.updateMaster(sellerId, theBalance.getDate(), theBalance.getTotalAmount(), "relay");
+
+			}
+
+		} else
+			throw new Exception("Errorrrrrrrrrrrrr");
 
 		return "redirect:/balance";
 	}
 
 	@RequestMapping("/delete-balance")
-	public String deleteBalance(@RequestParam(name = "id") int id) throws Exception {
+	public String deleteBalance(@RequestParam(name = "id") int balanceId) throws Exception {
 
-		Balance theBalance = userService.getBalanceById(id);
+		Balance theBalance = userService.getBalanceById(balanceId);
 
-		userService.updateClientBalance(theBalance.getItem().getId(), theBalance.getClient().getId(),
-				theBalance.getCounter() * -1, theBalance.getWeight() * -1);
+		boolean b = userService.updateClientBalance(theBalance.getClientBalance().getId(), theBalance.getCounter() * -1,
+				theBalance.getWeight() * -1);
 
 		userService.updateMaster(theBalance.getSeller().getId(), theBalance.getDate(),
 				theBalance.getTotalAmount() - theBalance.getCash(), "collect");

@@ -79,7 +79,7 @@ public interface UserService {
 
 	public void saveClientBalance(ClientBalance theClientBalance);
 
-	public void updateClientBalance(int itemId, int clientId, int count, float weight) throws Exception;
+	public boolean updateClientBalance(int itemId, int clientId, float weight) throws Exception;
 
 	public Balance getBalanceById(int id);
 
@@ -124,5 +124,7 @@ public interface UserService {
 	public List<HeaderResult> getMaxDatesForCollect();
 
 	public void deleteClientBalance(int id);
+
+	public ClientBalance getClientBalance(int clientBalanceId);
 
 }

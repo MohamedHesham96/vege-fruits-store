@@ -22,6 +22,13 @@
 		location = "/balance?clientId=" + value;
 	}
 
+	function ss() {
+
+		var submitBTN = document.getElementById("submitBTN");
+		submitBTN.disable = '';
+		window.history.replaceState({}, document.tital, "/" + "balance");
+	}
+
 	function showForm(btn) {
 
 		var sellerForm = document.getElementById("sellerForm");
@@ -41,7 +48,7 @@
 
 
 </head>
-<body onunload="" background="images/wall1.jpg"
+<body onload="ss()" onunload="ss()" background="images/wall1.jpg"
 	style="background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
 
 	<%@ include file="header.jsp"%>
@@ -72,7 +79,7 @@
 
 		</div>
 
-		<form:form metho="get" action="add-balance" modelAttribute="balance">
+		<form:form metho="POST" action="add-balance" modelAttribute="balance">
 			<div class="row  my-4">
 				<div dir='rtl' class="col-lg-12 col-md-8">
 					<div class="table-responsive">
@@ -123,12 +130,12 @@
 									</select></td>
 
 
-									<td><select name="itemId" style="width: 175px;"
+									<td><select name="clientBalanceId" style="width: 175px;"
 										class="text-center form-control">
 
-											<c:forEach var="tempItem" items="${itemsList}">
+											<c:forEach var="tempItem" items="${clientBalances}">
 
-												<option value="${tempItem.id}">${tempItem.name}</option>
+												<option value="${tempItem.id}">${tempItem.item.name}</option>
 
 											</c:forEach>
 
@@ -155,7 +162,8 @@
 								</tr>
 
 								<tr style="text-align: center;">
-									<td colspan="8"><input type="submit" value="اضف للميزان"
+									<td colspan="8"><input id="submitBTN" type="submit"
+										value="اضف للميزان"
 										class="btn badge-success  
 								 font-weight-bold text-center"
 										style="width: 100%; height: 50px;"
