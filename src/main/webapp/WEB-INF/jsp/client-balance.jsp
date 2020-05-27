@@ -253,11 +253,12 @@
 
 
 											<td>${tempItem.casher.name}</td>
-											<td>${tempItem.date}</td>
+											
+											<td  ${ tempItem.currentCounter ==  tempItem.counter ? '' : 'colspan="2"'} >${tempItem.date}</td>
 
-											<td><a style="font-size: 12px"
+											<td ${ tempItem.currentCounter ==  tempItem.counter ? '' : 'hidden'} style="width: 150px"><a style="font-size: 12px"
 												href="delete-client-balance?id=${tempItem.id}"
-												class=" btn btn-danger text-white font-weight-bold  ${ tempItem.currentCounter ==  tempItem.counter ? '' : 'disabled'}"
+												class=" btn btn-danger text-white font-weight-bold" 
 												onclick="return confirm('هل انت متأكد من حذف هذا الصنف ؟')">
 													حذف</a></td>
 
@@ -283,7 +284,7 @@
 			</div>
 		</div>
 	</div>
-
+<br><br>
 	<%@ include file="footer.jsp"%>
 
 </body>

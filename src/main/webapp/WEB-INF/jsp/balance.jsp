@@ -130,7 +130,7 @@
 									</select></td>
 
 
-									<td><select name="clientBalanceId" style="width: 175px;"
+									<td><select name="clientBalanceId" style="width: 180px;"
 										class="text-center form-control">
 
 											<c:forEach var="tempItem" items="${clientBalances}">
@@ -228,11 +228,12 @@
 											<td>${tempItem.totalAmount}</td>
 											<td>${tempItem.seller.name}</td>
 											<td>${tempItem.casher.name}</td>
-											<td>${tempItem.date}</td>
+											<td ${tempItem.date == today ? '' : 'colspan="2"'}>${tempItem.date}</td>
 
-											<td style="width: 160px"><a
+											<td ${tempItem.date == today ? '' : 'hidden '}
+												"><a
 												style="height: 30px; font-size: 14px;"
-												class="btn btn-danger text-wight font-weight-bold ${tempItem.date == today ? '' : 'disabled'}"
+												class="btn btn-danger text-wight font-weight-bold "
 												onclick="return confirm('هل انت متأكد من حذف هذا الصنف ؟')"
 												href="delete-balance?id=${tempItem.id}">حذف</a></td>
 

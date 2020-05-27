@@ -60,33 +60,6 @@
 
 	<div style="text-align: right;" class="container">
 
-		<!-- 		<div class="card bg-success text-white" -->
-		<!-- 			style="width: 18rem; margin-left: 820px;"> -->
-		<!-- 			<div class="card-header text-white font-weight-bold text-center" -->
-		<!-- 				style="color: #c4c4c4">التاريخ</div> -->
-		<!-- 			<ul class="list-group list-group-flush"> -->
-
-		<!-- 				<li class="bg-dark list-group-item"> -->
-
-		<%-- 					<form method="GET" action="collect"> --%>
-
-		<%-- 						<input type="date" name="date" value="${date}" --%>
-		<!-- 							class="w-100 btn badge-light font-weight-bold text-center"> -->
-
-		<!-- 						<input type="submit" style="margin-top: 10px;" -->
-		<!-- 							class="w-100 btn badge-success font-weight-bold text-center" -->
-		<!-- 							value="اذهب لهذا اليوم" /> -->
-
-		<%-- 					</form> --%>
-		<!-- 				</li> -->
-
-		<!-- 			</ul> -->
-		<!-- 		</div> -->
-
-
-
-
-
 		<div id="casherForm" class="card bg-success"
 			style="display: none; width: 18rem; margin-left: 820px;">
 
@@ -176,7 +149,7 @@
 
 							<tr>
 								<th>رقم الكاشير</th>
-								<th colspan="2">اسم الكاشير</th>
+								<th  colspan="2">اسم الكاشير</th>
 
 							</tr>
 
@@ -187,8 +160,8 @@
 
 								<tr>
 									<td>${tempItem.id}</td>
-									<td>${tempItem.name}</td>
-									<td style="width: 500px"><a
+									<td style="width: 300px">${tempItem.name}</td>
+									<td style="width: 600px"><a
 										style="height: 30px; font-size: 12px"
 										class="btn btn-primary text-wight font-weight-bold"
 										href="casher-sellers?casherId=${tempItem.id}">يومية

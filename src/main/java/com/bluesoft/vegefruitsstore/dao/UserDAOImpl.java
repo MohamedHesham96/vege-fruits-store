@@ -304,13 +304,22 @@ public class UserDAOImpl implements UserDAO {
 
 			session.saveOrUpdate(master);
 
-			if (sellerMasterList.size() > 1)
+			if (sellerMasterList.size() > 1) {
+
 				if (sellerMasterList.get(1).getAmount() == sellerMasterList.get(0).getAmount()) {
 
 					session.delete(sellerMasterList.get(0));
 					System.out.println("Date >> " + sellerMasterList.get(0).getDate() + " ------ " + "Amount >> "
 							+ sellerMasterList.get(0).getAmount());
+
 				}
+
+				if (sellerMasterList.get(sellerMasterList.size() - 1).getAmount() == 0) {
+
+					session.delete(sellerMasterList.get(sellerMasterList.size() - 1));
+				}
+
+			}
 
 		} else {
 

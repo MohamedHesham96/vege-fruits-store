@@ -27,13 +27,10 @@
 				class="btn bg-primary text-white "
 				style="font-size: 20px; font-family: Amiri, sans-serif; padding: 5px;">
 					<img style="margin-left: 5px; width: 35px; display: inline"
-					src="icons/icons8-bell-48.png">[ 
-					
-					
-					<%=session.getAttribute("messagesCount")%>
-				
-				]
-				</a></li>
+					src="icons/icons8-bell-48.png">[ <%=session.getAttribute("messagesCount")%>
+
+					]
+			</a></li>
 
 
 			<li style="margin-left: 5px; margin-right: 5px">
@@ -48,6 +45,11 @@
 					style="margin-right: 10px; width: 35px; display: inline"
 					src="icons/balance.png">
 			</a></li>
+
+
+			<li style="margin-left: 5px; margin-right: 5px">
+				<h1 class="text-white">|</h1>
+			</li>
 
 
 			<li style="margin: 5px;" class=""><a
