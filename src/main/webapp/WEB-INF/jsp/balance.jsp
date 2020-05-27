@@ -230,8 +230,7 @@
 											<td>${tempItem.casher.name}</td>
 											<td ${tempItem.date == today ? '' : 'colspan="2"'}>${tempItem.date}</td>
 
-											<td ${tempItem.date == today ? '' : 'hidden '}
-												"><a
+											<td ${tempItem.date == today ? '' : 'hidden '}><a
 												style="height: 30px; font-size: 14px;"
 												class="btn btn-danger text-wight font-weight-bold "
 												onclick="return confirm('هل انت متأكد من حذف هذا الصنف ؟')"
