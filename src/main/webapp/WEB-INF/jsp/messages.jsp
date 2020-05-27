@@ -13,7 +13,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 
-<title>الرسائل</title>
+<title>[ الرسائل ] - [ عدد الرسائل - <%=session.getAttribute("messagesCount")%>
+
+									]
+</title>
 
 <link href="webjars/bootstrap/4.4.1/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -38,12 +41,10 @@
 							<tr class="badge-success">
 
 								<td colspan="10" class="font-weight-bold"
-									style="font-size: 22px">[ الرسائل ] - [ عدد الرسائل - 
-									
-									
-														<%=session.getAttribute("messagesCount")%>
-									
-									 ]</td>
+									style="font-size: 22px">[ الرسائل ] - [ عدد الرسائل - <%=session.getAttribute("messagesCount")%>
+
+									]
+								</td>
 
 							</tr>
 
@@ -85,8 +86,8 @@
 			</div>
 		</div>
 	</div>
-	
-		<%@ include file="footer.jsp"%>
-	
+
+	<%@ include file="footer.jsp"%>
+
 </body>
 </html>

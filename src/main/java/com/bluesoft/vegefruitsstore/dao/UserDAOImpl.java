@@ -667,8 +667,8 @@ public class UserDAOImpl implements UserDAO {
 
 		Session session = entityManager.unwrap(Session.class);
 
-		List<ClientBalance> clientList = session
-				.createQuery("from ClientBalance CB where CB.client.id = :theClientId and CB.currentCounter = 0")
+		List<ClientBalance> clientList = session.createQuery(
+				"from ClientBalance CB where CB.client.id = :theClientId and CB.currentCounter = 0 order by date desc")
 				.setParameter("theClientId", clientId).getResultList();
 
 		return clientList;

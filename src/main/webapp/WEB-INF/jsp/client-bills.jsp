@@ -132,7 +132,17 @@
 
 										<%=new DecimalFormat("##.##").format(total)%>
 
+										] - [ عمولة :
+
+										<%=new DecimalFormat("##.##").format(total * 0.08)%>
+
+										] - [ صافي :
+
+										<%=new DecimalFormat("##.##").format(total - total * 0.08)%>
+
 										]
+
+
 									</h4></td>
 							</tr>
 						</tbody>

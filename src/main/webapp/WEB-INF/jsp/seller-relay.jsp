@@ -13,7 +13,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 
-<title>الترحيل</title>
+<title dir="ltr">[ الترحيل ] - [ ${headerResult.sellerName} ]</title>
 
 <link href="webjars/bootstrap/4.4.1/css/bootstrap.min.css"
 	rel="stylesheet">
